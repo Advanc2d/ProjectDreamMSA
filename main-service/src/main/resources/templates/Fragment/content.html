@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:fragment="contentFragment">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Content</title>
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+	rel="stylesheet">
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.5.8/swiper-bundle.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.5.8/swiper-bundle.min.js"></script>
+<link href="css/productList.css" rel="stylesheet">
+</head>
+<body>
+<body>
+	<div class="slider">
+		<div class="header">
+			<div class="title">상품 목록</div>
+		</div>
+		<div class="swiper-container wrapper">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide" th:each="product:${product}">
+					<form method="get" action="/loan/detail">
+							<div class="tag">
+								<span
+									th:text="'한도 금액 : '+${#numbers.formatInteger(product.proLimit, 3, 'COMMA')} + '만원'"></span>
+							</div>
+							<div class="title">
+								<span th:text="${product.proName}"></span>
+							</div>
+							<div class="text">이자율 : 5%</div>
+							<div class="text">
+								<span th:text="'기간 : '+${product.term}+'개월'"></span>
+							</div>
+							<input type="submit" value="대출 신청" class=""/>
+						<!-- <input type="hidden" name="proNo" id="proNo" th:value="${product.proNo}" /> -->
+					</form>
+				</div>
+			</div>
+			<div class="swiper-button-next swiper-button-white"></div>
+			<div class="swiper-button-prev swiper-button-white"></div>
+		</div>
+	</div>
+	<script src="js/productList.js"></script>
+</body>
+</body>
+
+</html>

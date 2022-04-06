@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>대출 상품 수정 페이지</title>
+	<link rel="stylesheet" href="css/product-service-register.css">
+    <link rel="stylesheet" href="css/button.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+	<script	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+</head>
+<body>
+
+	<html th:replace="header::headerFragment"></html>
+    <div class="wrapper rounded bg-white">
+        <div class="h3">대출 상품 수정</div>
+        <div class="form">
+        	<form method="post">
+            <input type="hidden" th:value="${proVO.proNo}" id="proNo" name="proNo">
+            <div class="row">
+                <div class="col-md-6 mt-md-0 mt-3"> <label>상품명</label>
+                    <input class="form-control" type="text" id="proName" name="proName" th:value="${proVO.proName}">
+                </div>
+                <div class="col-md-6 mt-md-0 mt-3"> <label>대출 한도(만원)</label>
+                    <input class="form-control" type="text" id="proLimit" name="proLimit" 
+                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                    th:value="${#numbers.formatInteger(proVO.proLimit,3,'COMMA')}">
+                </div>
+                
+            </div>
+            <!-- <div class="row"> </div> -->
+            <div class="row">
+                <div class="col-md-6 mt-md-0 mt-3"> <label>이자율(%)</label>
+                    <input class="form-control" th:value="${proVO.rate}">
+                </div>
+                <div class="col-md-6 mt-md-0 mt-3"> <label>대출 최대기간(개월)</label>
+                    <input class="form-control" type="text" id="term" name="term" th:value="${proVO.term}" 
+                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" >
+                </div>
+               
+            </div>
+            <div class="row">
+            	<div class="col-md-6 mt-md-0 mt-3"> <label>신청자격</label>
+                	<textarea class="form-control" id="need" name="need" cols="15" rows="3" style="resize:none;" th:text="${proVO.need}"></textarea>
+                    <!-- <input class="form-control" required style="height: 200%;"> -->
+                </div>
+                 <div class="col-md-6 mt-md-0 mt-3" > <label>상품설명</label>
+                	<textarea class="form-control" id="detail" name="detail" cols="15" rows="3" style="resize:none;" th:text="${proVO.detail}"></textarea>
+                    <!-- <input class="form-control" style="height: 200%;" required > --> 
+                </div>		
+            </div>
+            <div class="row">
+                <div style="float: right; padding: 20px;">
+                    <button class="fill" onclick="update()">수정</button>
+                    <button class="close" onclick="back()">취소</button>
+                </div>
+            </div>
+            </form>
+            <!-- <div class="btn btn-primary mt-3">등록하기</div> -->
+        </div>
+    </div>
+    <html th:replace="footer::footerFragment"></html>
+	<script src="js/product.js"></script>
+</body>
+</html>

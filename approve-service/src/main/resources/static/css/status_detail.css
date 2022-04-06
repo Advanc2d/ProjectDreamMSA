@@ -1,0 +1,200 @@
+body {
+   font-family: sans-serif;
+}
+.name, .limit, .orderPrice  {
+      margin-top : 25px;
+      font-size: 20px;
+   }
+.action {
+   margin-top: 20px;
+}
+body *, body *:before, body *:after {
+   -webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   box-sizing: border-box;
+}
+
+body .wrapper {
+   width: 1140px;
+   margin: 0 auto;
+   max-width: 100%;
+   padding: 0 15px;
+}
+
+body .clearfix:after {
+   content: " ";
+   clear: both;
+   display: table;
+}
+
+.form {
+   padding-top: 30px;
+   margin-bottom: 30px;
+}
+
+.form .header {
+   margin-bottom: 35px;
+   padding-bottom: 35px;
+   border-bottom: 1px solid #ddd;
+}
+
+.form .header .title {
+   font-size: 40px;
+   font-weight: bold;
+   color: #1259a7;
+}
+
+.form .header .desc {
+   margin-left: 10px;
+   font-size: 20px;
+}
+
+.form .header .message {
+   margin: 25px 0 70px 0;
+   font-size: 20px;
+   font-weight: normal;
+   color: #262626;
+}
+
+.form .content {
+   margin: 0 -15px;
+}
+
+.form .content:after {
+   clear: both;
+   content: " ";
+   display: table;
+}
+
+.form .content .half {
+   min-width: 400px;
+   float: left;
+   width: 50%;
+   padding: 0 15px;
+}
+
+.form .content .half label .point {
+   color: #1259a7;
+}
+
+.form .content .half .message {
+   margin-bottom: 35px;
+}
+
+.form .content .half .message .length {
+   float: right;
+}
+
+.form .content .half .limit {
+   margin: 35px 0;
+}
+
+.form .content .half .satisfaction .comment {
+   float: right;
+}
+
+.form .content .half .satisfaction .icons {
+   margin-top: 25px;
+}
+
+.form .content .half .satisfaction .icons:after {
+   content: " ";
+   clear: both;
+   display: table;
+}
+
+.form .content .half .satisfaction .icons label {
+   float: left;
+   width: calc(100%/ 3);
+}
+
+.form .content .half .satisfaction .icons label i {
+   cursor: pointer;
+   padding: 5px;
+   font-size: 42px;
+   opacity: 0.25;
+}
+
+.form .content .half .satisfaction .icons label.left {
+   text-align: right;
+}
+
+.form .content .half .satisfaction .icons label.center {
+   text-align: center;
+}
+
+.form .content .half .satisfaction .icons label i:hover {
+   opacity: 0.5;
+}
+
+.form .content .half .satisfaction .icons label.on i {
+   color: #1259a7;
+}
+
+.form .content .half .satisfaction .icons label.on i {
+   opacity: 1;
+}
+
+.form .content .half .satisfaction .icons label input {
+   display: none;
+}
+
+.form .content .half label {
+   display: block;
+   margin-bottom: 15px;
+}
+
+.form .content .half textarea {
+   border-radius: 0;
+   height: 379px;
+   width: 100%;
+   resize: none;
+   padding: 15px;
+   border: 1px solid #ddd;
+   box-shadow: none;
+}
+
+.form .content .half input {
+   border-radius: 0;
+   padding: 15px;
+   height: 50px;
+   box-shadow: none;
+   border: 1px solid #ddd;
+   width: 100%;
+}
+
+.form .content .half textarea:focus, .form .content .half input:focus {
+   border-color: #1259a7;
+   outline: 0;
+}
+
+.form .content .half .action {
+   padding-top: 15px;
+}
+
+.form .content .half .action button {
+   font-size: 16px;
+   height: 50px;
+   display: inline-block;
+   cursor: pointer;
+   background: #1259a7;
+   width: 100%;
+   border: 1px solid #1259a7;
+   box-shadow: none;
+   color: #fff;
+}
+
+@media ( max-width :767px) {
+   .form .header {
+      text-align: center;
+   }
+   .form .header .title {
+      display: block;
+   }
+   .form .header .desc {
+      display: block;
+      margin: 10px 0 0 0;
+   }
+   
+   
+}

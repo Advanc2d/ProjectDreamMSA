@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dream.approveservice.mapper.ApproveMapper">
+	<select id="bringOrder" resultType="com.dream.approveservice.dto.orderVO">
+		select a.orderNo, a.proNo, a.userId, a.orderPrice,
+      a.orderDate, a.endDate, a.status, b.proName
+      from orders a inner join products b
+      on a.proNo = b.proNo
+      where orderNo = #{orderNo};
+	</select>
+	
+	<update id="update">
+		update orders set status=#{status} where orderNo=#{orderNo}
+	</update>
+</mapper>
