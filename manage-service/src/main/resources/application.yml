@@ -14,6 +14,8 @@ spring:
        enabled: true
      restart:   # 재시작시 완전히 꺼졌다 다시키는 것보다 훨씬 빠르게 해줌.
       enabled: true
+  kafka:
+    bootstrap-servers: localhost:9092  
 
 # actuator를 이용하여 서버 재시작 없이 변경내용 반영 가능하게 함.
 management:

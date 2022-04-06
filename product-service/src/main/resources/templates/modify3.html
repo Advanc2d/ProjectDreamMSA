@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/button.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
 	<script	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	
 
 </head>
 <body>
@@ -33,7 +33,7 @@
             <!-- <div class="row"> </div> -->
             <div class="row">
                 <div class="col-md-6 mt-md-0 mt-3"> <label>이자율(%)</label>
-                    <input class="form-control" th:value="${proVO.rate}">
+                    <input class="form-control" th:value="${proVO.rate}" id="rate" name="rate">
                 </div>
                 <div class="col-md-6 mt-md-0 mt-3"> <label>대출 최대기간(개월)</label>
                     <input class="form-control" type="text" id="term" name="term" th:value="${proVO.term}" 
@@ -63,5 +63,6 @@
     </div>
     <html th:replace="footer::footerFragment"></html>
 	<script src="js/product.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 </body>
 </html>
