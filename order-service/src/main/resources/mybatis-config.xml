@@ -1,0 +1,5 @@
+<configuration>
+  <mappers>
+    <mapper resource="OrderMapper.xml"/>
+  </mappers>
+</configuration>
