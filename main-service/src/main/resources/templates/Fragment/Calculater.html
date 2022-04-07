@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:fragment="CalFragment">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<link href="css/cal1.css" rel="stylesheet">
+<link href="css/cal2.css" rel="stylesheet">
+<link href="css/cal3.css" rel="stylesheet">
+<link href="css/cal4.css" rel="stylesheet">
+<link href="css/cal4.css" rel="stylesheet">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="js/cal.js"></script>
+</head>
+
+<body>
+	<div class="write-form">
+		<div class="form-box">
+			<h5 class="common-stit">이자율 계산기</h5>
+			<br>
+			<p class="form-desc">대출금액의 상환금액과 일정을 계산하여 드립니다.</p>
+			<ul class="tbl-v">
+				<li class="tr-v">
+					<div class="th-v">
+						<label for="calc01">대출금액</label>
+					</div>
+					<div class="td-v num-wrap">
+						<div class="cell-box">
+							<input type="text" id="calc01"
+								class="input-basic input-text-align" title="예치금액" value="0원">
+						</div>
+						<div class="cell-box">
+							<button type="button" class="slt-btn btn-add-money active"
+								value="1000000">
+								<div class="buttonstyle">+100만원</div>
+							</button>
+							<button type="button" class="slt-btn btn-add-money"
+								value="5000000">
+								<div class="buttonstyle">+500만원</div>
+							</button>
+							<button type="button" class="slt-btn btn-add-money"
+								value="10000000">
+								<div class="buttonstyle">+1000만원</div>
+							</button>
+							<button type="button" class="slt-btn btn-add-money"
+								value="50000000">
+								<div class="buttonstyle">+5000만원</div>
+							</button>
+							<button type="button" class="slt-btn btn-reset-money reset">
+								<div class="buttonstyle"
+									style="color: white; margin-right: -4%;">정정</div>
+							</button>
+						</div>
+					</div>
+				</li>
+				<li class="tr-v">
+					<div class="th-v">
+						<label for="calc02">대출기간</label>
+					</div>
+					<div class="td-v num-wrap">
+						<div class="cell-box">
+							<input type="text" id="calc02"
+								class="input-basic input-text-align" title="예치금액" value="0개월">
+						</div>
+						<div class="cell-box">
+							<button type="button" class="slt-btn btn-add-month active"
+								value="3">
+								<div class="buttonstyle">+3개월</div>
+							</button>
+							<button type="button" class="slt-btn btn-add-month" value="6">
+								<div class="buttonstyle">+6개월</div>
+							</button>
+							<button type="button" class="slt-btn btn-add-month" value="12">
+								<div class="buttonstyle">+1년</div>
+							</button>
+							<button type="button" class="slt-btn btn-add-month" value="24">
+								<div class="buttonstyle">+2년</div>
+							</button>
+							<button type="button" class="slt-btn btn-reset-month reset">
+								<div class="buttonstyle"
+									style="color: white; margin-right: -4%;">정정</div>
+							</button>
+						</div>
+					</div>
+				</li>
+				<li class="tr-v">
+					<div class="th-v">
+						<label for="calc03">대출금리</label>
+					</div>
+					<div class="td-v num-wrap">
+						<div class="cell-box">
+							<input type="text" id="calc03"
+								class="input-basic input-text-align" title="예치금액" value="0%">
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="btn-box al-c">
+		<span><button type="button" class="btn-style06 md" id="btnCalc"
+				onclick="cal()">계산하기</button></span>
+	</div>
+	<div class="tab-basic-contents"
+		style="width: 1100px; display: flex; justify-content: center;">
+		<div style="margin-right: -84%">
+			<h5 class="calafter">계산결과</h5>
+			<div id="tbl-wrap"></div>
+		</div>
+	</div>
+	<hr class="cal-form">
+</body>
+
+</html>

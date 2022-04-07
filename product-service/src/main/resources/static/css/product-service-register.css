@@ -116,3 +116,36 @@ body::-webkit-scrollbar {
         margin: 20px
     }
 }
+
+/* 등록버튼 */
+.btn-style06 {
+    display: inline-block;
+    min-width: 40%;
+    height: 50px;
+    padding: 0 18px;
+    border-radius: 5px;
+    background: #00397c;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 700;
+    text-align: center;
+}
+.btn-style06:hover, .btn-style06:focus {
+    background: #01244d;
+}
+/* 취소버튼 */
+.btn-style07 {
+    display: inline-block;
+    min-width: 40%;
+    height: 50px;
+    padding: 0 18px;
+    border-radius: 5px;
+    background: #666;
+    color: white;
+    font-size: 17px;
+    font-weight: 700;
+    text-align: center;
+}
+.btn-style07:hover, .btn-style06:focus {
+    background: #3e3e3e;
+}

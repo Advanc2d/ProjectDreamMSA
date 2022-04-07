@@ -59,11 +59,12 @@ body .clearfix:after {
 
 .slider .swiper-container .swiper-wrapper .swiper-slide {
 	font-size: 25px;
-	background: pink;
-	display: block;
-	padding: 30px;
-	width: 250px;
-	height: 270px;
+    background: #ededed;
+    display: block;
+    padding: 30px;
+    width: 327px;
+    height: 270px;
+    border-radius: 20px;
 }
 
 .slider .swiper-container .swiper-wrapper .swiper-slide .tag>span {
@@ -114,9 +115,9 @@ body .clearfix:after {
 input[type=submit] {
 	 border: 0;
 	 padding: 0.6rem 0;
-	 width: 138px;
+	 width: 155px;
 	 border-radius: 5px;
-	 background: #4a90e2;
+	 background: #00397c;
 	 color: #fff;
 	 cursor: pointer;
 	 font-family: 'Poppins', sans-serif;
@@ -134,4 +135,17 @@ input[type=submit]:active {
 	 position: relative;
 	 top: 2px;
 	 left: 2px;
+}
+
+.product{
+	margin-top:7%;
+	text-align:center;
+}
+
+.atag{
+	text-decoration-line: none;
+}
+
+.proName{
+	font-size:33px;
 }

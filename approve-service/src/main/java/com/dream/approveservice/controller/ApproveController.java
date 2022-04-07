@@ -1,5 +1,9 @@
 package com.dream.approveservice.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.annotation.security.RolesAllowed;
 
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
@@ -31,13 +35,13 @@ public class ApproveController {
 	@PostMapping("/change")
 	public void update(@RequestBody orderVO vo) {
 		log.info("---------------------- approve/change/ URL  DB������Ʈ �̵� -----------------------");
-		log.info(vo.getOrderNo()+"�̰� �ȴٰ�??" + vo.getStatus());
+		log.info(vo.getOrderNo()+"하이요" + vo.getStatus());
 		service.update(vo.getOrderNo(), vo.getStatus());
 	}
 	
 	@RolesAllowed({ "MANAGER" })
 	@GetMapping("/detail")
-	public String sendMsg(Model model, JwtAuthenticationToken principal) throws JsonMappingException, JsonProcessingException {
+	public String sendMsg(Model model, JwtAuthenticationToken principal) throws JsonMappingException, JsonProcessingException, ParseException {
 		log.info("---------------------- approve/detail/ URL  �̵� -----------------------");
 		JwtAuthenticationToken token =  principal;
 		String userId = (String) (token).getTokenAttributes().get("preferred_username");
@@ -49,9 +53,19 @@ public class ApproveController {
 		orderVO vo = new orderVO();
 		vo = service.bringOrder(Integer.parseInt(serv.getMessage().getOrderNo()));
 		
-		log.info(vo.toString());
 		
-		model.addAttribute("orderVO", service.bringOrder(Integer.parseInt(serv.getMessage().getOrderNo())));
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		
+		Date order = formatter.parse(vo.getOrderDate());
+		Date end = formatter.parse(vo.getEndDate());
+		
+		String orderDate = formatter.format(order);
+		String endDate = formatter.format(end);
+		
+		vo.setOrderDate(orderDate);
+		vo.setEndDate(endDate);
+		
+		model.addAttribute("orderVO", vo);
 		return "detail";
 	}
 	
