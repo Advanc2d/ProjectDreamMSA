@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dream.confirm.mapper.confirmMapper">
+
+	<select id="list"
+      resultType="com.dream.confirm.dto.confirmDto">
+      <!-- select * from orders where userId=#{userId} -->
+      select b.orderNo, a.proName, b.orderPrice, a.rate, b.amount, b.status, 
+      b.orderDate, b.endDate from products a inner join orders b on a.proNo=b.proNO
+        where userId= #{userId};
+   </select>
+</mapper>

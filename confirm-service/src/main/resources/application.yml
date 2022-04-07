@@ -1,0 +1,25 @@
+
+#manage-service에서 product-service로 변경
+server:
+  port: 8003
+
+spring:
+  application:
+    name: confirm-service   
+  profiles:
+   active: dev
+  config:              # gradle에 config 추가.
+    import: optional:configserver:http://localhost:8888  # config 서버 위치
+#   import: optional:configserver:http://192.168.1.49:8888  # config 도커로 할때 버전
+  devtools:
+     livereload:  #﻿ html, css, js 수정 시 새로고침 없이 바로 적용가능
+       enabled: true
+     restart:   # 재시작시 완전히 꺼졌다 다시키는 것보다 훨씬 빠르게 해줌.
+      enabled: true
+
+# actuator를 이용하여 서버 재시작 없이 변경내용 반영 가능하게 함.
+management:
+  endpoints:
+   web:
+    exposure:
+     include: refresh, health, beans #refresh:설정 정보 갱신
