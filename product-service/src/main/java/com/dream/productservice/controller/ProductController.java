@@ -78,7 +78,7 @@ public class ProductController {
 		model.addAttribute("list", token.getTokenAttributes());
 		model.addAttribute("proVO", service.getProduct(proNo));
 		
-		return "modify3";
+		return "product-service-modify";
 	}
 	
 	

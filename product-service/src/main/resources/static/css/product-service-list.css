@@ -45,3 +45,18 @@ main.card-size{
 .table-size::-webkit-scrollbar {
     display: none; 
 }
+
+table thead tr th{
+	text-align: center;
+	vertical-align : middle;
+}
+
+table thead tr td{
+	text-align: center;
+	vertical-align : middle;
+}
+
+.text-cent{
+	text-align: center;
+	vertical-align : middle;
+}

@@ -10,5 +10,5 @@ spring:
       server:
         git:
           uri: https://github.com/justdoplzz/msa-config-repo.git   #Github Repository 주소
-#         uri: https://github.com/Advanc2d/msa-configuration.git   #Github Repository 주소
+#         uri: https://github.com/Advanc2d/msa-configuration.git   #Docker 확인용 주소
          

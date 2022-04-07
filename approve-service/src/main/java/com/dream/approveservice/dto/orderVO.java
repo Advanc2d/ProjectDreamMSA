@@ -14,8 +14,8 @@ public class orderVO {
 	private int proNo;
 	private String userId;
 	private double orderPrice;
-	private Date orderDate;
-	private Date endDate;
+	private String orderDate;
+	private String endDate;
 	private int status;
 	private String proName;
 }
