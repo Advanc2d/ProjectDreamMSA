@@ -40,11 +40,9 @@
 					</div>
 					<!-- Grid row -->
 					<!--Table-->
-					<table class="table table-striped"
-						style="-bs-table-striped-bg: none;">
-						<!--Table head-->
-						<thead
-							style="background: #f4f4f4; color: #5d5b5b; font-weight: 100; font-size: 20px;">
+					<table class="table table-striped" style="--bs-table-striped-bg: none;">
+                        <!--Table head-->
+                        <thead style="background: #f4f4f4;color: #5d5b5b; font-weight: 100;font-size: 20px;">
 							<tr>
 								<th style="width: 35px">#</th>
 								<th style="width: 80px">상품명</th>
@@ -54,45 +52,40 @@
 								<!-- <th style="width:80px">금리</th> -->
 								<th style="width: 80px">목적</th>
 								<th style="width: 80px">기간</th>
-								<th style="width: 80px">신청날짜</th>
-								<th style="width: 80px">만기날짜</th>
+								<th class="date" style="width: 80px">대출일</th>
+								<th class="views" style="width: 80px">상환일</th>
 								<th style="width: 80px">주문상태</th>
 							</tr>
 						</thead>
 						<!--Table head-->
 						<!--Table body-->
-						<tbody th:each="list : ${list}">
-							<tr>
+						<tbody>
+							<tr th:each="list : ${manageList}">
 								<th scope="row" th:text="${list.proNo}"></th>
 								<td th:text="${list.proName}">드림대출</td>
 								<td th:text="${list.userId}">김비트</td>
 								<!-- <td th:text="${list.orderNo}">비트교육생</td> -->
-								<td th:text="${list.orderPrice}">100000원</td>
+								<td
+									th:text="${#numbers.formatInteger(list.orderPrice,3,'COMMA')}+' 만원'">원</td>
 								<!-- <td th:text="${list.}">2%</td> -->
 								<td th:text="${list.purpose}">생활비 자금</td>
 								<td th:text="${list.period}">24개월</td>
-								<td th:text="${list.orderDate}">2022.04.07</td>
-								<td th:text="${list.endDate}">2022.04.22</td>
+								<td class="date"
+                        th:text="${#dates.format(list.orderDate, 'yyyy-MM-dd')}"></td>
+                     <td class="views"
+                        th:text="${#dates.format(list.endDate, 'yyyy-MM-dd')}"></td>
 								<td th:text="${list.status}">주문 대기</td>
 							</tr>
-
-
 						</tbody>
 						<!--Table body-->
 					</table>
 					<!--Table-->
 				</div>
 			</div>
-
 			<hr class="my-4">
-
-
 		</div>
 		<!--MDB Tables-->
-
+		<html th:replace="footer::footerFragment"></html>
 	</main>
-
 </body>
-
-
 </html>

@@ -48,8 +48,8 @@ public class ManageController {
 		log.info("---------------------- manage/list URL로 이동  -----------------------");
 		List<StatusDto> list = statusService.getStatusList();
 		JwtAuthenticationToken token = (JwtAuthenticationToken) principal;
-		model.addAttribute("keycloakList", token.getTokenAttributes());
-		model.addAttribute("list", list);
+		model.addAttribute("list", token.getTokenAttributes());
+		model.addAttribute("manageList", list);
 		return "manage-service-list";
 	}
 
