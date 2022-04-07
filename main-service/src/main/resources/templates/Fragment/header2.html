@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org" th:fragment="headerFragment">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+	th:fragment="headerFragment">
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,12 +26,11 @@
 		<div style="border-bottom: solid #005B9F 2px;">
 			<!-- 헤더 -->
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a href="http://localhost:8000/main/menu"><img
-               src="img/logo.png"></a>
-            <div class="container-fluid" style="height: 60px;">
-               <a class="navbar-brand" href="http://localhost:8000/main/menu"
-                  style="color: black; font-size: 30px; font-weight: bold;">Dream
-                  Security</a>
+				<a href="http://localhost:8000/main/"> <img src="img/logo.png"></a>
+				<div class="container-fluid" style="height: 60px;">
+					<a class="navbar-brand" href="http://localhost:8000/main/"
+						style="color: black; font-size: 30px; font-weight: bold;">Dream
+						Security</a>
 					<button class="navbar-toggler" type="button"
 						data-bs-toggle="collapse" data-bs-target="#navbarColor01"
 						aria-controls="navbarColor01" aria-expanded="false"
@@ -51,7 +51,7 @@
 								</div></li>
 						</ul>
 						<button class="btn btn-outline-dark my-2 my-sm-0" type="button"
-							style="margin-right: 1%" onclick="login()">로그인</button>
+							style="margin-right: 1%; font-weight: bold;" onclick="login()">로그인</button>
 					</div>
 				</div>
 			</nav>

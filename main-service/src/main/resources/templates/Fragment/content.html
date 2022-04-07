@@ -25,21 +25,23 @@
 		<div class="swiper-container wrapper">
 			<div class="swiper-wrapper">
 				<div class="swiper-slide" th:each="product:${product}">
-					<form method="get" action="/loan/detail">
+					<div class="product">
+						<a th:href="@{/order/detail(proNo=${product.proNo})}" class="atag">
+						 <!-- <form method="get" action="/loan/detail" style="margin-left:24%;"> -->
 							<div class="tag">
 								<span
 									th:text="'한도 금액 : '+${#numbers.formatInteger(product.proLimit, 3, 'COMMA')} + '만원'"></span>
 							</div>
 							<div class="title">
-								<span th:text="${product.proName}"></span>
+								<span class="proName" th:text="${product.proName}"></span>
 							</div>
-							<div class="text">이자율 : 5%</div>
+							<div class="text" th:text="'이자율 : ' + ${product.rate} + '%'"></div>
 							<div class="text">
 								<span th:text="'기간 : '+${product.term}+'개월'"></span>
-							</div>
-							<input type="submit" value="대출 신청" class=""/>
-						<!-- <input type="hidden" name="proNo" id="proNo" th:value="${product.proNo}" /> -->
-					</form>
+							</div> <!-- <input type="submit" value="대출 신청" class=""/> --> <!-- <input type="hidden" name="proNo" id="proNo" th:value="${product.proNo}" /> -->
+							<!-- </form> -->
+						</a>
+					</div>
 				</div>
 			</div>
 			<div class="swiper-button-next swiper-button-white"></div>
