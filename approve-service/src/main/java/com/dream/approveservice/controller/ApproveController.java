@@ -42,7 +42,7 @@ public class ApproveController {
 	@RolesAllowed({ "MANAGER" })
 	@GetMapping("/detail")
 	public String sendMsg(Model model, JwtAuthenticationToken principal) throws JsonMappingException, JsonProcessingException, ParseException {
-		log.info("---------------------- approve/detail/ URL  �̵� -----------------------");
+		log.info("---------------------- approve/detail/ URL  URL로 이동 -----------------------");
 		JwtAuthenticationToken token =  principal;
 		String userId = (String) (token).getTokenAttributes().get("preferred_username");
 		log.info(userId);
@@ -66,7 +66,8 @@ public class ApproveController {
 		vo.setEndDate(endDate);
 		
 		model.addAttribute("orderVO", vo);
-		return "detail";
+//		return "approve-service-detail";
+		return "approve-service-detail";
 	}
 	
 }
