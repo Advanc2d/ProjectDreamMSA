@@ -22,9 +22,13 @@ public class ApproveServiceImpl implements ApproveService{
 	}
 	
 	@Override
-	public void update(int orderNo, int status) {
+	public void update(orderVO vo) {
 		log.info("---------------status detail change Mapper.xml -----------------");
+		
+		log.info("status : "+vo.getStatus());
 
-		mapper.update(orderNo, status);
+		mapper.update(vo);
+		
+		log.info("여기전에 오류인가요?");
 	}
 }
