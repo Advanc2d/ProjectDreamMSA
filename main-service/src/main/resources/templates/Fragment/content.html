@@ -24,23 +24,24 @@
 		</div>
 		<div class="swiper-container wrapper">
 			<div class="swiper-wrapper">
-				<div class="swiper-slide" th:each="product:${product}">
+				<div class="swiper-slide" th:each="product, i:${product}">
 					<div class="product">
-						<a th:href="@{/order/detail(proNo=${product.proNo})}" class="atag">
-						 <!-- <form method="get" action="/loan/detail" style="margin-left:24%;"> -->
-							<div class="tag">
-								<span
-									th:text="'한도 금액 : '+${#numbers.formatInteger(product.proLimit, 3, 'COMMA')} + '만원'"></span>
-							</div>
-							<div class="title">
-								<span class="proName" th:text="${product.proName}"></span>
-							</div>
-							<div class="text" th:text="'이자율 : ' + ${product.rate} + '%'"></div>
-							<div class="text">
-								<span th:text="'기간 : '+${product.term}+'개월'"></span>
-							</div> <!-- <input type="submit" value="대출 신청" class=""/> --> <!-- <input type="hidden" name="proNo" id="proNo" th:value="${product.proNo}" /> -->
-							<!-- </form> -->
-						</a>
+						<form name="mainForm" id="mainForm" method="post">
+							<a onclick="kafkaSendMsg(this);" class="atag">
+								<div class="tag">
+									<span
+										th:text="'한도 금액 : '+${#numbers.formatInteger(product.proLimit, 3, 'COMMA')} + '만원'"></span>
+								</div>
+								<div class="title">
+									<span class="proName" th:text="${product.proName}"></span>
+								</div>
+								<div class="text" th:text="'이자율 : ' + ${product.rate} + '%'"></div>
+								<div class="text">
+									<span th:text="'기간 : '+${product.term}+'개월'"></span>
+								</div> <input type="hidden" class="proNo"
+								th:attr="name='proNo'+${i.index}" th:value="${product.proNo}">
+							</a>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -49,6 +50,32 @@
 		</div>
 	</div>
 	<script src="js/productList.js"></script>
+	<script>
+		function kafkaSendMsg(e) {
+			var proNo = $(e).parent().find('.proNo').val();
+
+			var arr = {
+				"proNo" : proNo
+			};
+			console.log(arr);
+
+			$.ajax({
+				anyne : true,
+				type : 'POST',
+				url : 'http://localhost:8000/main/kafka',
+				data : JSON.stringify(arr),
+				dataType : "text",
+				contentType : 'application/json',
+				success : function(data) {
+					location.href = "http://localhost:8000/order/detail"
+					return true;
+				},
+				error : function(xhr, status, error) {
+					alert(error);
+				}
+			});
+		}
+	</script>
 </body>
 </body>
 

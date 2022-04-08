@@ -1,44 +1,55 @@
 package com.dream.orderService.controller;
 
 import java.security.Principal;
-import java.util.List;
-
-import javax.annotation.security.RolesAllowed;
 
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.dream.orderService.domain.OrderProductVO;
+import com.dream.orderService.domain.Message;
+import com.dream.orderService.domain.OrderOrderVO;
+import com.dream.orderService.service.OrderKafkaService;
 import com.dream.orderService.service.OrderService;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-@AllArgsConstructor
-//@RequiredArgsConstructor
+@RequiredArgsConstructor
 public class OrderServiceController {
-	private final OrderService service;
-	
-	
-//	@RolesAllowed({"USER"})
-	@GetMapping("/detail")
-	public String loanPage(Model model, Principal principal) throws Exception {
-		log.info("---------------------- order-service/detail URL 로 이동 -----------------------");
-		log.info("Hi man~!");
-		System.out.println("권한 : " + principal);
-		if (principal != null) {
-			JwtAuthenticationToken token = (JwtAuthenticationToken) principal;
-			log.info("toString : " + token.getTokenAttributes().toString());
-			model.addAttribute("list", token.getTokenAttributes());
-		}
-		
-		List<OrderProductVO> product = service.getProductList();
-		model.addAttribute("dream", product);
-		
-		return "order-service-detail";
-	}
+   private final OrderService service;
+   private static int proNo;
+   private final OrderKafkaService ofs;
+   private static Message ms;
+   
+   @GetMapping("/detail")
+   public String loanPage(Model model, Principal principal) {
+      log.info("Hi man~!");
+      log.info(ofs.getMessage().getProNo());
+      System.out.println("권한 : " + principal);
+      if (principal != null) {
+         JwtAuthenticationToken token = (JwtAuthenticationToken) principal;
+         log.info("toString : " + token.getTokenAttributes().toString());
+         model.addAttribute("list", token.getTokenAttributes());
+      }
+      
+      
+      service.bringLoan(Integer.parseInt(ofs.getMessage().getProNo()));
+      
+      model.addAttribute("productList", service.bringLoan(Integer.parseInt(ofs.getMessage().getProNo())));
+      
+      return "order";
+   }
+   
+   @PostMapping("/save")
+   @ResponseBody
+   public void saveProduct(@RequestBody OrderOrderVO vo) {   
+      log.info("여기옴");
+      service.saveOrder(vo);
+   }
 }
