@@ -40,21 +40,32 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 @Slf4j
 public class ManageController {
-private final ManageService statusService;
-	
+	private final ManageService statusService;
+
 	@RolesAllowed({ "MANAGER" })
-    @GetMapping("/wait")
-	   public String wait(Model model, Principal principal) throws Exception {
+	@GetMapping("/list")
+	public String list(Model model, Principal principal) throws Exception {
+		log.info("---------------------- manage/list URL로 이동  -----------------------");
+		List<StatusDto> list = statusService.getStatusList();
+		JwtAuthenticationToken token = (JwtAuthenticationToken) principal;
+		model.addAttribute("list", token.getTokenAttributes());
+		model.addAttribute("manageList", list);
+		return "manage-service-list";
+	}
+
+	@RolesAllowed({ "MANAGER" })
+	@GetMapping("/wait")
+	public String wait(Model model, Principal principal) throws Exception {
 		log.info("---------------------- status/wait URL로 이동  -----------------------");
-	      List<StatusDto> list = statusService.getStatusList();
-	      JwtAuthenticationToken token = (JwtAuthenticationToken) principal;
-	      model.addAttribute("keycloakList", token.getTokenAttributes());
-	      model.addAttribute("list", list);
-	      return "statusList";
-	   }
-	
+		List<StatusDto> list = statusService.getStatusList();
+		JwtAuthenticationToken token = (JwtAuthenticationToken) principal;
+		model.addAttribute("keycloakList", token.getTokenAttributes());
+		model.addAttribute("list", list);
+		return "statusList";
+	}
+
 	@RolesAllowed({ "MANAGER" })
-	@PostMapping({"/update"})
+	@PostMapping({ "/update" })
 	@ResponseBody
 	public void update(@RequestParam Map<String, Object> data) throws JsonProcessingException {
 		log.info("---------------------- save/update URL 작동 -----------------------");
@@ -67,44 +78,43 @@ private final ManageService statusService;
 			statusService.getUpdate(data1);
 		}
 	}
-	
-	
+
 	// kafka producer
-	   @Autowired
-	   private final KafkaTemplate<String, StatusMessage> kafkaTemplate;
+	@Autowired
+	private final KafkaTemplate<String, StatusMessage> kafkaTemplate;
 
-	   @Value(value = "${kafka.topic_name}")
-	   private String kafkaTopicName;
-	   
-	   @Value(value = "${kafka.server_endpoint}")
-	   private String kafkendPoinst;
+	@Value(value = "${kafka.topic_name}")
+	private String kafkaTopicName;
 
-	   String status = "";
-	   
-	 @RequestMapping(value = "/kafka", method = RequestMethod.POST)
-	   public ResponseEntity<String> sendMessage(@RequestBody StatusMessage smsg) {
-	      log.info("----------------------status/kafka/ URL 작동-----------------------");
-	      log.info("메세지 전동 된다. {}", smsg);
-	      log.info("22222222222222222222222222 " +  kafkaTopicName);
-	      
-	      ListenableFuture<SendResult<String, StatusMessage>> future = this.kafkaTemplate.send(kafkaTopicName, smsg);
-	      
-	      future.addCallback(new ListenableFutureCallback<SendResult<String, StatusMessage>>() {
+	@Value(value = "${kafka.server_endpoint}")
+	private String kafkendPoinst;
 
-	         @Override
-	         public void onSuccess(SendResult<String, StatusMessage> result) {
-	            status = "Message send successfully, 메시지가 성공적으로 전송 됨.";
-	            log.info("메시지가 성공적으로 전송됨. successfully sent message = {}, with offset = {}", smsg,
-	                  result.getRecordMetadata().offset());
-	         }
+	String status = "";
 
-	         @Override
-	         public void onFailure(Throwable ex) {
-	            log.info("Failed to send message = {}, error = {}", smsg, ex.getMessage());
-	            status = "Message sending failed = 메시지 전송 실패...";
-	         }
-	      });
+	@RequestMapping(value = "/kafka", method = RequestMethod.POST)
+	public ResponseEntity<String> sendMessage(@RequestBody StatusMessage smsg) {
+		log.info("----------------------status/kafka/ URL 작동-----------------------");
+		log.info("메세지 전동 된다. {}", smsg);
+		log.info("22222222222222222222222222 " + kafkaTopicName);
 
-	      return ResponseEntity.ok(status);
-	   }   
+		ListenableFuture<SendResult<String, StatusMessage>> future = this.kafkaTemplate.send(kafkaTopicName, smsg);
+
+		future.addCallback(new ListenableFutureCallback<SendResult<String, StatusMessage>>() {
+
+			@Override
+			public void onSuccess(SendResult<String, StatusMessage> result) {
+				status = "Message send successfully, 메시지가 성공적으로 전송 됨.";
+				log.info("메시지가 성공적으로 전송됨. successfully sent message = {}, with offset = {}", smsg,
+						result.getRecordMetadata().offset());
+			}
+
+			@Override
+			public void onFailure(Throwable ex) {
+				log.info("Failed to send message = {}, error = {}", smsg, ex.getMessage());
+				status = "Message sending failed = 메시지 전송 실패...";
+			}
+		});
+
+		return ResponseEntity.ok(status);
+	}
 }

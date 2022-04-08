@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	Hi check;
+	<div th:each="product:${User}">
+		<input type="text" th:value="${product.userId}">
+	</div>
+</body>
+</html>

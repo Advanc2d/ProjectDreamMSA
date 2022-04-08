@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dream.approveservice.dto.orderVO;
 import com.dream.approveservice.service.ApproveKafkaService;
@@ -33,16 +34,19 @@ public class ApproveController {
 	
 	@RolesAllowed({ "MANAGER" })
 	@PostMapping("/change")
+	@ResponseBody
 	public void update(@RequestBody orderVO vo) {
 		log.info("---------------------- approve/change/ URL  DB������Ʈ �̵� -----------------------");
 		log.info(vo.getOrderNo()+"하이요" + vo.getStatus());
-		service.update(vo.getOrderNo(), vo.getStatus());
+		int orderNo = vo.getOrderNo();
+		int status = vo.getStatus();
+		service.update(vo);
 	}
 	
 	@RolesAllowed({ "MANAGER" })
 	@GetMapping("/detail")
 	public String sendMsg(Model model, JwtAuthenticationToken principal) throws JsonMappingException, JsonProcessingException, ParseException {
-		log.info("---------------------- approve/detail/ URL  �̵� -----------------------");
+		log.info("---------------------- approve/detail/ URL  URL로 이동 -----------------------");
 		JwtAuthenticationToken token =  principal;
 		String userId = (String) (token).getTokenAttributes().get("preferred_username");
 		log.info(userId);
@@ -66,7 +70,8 @@ public class ApproveController {
 		vo.setEndDate(endDate);
 		
 		model.addAttribute("orderVO", vo);
-		return "detail";
+//		return "detail";
+		return "approve-service-detail";
 	}
 	
 }

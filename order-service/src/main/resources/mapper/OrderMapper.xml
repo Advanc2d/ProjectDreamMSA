@@ -3,7 +3,21 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.dream.orderService.mapper.OrderMapper">
-	<select id="bringLoan" resultType="com.dream.orderService.domain.OrderProductVO">
+	<select id="bringLoan"
+		resultType="com.dream.orderService.domain.OrderProductVO">
 		select * from products where proNo = #{proNo}
 	</select>
+
+	
+	<select id="getProductList" resultType="com.dream.orderService.domain.OrderProductVO">
+	select * from products ;
+	</select>
+
+	<insert id="saveOrder">
+		insert into orders(proNo, userId, orderPrice, purpose, amount, period, endDate) values(#{proNo},
+		#{userId}, #{orderPrice}, #{purpose},
+		#{amount}, #{period},
+		#{endDate})
+	</insert>
+
 </mapper>

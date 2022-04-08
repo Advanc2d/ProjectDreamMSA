@@ -32,17 +32,42 @@
     text-align: center;
 }
 
-main.card-size{
-	width:100%;
-	
+/* 수정 삭제 */
+.btn-style06 {
+    display: inline-block;
+    min-width: 70px;
+    height: 30px;
+    padding: 0 0px;
+    border-radius: 5px;
+    background: white;
+    color: #00397c;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+}
+.btn-style06:hover, .btn-style06:focus {
+    background: #666;
 }
 
-.table-size{
-	height: 530px;
-	overflow: auto;
+/* 등록 */
+.btn-style07 {
+    display: inline-block;
+    min-width: 70px;
+    height: 30px;
+    padding: 0 0px;
+    border-radius: 5px;
+    background: #00397c;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
 }
 
-.table-size::-webkit-scrollbar {
+.btn-style07:hover, .btn-style06:focus {
+    background: #666;
+}
+
+/* .table-size::-webkit-scrollbar {
     display: none; 
 }
 
@@ -58,5 +83,6 @@ table thead tr td{
 
 .text-cent{
 	text-align: center;
-	vertical-align : middle;
+	vertical-align : middle; 
 }
+	*/

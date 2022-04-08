@@ -1,102 +1,107 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:fragment="product-service-listFragment">
+
 <head>
-<title>대출 상품 목록</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>product-service/list</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/product-service-list.css">
+<link rel="stylesheet" href="css/button.css">
+<script	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.5.8/swiper-bundle.min.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/product-service-list.css">
-    <link rel="stylesheet" href="css/button.css">
 </head>
 <script>
 	function move() {
 		location.replace("http://localhost:8000/product/register");
 	}
 </script>
-
-<body>
-	<main class="card-size">
-	<html th:replace="header::headerFragment"></html>
-            <!--MDB Tables-->
-            <div class="container mt-4">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <!-- Grid row -->
-                        <div class="row">
-                            <!-- Grid column -->
-                            <div class="col-md-12">
-                                <h2 class="pt-3 pb-4 text-center font-bold font-up deep-purple-text">대출 상품 목록 
-                                </h2>
-                                <!-- <div class="input-group md-form form-sm form-2 pl-0">
-                                    <input class="form-control my-0 py-1 pl-3 purple-border" type="text"
-                                        placeholder="Search something here..." aria-label="Search">
-                                    <span class="input-group-addon waves-effect purple lighten-2"
-                                        id="basic-addon1"><a><i class="fa fa-search white-text"
-                                                aria-hidden="true"></i></a></span>
-                                </div> -->
-                            </div>
-                            <!-- Grid column -->
-                        </div>
-                        <!-- Grid row -->
-                        <!--Table-->
-                        <div class="table-size">
-                        <table class="table table-striped table-over">
-                            <!--Table head-->
-                            <thead >
-                                <tr>
-                                    <th class="text-cent">#</th>
-                                    <th class="text-cent">상품명</th>
-                                    <th style="width:20%">자격</th>
-                                    <th class="text-cent">한도</th>
-                                    <th class="text-cent">금리</th>
-                                    <th class="text-cent">기간</th>
-                                    <th style="width:20%">상품 설명</th>
-                                    <th style="width:20%" colspan="2"><button class="fill-2" style='padding: 4%;' onclick='move()'>상품 등록</button></th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <!--Table head-->
-                            <!--Table body-->
-                            <tbody >
-                                <tr th:each="product : ${dream}">
-                                    <th scope="row" th:text="${product.proNo}"></th>
-                                    <td th:text="${product.proName}">Mark</td>
-                                    <td th:text="${product.need}"></td>
-                                    <td th:text="${#numbers.formatInteger(product.proLimit, 3, 'COMMA')} + '만원'"></td>
-                                    <td th:text="${product.rate}">%</td>
-                                    <td th:text="${product.term} + '개월'"></td>
-                                    <td th:text="${product.detail}"></td>
-                                    <td>
+<body class="hm-gradient">
+	<main>
+		<html th:replace="header::headerFragment"></html>
+		<!--MDB Tables-->
+		<div class="container mt-4">
+			<div class="card mb-4">
+				<div class="card-body">
+					<!-- Grid row -->
+					<div class="row">
+						<!-- Grid column -->
+						<div class="col-md-12">
+							<div class="h3"
+								style="font-size: 35px; font-weight: 600; margin-bottom: 25px; text-align: center; color: #212529; padding: 15px;">
+								대출 상품 목록</div>
+						</div>
+						<!-- Grid column -->
+					</div>
+					<!-- Grid row -->
+					<!--Table-->
+					<table class="table table-striped"
+						style="-bs-table-striped-bg: none;">
+						<!--Table head-->
+						<thead
+							style="background: #f4f4f4; color: #5d5b5b; font-weight: 100; font-size: 20px;">
+							<tr>
+								<th>#</th>
+								<th style="width: 130px;">상품명</th>
+								<th style="width: 130px;">자격</th>
+								<th style="width: 130px;">한도</th>
+								<th style="width: 130px;">금리</th>
+								<th style="width: 130px;">기간</th>
+								<th style="width: 385px;">상품 설명</th>
+								<th colspan="2" style="width: 200px;"><button type="button"
+										class="btn-style07 md"
+										style="margin-left: 5%; width: 168px; height: 45px;"
+										onclick="move()">상품 등록</button></th>
+							</tr>
+						</thead>
+						<!--Table head-->
+						<!--Table body-->
+						<tbody>
+							<tr th:each="product : ${dream}">
+								<th scope="row" th:text="${product.proNo}"></th>
+								<td th:text="${product.proName}">Mark</td>
+								<td th:text="${product.need}"></td>
+								<td
+									th:text="${#numbers.formatInteger(product.proLimit, 3, 'COMMA')} + '만원'"></td>
+								<td th:text="${product.rate}">%</td>
+								<td th:text="${product.term} + '개월'"></td>
+								<td th:text="${product.detail}"></td>
+								 <td>
                                     <form method="get" action="/product/modify"> 
 									 <input type="hidden" th:value="${product.proNo}" name="proNo">
-                                    <button class="fill-1" style="padding: 4%;" >수정</button>
+                                    <button class="btn-style06 md">수정</button>
                                     </form>
                                     </td>
                                     <td>
                                     <form method="post" action="/product/delete"> 
 								 	<input type="hidden" th:value="${product.proNo}" name="proNo">
-                                    <button class="fill-1" style="padding: 4%;">삭제</button></td>
+                                    <button class="btn-style06 md">삭제</button></td>
                                     </form>
-                                </tr>
-                            </tbody>
-                            <!--Table body-->
-                        </table>
-                        </div>
-                        <!--Table-->
-                    </div>
-                </div>
-                
-                <!-- <hr class="my-4"> -->
+                                    </td>
+								
+								<!-- <td><button type="button" class="btn-style06 md">수정</button>
+								</td>
+								<td><button type="button" class="btn-style06 md">삭제</button></td> -->
+							</tr>
+						</tbody>
+						<!--Table body-->
+					</table>
+					<!--Table-->
+				</div>
+			</div>
+		</div>
+		<!--Table-->
 
-
-            </div>
-            <!--MDB Tables-->
+		<!--MDB Tables-->
 		<html th:replace="footer::footerFragment"></html>
-        </main>
-        
-		<script src="js/product.js"></script>
+	</main>
+<script src="js/product.js"></script>
 </body>
+
+
 </html>

@@ -8,7 +8,8 @@
 <title>order-service/detail</title>
 
 <link href="css/order-service-detail.css" rel="stylesheet">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
 <script type="text/javascript"
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -22,15 +23,16 @@
 			<div
 				class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">
 				<div class="card px-0 pt-4 pb-0 mt-3 mb-3">
-					<h2 style="font-size: 35px;font-weight: 600;margin-bottom: 25px;text-align: center;color: #212529;padding: 15px;">대출 상품 신청</h2>
-					<p style="color:#212529">당신의 꿈을 순서대로 채워주세요</p>
+					<h2
+						style="font-size: 35px; font-weight: 600; margin-bottom: 25px; text-align: center; color: #212529; padding: 15px;">대출
+						상품 신청</h2>
+					<p style="color: #212529">당신의 꿈을 순서대로 채워주세요</p>
 					<div class="row">
 						<div class="col-md-12 mx-0">
 							<form id="msform">
 								<!-- progressbar -->
 								<ul id="progressbar">
 									<li class="active" id="account"><strong>대출 상품 설명</strong>
-
 									</li>
 									<li id="personal"><strong>약관동의</strong></li>
 									<li id="payment"><strong>신청 정보 입력</strong></li>
@@ -40,13 +42,13 @@
 								<fieldset>
 									<div class="form-card">
 										<h2 class="fs-title">상품명</h2>
-										<p>드림대출</p>
+										<p th:text="${productList.proName}"></p>
 										<hr>
 										<h2 class="fs-title">대출 상품 설명</h2>
-										<p>비트교육센터를 다니면서 생활비가 부족한 당신에게 필요한 드림대출! 당신의 꿈을 이루어드립니다</p>
+										<p th:text="${productList.detail}"></p>
 										<hr>
 										<h2 class="fs-title">신청자격</h2>
-										<p>비트교육센터를 다니고 있다면 신청 할 수 있습니다</p>
+										<p th:text="${productList.need}"></p>
 										<hr>
 									</div>
 									<input type="button" name="next" class="next action-button"
@@ -82,70 +84,76 @@
 											<div class="col-6">
 												<select class="list-dt" id="month" name="expmonth">
 													<option selected>대출용도</option>
-													<option>가계자금</option>
-													<option>사업자금</option>
-													<option>주택자금</option>
-													<option>경조자금</option>
-													<option>생활자금</option>
+													<option value="가계자금">가계자금</option>
+													<option value="사업자금">사업자금</option>
+													<option value="주택자금">주택자금</option>
+													<option value="경조자금">경조자금</option>
+													<option value="생활자금">생활자금</option>
 												</select>
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-4">
 												<label class="pay">이자율</label> <input type="text"
-													name="holdername" value="2.0%" readonly />
+													class="rate" name="holdername"
+													th:value="${productList.rate} + '%'" readonly />
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-4">
-												<label class="proLimit">대출한도</label> <input type="number"
-													name="proLimit" value="10000" readonly />
-												<p>만원</p>
+												<label class="proLimit">대출한도</label> <input type="text"
+													name="proLimit" class="proLimit"
+													th:value="${#numbers.formatInteger(productList.proLimit,3,'COMMA')}+'만원'"
+													readonly />
+												<p></p>
 											</div>
 
 											<div class="col-6">
-												<label class="orderPrice">희망금액</label> <input type="text"
-													id="orderPrice"
+											<label class="orderPrice">희망금액</label>
+												<input type="text" id="orderPrice" onkeyup="inputNumberFormat(this)"
 													oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
 													name="orderPrice" placeholder="희망금액을 입력하세요" />
 											</div>
 
 											<div class="col-4">
 												<label class="term">대출 최대 기간</label> <input type="text"
-													name="term" placeholder="24개월" readonly />
+													name="term" th:value="${productList.term} +'개월'" readonly />
 											</div>
 
 											<div class="col-6">
 												<label class="period">희망기간</label> <input type="text"
-													id="period"
+													id="period" class="period"
+													onkeyup="inputNumberFormat(this)"
 													oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
 													name="period" placeholder="희망 기간을 입력하세요" />
 											</div>
+											<input type="hidden" id="proNo"
+												th:value="${productList.proNo}"> <input
+												type="hidden" id="userId" name="userId"
+												th:value="${list.preferred_username}">
 										</div>
 
 									</div>
 									<input type="button" name="previous"
 										class="previous action-button-previous" value="Previous" /> <input
 										type="button" name="make_payment" class="next action-button"
-										value="Confirm" onclick="apply()" />
+										value="Confirm" onclick="saveOrder()" />
 								</fieldset>
 								<fieldset>
 									<div class="form-card">
 										<h2 class="fs-title text-center">대출 신청 완료</h2>
-										<br>
-										<br>
+										<br> <br>
 										<div class="row justify-content-center">
 											<div class="col-3">
-												<img src="https://img.icons8.com/color/96/000000/ok--v2.png"
-													class="fit-image">
+												<a onclick="SendMessage();"><img src="https://img.icons8.com/color/96/000000/ok--v2.png"
+													class="fit-image"></a>
 											</div>
 										</div>
-										<br>
-										<br>
+										<br> <br>
 										<div class="row justify-content-center">
 											<div class="col-7 text-center">
 												<h5>
-													대출신청을 완료하였습니다!<br>대출 승인을 기다려주세요
+													대출신청을 완료하였습니다!<br>이미지를 클릭하여 신청내역으로 이동하세요!
 												</h5>
 											</div>
 										</div>
@@ -159,14 +167,26 @@
 		</div>
 	</div>
 	<script type="text/javascript">
+		function inputNumberFormat(obj) {
+		     obj.value = comma(uncomma(obj.value));
+		 }
+	
+		 function comma(str) {
+		     str = String(str);
+		     return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+		 }
+	
+		 function uncomma(str) {
+		     str = String(str);
+		     return str.replace(/[^\d]+/g, '');
+		 }
+		
 		//대출금액 초과 신청시.
 		$('#orderPrice').focusout(function() {
 			var orderPrice = Number($('input[name=orderPrice]').val());
 			//  orderPrice = Math.floor(orderPrice/1000);
-			var proLimit = Number($('input[name=proLimit]').val());
-
-			console.log(orderPrice);
-			console.log(proLimit);
+			var proLimit = parseInt($('input[name=proLimit]').val());
+			
 
 			if (proLimit < orderPrice) {
 				alert("제한 금액보다 큽니다. 다시 입력해 주세요.");
@@ -176,15 +196,94 @@
 		//대출기간 초과
 		$('#period').focusout(function() {
 			var period = Number($('input[name=period]').val());
-			var term = Number($('input[name=term]').val());
-
-			console.log(period);
-			console.log(term);
+			var term = parseInt($('input[name=term]').val());
 
 			if (term < period) {
 				alert("대출기간을 초과했습니다. 다시 입력해 주세요.");
 			}
 		})
+
+		function saveOrder() {
+			var rate = parseFloat($('.rate').val()).toFixed(1);	//이자율 구하기
+			console.log(typeof(parseFloat(rate)));
+			var purpose = document.getElementById("month");
+			purpose = purpose.options[purpose.selectedIndex].value;  //대출 용도 값 구하기
+			var orderPrice = parseInt($('#orderPrice').val()) * 10000;	//희망 금액 구하기
+			var period = 	parseInt($('#period').val()); //희망 기간 값 구하기
+			var proNo = $('#proNo').val();	//상품 번호 구하기
+			var orderDate = new Date();
+			var userId = $('#userId').val(); //userId 구하기
+			
+			var cal = period/12;
+			var ss = period%12;
+			
+			var amount = orderPrice * (1+(rate/100)) / period;
+			
+			var year = orderDate.getFullYear() + Math.floor(cal);
+			var month = orderDate.getMonth() + 1 + ss;
+			if(month > 12){
+				month= month%12;
+				year = year+1;
+			}
+			var date = orderDate.getDate();
+			var endDate = new Date(year, month - 1, date);
+			
+			var t1 = document.getElementById('period');
+			var t2 = document.getElementById('orderPrice');
+			if(t1.value == '' || t2.value==''){
+				return false;
+			}
+			
+			var arr = {
+					"proNo" : proNo,
+					"userId" : userId,
+					"orderPrice" : orderPrice,
+					"purpose":purpose,
+					"period": period,
+					"amount" : amount,
+					"endDate" : endDate
+			}
+			console.log(arr);
+			
+			$.ajax({
+				anyne : true,
+				type : 'POST',
+				url : '/order/save',
+				data : JSON.stringify(arr),
+				dataType : "text",
+				contentType : 'application/json',
+				success : function(data) {
+					
+				},
+				error : function(xhr, status, error) {
+					alert(error);
+				}
+			});
+		}
+		
+		function SendMessage(){
+			var userId = $('#userId').val(); //userId 구하기
+			
+			var arr = {
+				"userId" : userId
+			};
+			
+			$.ajax({
+				anyne : true,
+				type : 'POST',
+				url : '/order/kafka',
+				data : JSON.stringify(arr),
+				dataType : "text",
+				contentType : 'application/json',
+				success : function(data) {
+					alert('여기 오냐');
+					location.href = "/confirm/check"
+				},
+				error : function(xhr, status, error) {
+					alert(error);
+				}
+			})
+		}
 	</script>
 </body>
 

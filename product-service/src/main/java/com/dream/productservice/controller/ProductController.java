@@ -38,6 +38,7 @@ public class ProductController {
 		log.info("toString : " + token.getTokenAttributes().toString());
 		model.addAttribute("list", token.getTokenAttributes());
 		return "product-service-register";
+//		return "0406-product-service-register";
 	}
 
 	
@@ -66,13 +67,14 @@ public class ProductController {
 		List<ProductDto> product = service.getProductList();
 		model.addAttribute("dream", product);
 		return "product-service-list";
+//		return "0406-product-service-list";
 	}
 	
 	
 	@RolesAllowed({ "ADMIN" })
 	@GetMapping("/modify")
 	public String modify(@RequestParam int proNo, Principal principal, Model model) {
-		log.info("---------------------- product/modify URL  �̵� -----------------------");;
+		log.info("---------------------- product/modify URL  �̵� -----------------------");
 		JwtAuthenticationToken token = (JwtAuthenticationToken) principal;
 		log.info("toString : " + token.getTokenAttributes().toString());
 		model.addAttribute("list", token.getTokenAttributes());

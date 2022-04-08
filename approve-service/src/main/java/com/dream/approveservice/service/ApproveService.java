@@ -5,5 +5,5 @@ import com.dream.approveservice.dto.orderVO;
 public interface ApproveService {
 	public orderVO bringOrder(int orderNo);
 	
-	public void update(int orderNo, int status);
+	public void update(orderVO vo);
 }

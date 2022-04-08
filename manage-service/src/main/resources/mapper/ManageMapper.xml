@@ -6,7 +6,6 @@
       a.orderDate, a.endDate, a.status, b.proName
       from orders a inner join products b
       on a.proNo = b.proNo
-      where status is null;
    </select>
 
    <update id="getUpdate">
