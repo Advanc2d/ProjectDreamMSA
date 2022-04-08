@@ -5,5 +5,5 @@ import java.util.List;
 import com.dream.confirm.dto.confirmDto;
 
 public interface confirmService {
-	public List<confirmDto> list(String userId);
+	public confirmDto list(String userId);
 }

@@ -15,7 +15,7 @@ import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 
 @EnableKafka
 @Configuration
-public class Kafka {
+public class KafkaConfirmConfig {
 	@Value("${kafka.server_endpoint}")
 	private String kafkaServerEndpoint;
 

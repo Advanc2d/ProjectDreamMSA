@@ -9,12 +9,12 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class confirmDto {
 	private String userId; // kafka or accessToken 
-	private int orderNo;
-	private String proName;
-	private double orderPrice;
-	private int rate; // 생략
-	private double amount;
-	private int status;
-	private Date orderDate;
-	private Date endDate;
+//	private int orderNo;
+//	private String proName;
+//	private double orderPrice;
+//	private int rate; // 생략
+//	private double amount;
+//	private int status;
+//	private Date orderDate;
+//	private Date endDate;
 }

@@ -110,6 +110,7 @@
 											</div>
 
 											<div class="col-6">
+											<label class="orderPrice">희망금액</label>
 												<input type="text" id="orderPrice" onkeyup="inputNumberFormat(this)"
 													oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
 													name="orderPrice" placeholder="희망금액을 입력하세요" />
@@ -145,7 +146,7 @@
 										<br> <br>
 										<div class="row justify-content-center">
 											<div class="col-3">
-												<a href="http://localhost:8000/confirm/check"><img src="https://img.icons8.com/color/96/000000/ok--v2.png"
+												<a onclick="SendMessage();"><img src="https://img.icons8.com/color/96/000000/ok--v2.png"
 													class="fit-image"></a>
 											</div>
 										</div>
@@ -259,6 +260,30 @@
 					alert(error);
 				}
 			});
+		}
+		
+		function SendMessage(){
+			var userId = $('#userId').val(); //userId 구하기
+			
+			var arr = {
+				"userId" : userId
+			};
+			
+			$.ajax({
+				anyne : true,
+				type : 'POST',
+				url : '/order/kafka',
+				data : JSON.stringify(arr),
+				dataType : "text",
+				contentType : 'application/json',
+				success : function(data) {
+					alert('여기 오냐');
+					location.href = "/confirm/check"
+				},
+				error : function(xhr, status, error) {
+					alert(error);
+				}
+			})
 		}
 	</script>
 </body>
