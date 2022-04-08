@@ -22,8 +22,9 @@ public class OrderServiceImpl implements OrderService {
 	}
 	
 	@Override
-	public OrderOrderVO saveOrder() {
+	public void saveOrder(OrderOrderVO vo) {
 		log.info("----------------------order-service mapper.xml 작동-----------------------");
-		return mapper.saveOrder();
+		mapper.saveOrder(vo);
+		log.info("서비스 출력");
 	}
 }

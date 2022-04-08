@@ -6,8 +6,12 @@ import org.springframework.security.oauth2.server.resource.authentication.JwtAut
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dream.orderService.domain.Message;
+import com.dream.orderService.domain.OrderOrderVO;
 import com.dream.orderService.service.OrderKafkaService;
 import com.dream.orderService.service.OrderService;
 
@@ -40,5 +44,12 @@ public class OrderServiceController {
 		model.addAttribute("productList", service.bringLoan(Integer.parseInt(ofs.getMessage().getProNo())));
 		
 		return "order";
+	}
+	
+	@PostMapping("/save")
+	@ResponseBody
+	public void saveProduct(@RequestBody OrderOrderVO vo) {	
+		log.info("여기옴");
+		service.saveOrder(vo);
 	}
 }

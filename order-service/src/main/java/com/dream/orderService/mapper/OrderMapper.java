@@ -10,5 +10,5 @@ import com.dream.orderService.domain.OrderProductVO;
 @Mapper
 public interface OrderMapper {	
 	public OrderProductVO bringLoan(int proNo);
-	public OrderOrderVO saveOrder();
+	public void saveOrder(OrderOrderVO vo);
 }

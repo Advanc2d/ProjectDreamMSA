@@ -6,5 +6,5 @@ import com.dream.orderService.domain.OrderProductVO;
 public interface OrderService {
 	public OrderProductVO bringLoan(int proNo);
 	
-	public OrderOrderVO saveOrder();
+	public void saveOrder(OrderOrderVO vo);
 }
