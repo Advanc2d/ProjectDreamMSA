@@ -10,5 +10,5 @@ import com.dream.approveservice.dto.orderVO;
 public interface ApproveMapper {
 	public orderVO bringOrder(int orderNo);
 	
-	public void update(int orderNo, int status);
+	public void update(orderVO vo);
 }

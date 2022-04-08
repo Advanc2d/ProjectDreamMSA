@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:fragment="order-service-detailFragment">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>order-service/detail</title>
+<link rel="stylesheet" href="css/order-service-detail.css">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script type="text/javascript"
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/order-service-detail.js"></script>
+<head>
+<body>
+	<main>
+		<html th:replace="header::headerFragment"></html>
+		<!-- MultiStep Form -->
+		<div class="container-fluid" id="grad1">
+			<div class="row justify-content-center mt-0">
+				<div
+					class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">
+					<div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+						<h2
+							style="font-size: 35px; font-weight: 600; margin-bottom: 25px; text-align: center; color: #212529; padding: 15px;">대출
+							상품 신청</h2>
+						<p>당신의 꿈을 순서대로 채워주세요</p>
+						<div class="row">
+							<div class="col-md-12 mx-0">
+								<form id="msform">
+									<!-- progressbar -->
+									<ul id="progressbar">
+										<li class="active" id="account"><strong>대출 상품
+												설명</strong></li>
+										<li id="personal"><strong>약관동의</strong></li>
+										<li id="payment"><strong>신청 정보 입력</strong></li>
+										<li id="confirm"><strong>대출 신청 완료</strong></li>
+									</ul>
+									<!-- fieldsets -->
+									<fieldset>
+										<div class="form-card">
+											<h2 class="fs-title">상품명</h2>
+											<p>드림대출</p>
+											<hr>
+											<h2 class="fs-title">대출 상품 설명</h2>
+											<p>비트교육센터를 다니면서 생활비가 부족한 당신에게 필요한 드림대출! 당신의 꿈을 이루어드립니다</p>
+											<hr>
+											<h2 class="fs-title">신청자격</h2>
+											<p>비트교육센터를 다니고 있다면 신청 할 수 있습니다</p>
+											<hr>
+										</div>
+										<input type="button" name="next" class="next action-button"
+											value="Next Step" />
+									</fieldset>
+									<fieldset>
+										<div class="form-card">
+											<h2 class="fs-title">약관설명</h2>
+											<p>대출약관에 대한 내용을 작성해야되는데 어떤 내용을 적어야 할지 모르기 때문에 일단 이렇게 구구절절
+												글씨로 대체하겠습니다. 어쩔 수 없어요ㅠㅠ 대출약관에 대한 내용을 작성해야되는데 어떤 내용을 적어야 할지
+												모르기 때문에 일단 이렇게 구구절절 글씨로 대체하겠습니다. 어쩔 수 없어요ㅠㅠ대출약관에 대한 내용을
+												작성해야되는데 어떤 내용을 적어야 할지 모르기 때문에 일단 이렇게 구구절절 글씨로 대체하겠습니다. 어쩔 수
+												없어요ㅠㅠㅠ대출약관에 대한 내용을 작성해야되는데 어떤 내용을 적어야 할지 모르기 때문에 일단 이렇게 구구절절
+												글씨로 대체하겠습니다. 어쩔 수 없어요ㅠㅠ대출약관에 대한 내용을 작성해야되는데 어떤 내용을 적어야 할지
+												모르기 때문에 일단 이렇게 구구절절 글씨로 대체하겠습니다. 어쩔 수 없어요ㅠㅠ대출약관에 대한 내용을
+												작성해야되는데 어떤 내용을 적어야 할지 모르기 때문에 일단 이렇게 구구절절 글씨로 대체하겠습니다. 어쩔 수
+												없어요ㅠㅠ대출약관에 대한 내용을 작성해야되는데 어떤 내용을 적어야 할지 모르기 때문에 일단 이렇게 구구절절
+												글씨로 대체하겠습니다. 어쩔 수 없어요ㅠㅠㅠ</p>
+										</div>
+										<input type="button" name="previous"
+											class="previous action-button-previous" value="Previous" />
+										<input type="button" name="next" class="next action-button"
+											value="Next Step" />
+									</fieldset>
+									<fieldset>
+										<div class="form-card">
+											<h2 class="fs-title">신청정보 입력</h2>
+											<hr>
+											<div class="row">
+												<div class="col-4">
+													<label class="pay">대출용도</label>
+												</div>
+												<div class="col-6">
+													<select class="list-dt" id="month" name="expmonth">
+														<option selected>대출용도</option>
+														<option>가계자금</option>
+														<option>사업자금</option>
+														<option>주택자금</option>
+														<option>경조자금</option>
+														<option>생활자금</option>
+													</select>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-4">
+													<label class="pay">이자율</label> <input type="text"
+														name="holdername" value="2.0%" readonly />
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-4">
+													<label class="proLimit">대출한도</label> <input type="number"
+														name="proLimit" value="10000" readonly />
+													<p>만원</p>
+												</div>
+
+												<div class="col-6">
+													<label class="orderPrice">희망금액</label> <input type="text"
+														id="orderPrice"
+														oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+														name="orderPrice" placeholder="희망금액을 입력하세요" />
+												</div>
+
+												<div class="col-4">
+													<label class="term">대출 최대 기간</label> <input type="text"
+														name="term" placeholder="24개월" readonly />
+												</div>
+
+												<div class="col-6">
+													<label class="period">희망기간</label> <input type="text"
+														id="period"
+														oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+														name="period" placeholder="희망 기간을 입력하세요" />
+												</div>
+											</div>
+
+										</div>
+										<input type="button" name="previous"
+											class="previous action-button-previous" value="Previous" />
+										<input type="button" name="make_payment"
+											class="next action-button" value="Confirm" onclick="apply()" />
+									</fieldset>
+									<fieldset>
+										<div class="form-card">
+											<h2 class="fs-title text-center">대출 신청 완료</h2>
+											<br>
+											<br>
+											<div class="row justify-content-center">
+												<div class="col-3">
+													<img
+														src="https://img.icons8.com/color/96/000000/ok--v2.png"
+														class="fit-image">
+												</div>
+											</div>
+											<br>
+											<br>
+											<div class="row justify-content-center">
+												<div class="col-7 text-center">
+													<h5>
+														대출신청을 완료하였습니다!<br>대출 승인을 기다려주세요
+													</h5>
+												</div>
+											</div>
+										</div>
+									</fieldset>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+<html th:replace="footer::footerFragment"></html>
+
+		<script type="text/javascript">
+			//대출금액 초과 신청시.
+			$('#orderPrice').focusout(function() {
+				var orderPrice = Number($('input[name=orderPrice]').val());
+				//  orderPrice = Math.floor(orderPrice/1000);
+				var proLimit = Number($('input[name=proLimit]').val());
+
+				console.log(orderPrice);
+				console.log(proLimit);
+
+				if (proLimit < orderPrice) {
+					alert("제한 금액보다 큽니다. 다시 입력해 주세요.");
+				}
+			})
+
+			//대출기간 초과
+			$('#period').focusout(function() {
+				var period = Number($('input[name=period]').val());
+				var term = Number($('input[name=term]').val());
+
+				console.log(period);
+				console.log(term);
+
+				if (term < period) {
+					alert("대출기간을 초과했습니다. 다시 입력해 주세요.");
+				}
+			})
+		</script>
+	</main>
+</body>
+
+</html>

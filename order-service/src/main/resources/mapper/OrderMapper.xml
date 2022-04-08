@@ -6,4 +6,8 @@
 	<select id="bringLoan" resultType="com.dream.orderService.domain.OrderProductVO">
 		select * from products where proNo = #{proNo}
 	</select>
+	
+	<select id="getProductList" resultType="com.dream.orderService.domain.OrderProductVO">
+	select * from products ;
+	</select>
 </mapper>

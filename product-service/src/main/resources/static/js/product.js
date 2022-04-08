@@ -6,18 +6,18 @@ function update() {
 	var need = $('#need').val();
 	var rate = parseFloat($('#rate').val());
 	var term = parseInt($('#term').val());
-   
-	
+
+
 	var arr = {
-		"proNo":proNo,
+		"proNo": proNo,
 		"proName": proName,
-      "detail": detail,
-      "need": need,
-      "proLimit": proLimit,
-      "rate":rate,
-      "term": term
+		"detail": detail,
+		"need": need,
+		"proLimit": proLimit,
+		"rate": rate,
+		"term": term
 	};
-	
+
 	console.log(arr);
 
 	$.ajax({
@@ -37,42 +37,42 @@ function update() {
 }
 
 function register() {
-   var proName = $('#proName').val();
+	var proName = $('#proName').val();
 	var proLimit = parseFloat($('#proLimit').val());
 	var detail = $('#detail').val();
 	var need = $('#need').val();
 	var rate = parseFloat($('#rate').val());
 	var term = parseInt($('#term').val());
-   console.log(typeof rate);
-   console.log(typeof term);
-   
-   var arr = {
-      "proName": proName,
-      "detail": detail,
-      "need": need,
-      "proLimit": proLimit,
-      "rate":rate,
-      "term": term
-   };
-   
-   console.log(arr);
+	console.log(typeof rate);
+	console.log(typeof term);
+
+	var arr = {
+		"proName": proName,
+		"detail": detail,
+		"need": need,
+		"proLimit": proLimit,
+		"rate": rate,
+		"term": term
+	};
+
+	console.log(arr);
 	$.ajax({
-      type: 'POST',
-      url: '/product/register',
-      contentType: 'application/json; charset=utf-8;',
-      data: JSON.stringify(arr),
-      dataType: 'text',
-      success: function(data) {
-         alert("상품이 등록되었습니다. 메인화면으로 돌아갑니다.");
-         location.href = "/product/list";
-      },
-      error: function(request, status, error) {
-         alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
-      }
-   });
-   
+		type: 'POST',
+		url: '/product/register',
+		contentType: 'application/json; charset=utf-8;',
+		data: JSON.stringify(arr),
+		dataType: 'text',
+		success: function(data) {
+			alert("상품이 등록되었습니다. 메인화면으로 돌아갑니다.");
+			location.href = "/product/list";
+		},
+		error: function(request, status, error) {
+			alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+		}
+	});
+
 }
 
 function back() {
-		location.replace("http://localhost:8000/product/list");
-	}
+	location.replace("http://localhost:8000/product/list");
+}
