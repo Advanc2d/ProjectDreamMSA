@@ -99,11 +99,11 @@ public class ProductController {
 		return "redirect:http://localhost:8000/product/list";
 	}
 	
-	@RequestMapping("/test")
+	@GetMapping("/test")
 	   public String authlogin(HttpServletRequest request) {
 //	        throw new RuntimeException("failed");
 	      try {
-	         Thread.sleep(50000);
+	         Thread.sleep(11000);
 	      } catch (Exception e) {
 	         e.printStackTrace();
 	      }
