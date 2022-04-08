@@ -72,7 +72,7 @@ public class MainController {
 	      log.info("메세지 전동 된다. {}", message);
 
 	      ListenableFuture<SendResult<String, Message>> future = this.kafkaTemplate.send(kafkaTopicName, message);
-
+	      log.info("여기는 넘어오냐?");
 	      future.addCallback(new ListenableFutureCallback<SendResult<String, Message>>() {
 
 	         @Override

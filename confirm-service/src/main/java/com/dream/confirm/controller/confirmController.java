@@ -48,6 +48,7 @@ public class confirmController {
 			log.info("toString : " + token.getTokenAttributes().toString());
 			model.addAttribute("list", token.getTokenAttributes());
 		}
+		log.info(cks.getMessage().getUserId()+"---------------------");
 		service.list(cks.getMessage().getUserId());
 		
 		model.addAttribute("User",service.list(cks.getMessage().getUserId()));

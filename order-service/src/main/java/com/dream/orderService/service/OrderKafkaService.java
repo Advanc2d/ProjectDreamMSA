@@ -24,7 +24,7 @@ public class OrderKafkaService {
 		ObjectMapper mapper = new ObjectMapper();
 		OrderProductVO vo = new OrderProductVO();
 		ms = mapper.readValue(message, Message.class);
-
+		log.info(ms+"-------------");
 		vo.setProNo(Integer.parseInt(ms.getProNo()));
 
 		log.info("되나?");
