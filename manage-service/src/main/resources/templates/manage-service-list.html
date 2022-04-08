@@ -73,7 +73,7 @@
 									th:text="${#numbers.formatInteger(list.orderPrice,3,'COMMA')}+' 만원'">원</td>
 								<!-- <td th:text="${list.}">2%</td> -->
 								<td th:text="${list.purpose}">생활비 자금</td>
-								<td th:text="${list.period}">24개월</td>
+								<td th:text="${list.period} + ' 개월'" >24개월</td>
 								<td class="date"
 									th:text="${#dates.format(list.orderDate, 'yyyy-MM-dd')}"></td>
 								<td class="views"

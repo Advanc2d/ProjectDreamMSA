@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org" th:fragment="headerFragment">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+	th:fragment="headerFragment">
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,9 +26,10 @@
 		<div style="border-bottom: solid #005B9F 2px;">
 			<!-- 헤더 -->
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
-				<img src="img/logo.png">
+				<a href="http://localhost:8000/main/menu"><img
+					src="img/logo.png"></a>
 				<div class="container-fluid" style="height: 60px;">
-					<a class="navbar-brand" href="#"
+					<a class="navbar-brand" href="http://localhost:8000/main/menu"
 						style="color: black; font-size: 30px; font-weight: bold;">Dream
 						Security</a>
 					<button class="navbar-toggler" type="button"
@@ -45,12 +47,40 @@
 								aria-expanded="false"> <i class="far fa-heart"></i> <span
 									class="d-none d-md-inline">시연</span></a> <span class="caret"></span>
 								<div class="dropdown-menu">
+									<a class="dropdown-item" href="http://localhost:8000/token">AccessToken</a>
+									<div class="dropdown-divider"></div>
 									<a class="dropdown-item"
 										href="http://localhost:8000/actuator/health/circuitBreakers">CircuitBreaker</a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="http://localhost:8761/">Eureka</a>
 								</div></li>
 						</ul>
+						<!-- 가운데 test 글짜.. 위치만 지정해두고 주석해버리기... -->
+						<ul class="navbar-nav me-auto" style="margin-left: -10%;">
+							<a sec:authorize="hasRole('ADMIN')">
+								<li class=" nav-item" style="padding-right: 15px;"><a
+									class="nav-link" href="http://localhost:8000/product/list">상품
+										목록</a></li>
+								<li class=" nav-item" style="padding-right: 15px;"><a
+									class="nav-link" href="http://localhost:8000/product/register">상품
+										등록</a></li>
+							</a>
+							<a sec:authorize="hasRole('USER')">
+								<li class=" nav-item" style="padding-right: 15px;"><a
+									class="nav-link" href="http://localhost:8000/confirm/list">주문
+										확인</a></li>
+							</a>
+							<a sec:authorize="hasRole('MANAGER')">
+								<li class=" nav-item" style="padding-right: 15px;"><a
+									class="nav-link" href="http://localhost:8000/manage/list">주문
+										목록</a></li>
+							</a>
+						</ul>
+						<!-- 주석 끝... -->
+						<p class="text-dark" style="margin-top: 1%;"
+							th:text="${keycloakList.preferred_username}+'님 환영합니다.&nbsp;'"></p>
 						<button class="btn btn-outline-dark my-2 my-sm-0" type="button"
-							style="margin-right: 1%" onclick="login()">로그인</button>
+							style="margin-right: 1%; font-weight: bold;" onclick="logout()">로그아웃</button>
 					</div>
 				</div>
 			</nav>
@@ -58,8 +88,8 @@
 	</header>
 	<script>
 		//로그아웃 버튼
-		function login() {
-			location.href = "http://localhost:8000/menu/list";
+		function logout() {
+			location.href = "http://localhost:8000/logout";
 		}
 	</script>
 	<!-- 헤더 끝 -->

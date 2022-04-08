@@ -14,8 +14,16 @@
 </head>
 
 <body>
+    <script>
+    function main(){
+    	location.replace("http://localhost:8000/main/menu");
+    }
+    </script>
+<html th:replace="header::headerFragment"></html>
     <div class="wrapper rounded bg-white">
-        <div class="h3">주문 내역 확인</div>
+       <div class="h3"
+		style="font-size: 35px; font-weight: 600; margin-bottom: 25px; text-align: center;">내 주문내역</div>
+	<hr>
         <div class="form">
             <div class="row">
                 <div class="col-md-6 mt-md-0 mt-3"> <label>상품명</label>
@@ -27,7 +35,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6 mt-md-0 mt-3"> <label>대출 금액</label>
-                    <input type="readonly" class="form-control" th:value="${last.orderPrice}+ 만원" required readonly>
+                    <input type="readonly" class="form-control" th:value="${last.orderPrice}+ ' 만원'" required readonly>
                 </div>
                 <div class="col-md-6 mt-md-0 mt-3"> <label>대출 용도</label>
                     <input class="form-control" th::value="${last.purpose}" required readonly>
@@ -35,28 +43,30 @@
             </div>
             <div class="row">
                 <div class="col-md-6 mt-md-0 mt-3"> <label>신청날짜</label>
-                    <input class="form-control" th:value="last.orderDate" required readonly>
+                    <input class="form-control" th:value="${#dates.format(last.orderDate, 'yyyy-MM-dd')}" required readonly>
                 </div>
                 <div class="col-md-6 mt-md-0 mt-3"> <label>이자</label>
-                    <input class="form-control" th:value="last.rate" required readonly>
+                    <input class="form-control" th:value="${last.rate} + ' %'" required readonly>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6 mt-md-0 mt-3"> <label>만기날짜</label>
-                    <input class="form-control" th:value="last.endDate" required readonly>
+                    <input class="form-control" th:value="${#dates.format(last.endDate, 'yyyy-MM-dd')}" required readonly>
                 </div>
                 <div class="col-md-6 mt-md-0 mt-3"> <label>월 납부액</label>
-                    <input class="form-control" th:value="last.amount" required readonly>
+                    <input class="form-control" th:value="${last.amount} + ' 원'" required readonly>
                 </div>
             </div>
             <div class="row">
                 <div style="float: right; padding: 20px;">
-                    <button class="fill"> 확인(main으로 이동)</button>
+                    <button  class="btn-style06 md" style="float: right;" onclick="main()" type="button"> 확인(main으로 이동)</button>
                     <!-- <button class="close" >거절</button> -->
                 </div>
             </div>
         </div>
     </div>
+    <html th:replace="footer::footerFragment"></html>
+
 </body>
 
 </html>
