@@ -18,4 +18,9 @@ public class confirmServiceImpl implements confirmService{
 	public List<confirmDto> list(String userId){
 		return mapper.list(userId);
 	}
+
+	@Override
+	public confirmDto last(String userId) {
+		return mapper.last(userId);
+	}
 }

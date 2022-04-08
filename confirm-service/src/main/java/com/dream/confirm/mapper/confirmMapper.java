@@ -11,4 +11,5 @@ import com.dream.confirm.dto.confirmDto;
 @Mapper
 public interface confirmMapper {
 	public List<confirmDto> list(String userId);
+	public confirmDto last(String userId);
 }
