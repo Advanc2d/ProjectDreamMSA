@@ -8,10 +8,13 @@
       a.orderDate, a.endDate, a.status, b.proName
       from orders a inner join products b
       on a.proNo = b.proNo
-      where orderNo = #{orderNo};
+      where orderNo = #{orderNo}
 	</select>
 	
 	<update id="update">
-		update orders set status=#{status} where orderNo=#{orderNo}
+		update orders set status = #{status} where orderNo=#{orderNo}
 	</update>
+	<!-- <update id="update">
+		update orders set status =100 where orderNo=1
+	</update> -->
 </mapper>

@@ -32,6 +32,7 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @RequiredArgsConstructor
 public class OrderServiceController {
+
 	private final OrderService service;
 	private static int proNo;
 	private final OrderKafkaService ofs;
@@ -99,4 +100,5 @@ public class OrderServiceController {
 
 		return ResponseEntity.ok(status);
 	}
+
 }

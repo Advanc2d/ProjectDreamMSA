@@ -1,5 +1,7 @@
 package com.dream.orderService.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.dream.orderService.domain.OrderOrderVO;
@@ -19,6 +21,13 @@ public class OrderServiceImpl implements OrderService {
 	public OrderProductVO bringLoan(int proNo) {
 		log.info("----------------------order-service mapper.xml 작동-----------------------");
 		return mapper.bringLoan(proNo);
+	}
+
+
+	@Override
+	public List<OrderProductVO> getProductList() throws Exception {
+		log.info("----------------------product-service mapper.xml 작동-----------------------");
+		return mapper.getProductList();
 	}
 	
 	@Override
