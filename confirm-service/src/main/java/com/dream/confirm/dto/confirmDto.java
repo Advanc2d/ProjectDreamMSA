@@ -19,5 +19,6 @@ public class confirmDto {
 	private int status;
 	private Date orderDate;
 	private Date endDate;
+	private int term;
 
 }

@@ -109,12 +109,15 @@
 											</div>
 
 											<div class="col-6">
-											<label class="orderPrice">희망금액</label>
-												<input type="text" id="orderPrice" onkeyup="inputNumberFormat(this)"
+												<label class="orderPrice">희망금액</label> <input type="text"
+													id="orderPrice" onkeyup="inputNumberFormat(this)"
 													oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
 													name="orderPrice" placeholder="희망금액을 입력하세요" />
 											</div>
-
+											<div class="col-1">
+												<label></label>
+												<p style="margin-left: -128%; margin-top: 20%;">만원</p>
+											</div>
 											<div class="col-4">
 												<label class="term">대출 최대 기간</label> <input type="text"
 													name="term" th:value="${productList.term} +'개월'" readonly />
@@ -126,6 +129,10 @@
 													onkeyup="inputNumberFormat(this)"
 													oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
 													name="period" placeholder="희망 기간을 입력하세요" />
+											</div>
+											<div class="col-1">
+												<label></label>
+												<p style="margin-left: -128%; margin-top: 20%;">개월</p>
 											</div>
 											<input type="hidden" id="proNo"
 												th:value="${productList.proNo}"> <input
@@ -145,7 +152,8 @@
 										<br> <br>
 										<div class="row justify-content-center">
 											<div class="col-3">
-												<a onclick="SendMessage();"><img src="https://img.icons8.com/color/96/000000/ok--v2.png"
+												<a onclick="SendMessage();"><img
+													src="https://img.icons8.com/color/96/000000/ok--v2.png"
 													class="fit-image"></a>
 											</div>
 										</div>
