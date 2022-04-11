@@ -14,16 +14,17 @@ import com.dream.confirm.dto.confirmDto;
 import com.dream.confirm.service.ConfirmKafkaService;
 import com.dream.confirm.service.confirmService;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 //kafka 연동 말고 토큰으로 불러오는거만 되어있음;
 //-------------------------------------------------------------------------------------------------
 @Controller
 @Slf4j
+@RequiredArgsConstructor
 public class confirmController {
-	private ConfirmKafkaService cks;
-	private confirmService service;
+	private final ConfirmKafkaService cks;
+	private final confirmService service;
 
 	@RolesAllowed({ "USER" })
 	@GetMapping("/check")
