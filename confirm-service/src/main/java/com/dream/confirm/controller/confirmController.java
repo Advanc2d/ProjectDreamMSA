@@ -20,8 +20,8 @@ import lombok.extern.slf4j.Slf4j;
 //kafka 연동 말고 토큰으로 불러오는거만 되어있음;
 //-------------------------------------------------------------------------------------------------
 @Controller
-@Slf4j
 @RequiredArgsConstructor
+@Slf4j
 public class confirmController {
 	private final ConfirmKafkaService cks;
 	private final confirmService service;
