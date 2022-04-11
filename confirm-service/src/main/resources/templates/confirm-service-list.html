@@ -28,13 +28,6 @@
 							<h2
 								class="pt-3 pb-4 text-center font-bold font-up deep-purple-text">내
 								주문내역</h2><hr>
-							<!-- <div class="input-group md-form form-sm form-2 pl-0">
-                                    <input class="form-control my-0 py-1 pl-3 purple-border" type="text"
-                                        placeholder="Search something here..." aria-label="Search">
-                                    <span class="input-group-addon waves-effect purple lighten-2"
-                                        id="basic-addon1"><a><i class="fa fa-search white-text"
-                                                aria-hidden="true"></i></a></span>
-                                </div> -->
 						</div>
 						<!-- Grid column -->
 					</div>
@@ -62,7 +55,7 @@
 						<!--Table body-->
 						<tbody>
 							<tr th:each="list : ${myList}">
-								<th scope="row">1</th>
+								<th scope="row" th:text="${list.orderNo}"></th>
 								<td th:text="${list.proName}"></td>
 								<td th:text="${list.rate} + ' %'"></td>
 								<td th:text="${list.purpose}"></td>
@@ -70,8 +63,14 @@
 								<td th:text="${list.period} + '개월'"></td>
 								<td th:text="${#numbers.formatInteger(list.amount, 3, 'COMMA')} + ' 원'"></td>
 								<td th:text="${#dates.format(list.orderDate, 'yyyy-MM-dd')}" ></td>
-								<td th:text="${#dates.format(list.endDate, 'yyyy-MM-dd')}"></td>
-								<td th:text="${list.status}"></td>
+								<td th:text="${#dates.format(list.endDate, 'yyyy-MM-dd')}"></td>								
+								<td>
+									<div th:switch="${list.status}">
+										<span th:case="0" th:text ="승인대기"></span>
+										<span th:case="1" th:text ="승인완료"></span>
+										<span th:case="2" th:text ="승인거절"></span>
+									</div>
+								</td>
 							</tr>
 						</tbody>
 						<!--Table body-->
