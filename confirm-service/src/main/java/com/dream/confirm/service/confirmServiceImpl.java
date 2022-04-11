@@ -15,7 +15,7 @@ public class confirmServiceImpl implements confirmService{
 	
 	private final confirmMapper mapper;
 	
-	public List<confirmDto> list(String userId){
+	public confirmDto list(String userId){
 		return mapper.list(userId);
 	}
 

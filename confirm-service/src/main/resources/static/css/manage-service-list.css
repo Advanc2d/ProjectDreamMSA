@@ -123,12 +123,3 @@ p {
 .btn-style07:hover, .btn-style06:focus {
     background: #666;
 }
-
-.pageover{
-	height: 690px;
-	overflow: scroll;
-}
-
-.pageover::-webkit-scrollbar {
-  display: none;
-}

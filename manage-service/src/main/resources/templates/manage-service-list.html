@@ -14,7 +14,7 @@
 </head>
 <script>
 	function back() {
-		location.replace("http://localhost:8000/menu/list");
+		location.replace("http://localhost:8000/main/menu");
 	}
 	function logout() {
 		location.replace("http://localhost:8000/logout");
@@ -28,7 +28,7 @@
 		<html th:replace="header::headerFragment"></html>
 		<!--MDB Tables-->
 		<div class="container mt-4">
-			<div class="card mb-4">
+			<div class="card mb-4 pageover">
 				<div class="card-body">
 					<!-- Grid row -->
 					<div class="row">
@@ -73,7 +73,7 @@
 									th:text="${#numbers.formatInteger(list.orderPrice,3,'COMMA')}+' 만원'">원</td>
 								<!-- <td th:text="${list.}">2%</td> -->
 								<td th:text="${list.purpose}">생활비 자금</td>
-								<td th:text="${list.period}">24개월</td>
+								<td th:text="${list.period} + ' 개월'" >24개월</td>
 								<td class="date"
 									th:text="${#dates.format(list.orderDate, 'yyyy-MM-dd')}"></td>
 								<td class="views"
@@ -99,7 +99,6 @@
 					<!--Table-->
 				</div>
 			</div>
-			<hr class="my-4">
 		</div>
 		<!--MDB Tables-->
 		<html th:replace="footer::footerFragment"></html>
