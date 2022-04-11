@@ -64,7 +64,7 @@
 						<!--Table body-->
 						<tbody>
 							<tr th:each="list, i : ${manageList}">
-								<th scope="row" th:text="${list.proNo}"></th>
+								<th scope="row" th:text="${list.orderNo}"></th>
 								
 								<td th:text="${list.proName}"></td>
 								<td th:text="${list.userId}"></td>
@@ -78,7 +78,13 @@
 									th:text="${#dates.format(list.orderDate, 'yyyy-MM-dd')}"></td>
 								<td class="views"
 									th:text="${#dates.format(list.endDate, 'yyyy-MM-dd')}"></td>
-								<td th:text="${list.status}"></td>
+								<td>
+									<div th:switch="${list.status}">
+										<span th:case="0" th:text ="승인대기"></span>
+										<span th:case="1" th:text ="승인완료"></span>
+										<span th:case="2" th:text ="승인거절"></span>
+									</div>
+								</td>
 
 								<td>									
 									<!-- kafka 사용 하기 위한 부분 -->
@@ -86,6 +92,8 @@
 										<div class="action">
 											<input type="hidden" th:value="${list.orderNo}"
 												th:attr="name='orderNo'+${i.index}" class="orderNo" />
+												<input type="hidden" th:value="${list.status}"
+												th:attr="name='status'+${i.index}" class="status" />
 											<button onclick="statusChange(this)" class="btn-style07" type="button">상세
 												보기</button>
 										</div>
@@ -108,27 +116,45 @@
 			//1번   proNo=1로 고정...임....
 			var orderNo = $(e).parent().find('.orderNo').val();
 			//var proNo = $('.proNo').val();
-
+			var status = $(e).parent().find('.status').val();
 			var arr = {
 				"orderNo" : orderNo
 			};
-			console.log(arr);
+			if(status == 0){
+				$.ajax({
+					anyne : true,
+					type : 'POST',
+					url : '/manage/kafka',
+					data : JSON.stringify(arr),
+					dataType : "text",
+					contentType : 'application/json',
+					success : function(data) {
+						alert("대출 번호 " + orderNo + "번의 대출 심사를 진행하겠습니다.");
+						location.href = "/approve/detail"
+					},
+					error : function(xhr, status, error) {
+						alert(error);
+					}
+				});
+			}else{
+				$.ajax({
+					anyne : true,
+					type : 'POST',
+					url : '/manage/kafka',
+					data : JSON.stringify(arr),
+					dataType : "text",
+					contentType : 'application/json',
+					success : function(data) {
+						alert("대출 번호 " + orderNo + "번의 대출 상세정보를 확인하겠습니다.");
+						location.href = "/approve/detail"
+					},
+					error : function(xhr, status, error) {
+						alert(error);
+					}
+				});
+			}
 
-			$.ajax({
-				anyne : true,
-				type : 'POST',
-				url : '/manage/kafka',
-				data : JSON.stringify(arr),
-				dataType : "text",
-				contentType : 'application/json',
-				success : function(data) {
-					alert("대출 번호 " + orderNo + "번의 대출 심사를 진행하겠습니다.");
-					location.href = "/approve/detail"
-				},
-				error : function(xhr, status, error) {
-					alert(error);
-				}
-			});
+			
 		}
 	</script>
 	<script>
