@@ -35,18 +35,18 @@
             </div>
             <div class="row">
                 <div class="col-md-6 mt-md-0 mt-3"> <label>신청날짜</label>
-                    <input class="form-control" th:value="last.orderDate" required readonly>
+                    <input class="form-control" th:value="${last.orderDate}" required readonly>
                 </div>
                 <div class="col-md-6 mt-md-0 mt-3"> <label>이자</label>
-                    <input class="form-control" th:value="last.rate" required readonly>
+                    <input class="form-control" th:value="${last.rate}" required readonly>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6 mt-md-0 mt-3"> <label>만기날짜</label>
-                    <input class="form-control" th:value="last.endDate" required readonly>
+                    <input class="form-control" th:value="${last.endDate}" required readonly>
                 </div>
                 <div class="col-md-6 mt-md-0 mt-3"> <label>월 납부액</label>
-                    <input class="form-control" th:value="last.amount" required readonly>
+                    <input class="form-control" th:value="${last.amount}" required readonly>
                 </div>
             </div>
             <div class="row">
