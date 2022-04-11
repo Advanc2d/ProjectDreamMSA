@@ -17,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 public class ConfirmKafkaService {
 	private static SendMessage ms;
 
-	@KafkaListener(topics = "my-topic", groupId = "${kafka.group_id}")
+	@KafkaListener(topics = "my-topic1", groupId = "${kafka.group_id}")
 	public void listner(String message) throws JsonMappingException, JsonProcessingException {
 		log.info("여기 오냐잉 = {}", message);
 

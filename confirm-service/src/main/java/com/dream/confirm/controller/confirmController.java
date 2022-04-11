@@ -24,22 +24,7 @@ import lombok.extern.slf4j.Slf4j;
 public class confirmController {
 	private final ConfirmKafkaService cks;
 	private final confirmService service;
-
-
-
-	@RolesAllowed({ "USER" })
-	@GetMapping("/list")
-	public String detail(Principal principal, Model model) {
-		JwtAuthenticationToken token = (JwtAuthenticationToken) principal;
-		String userId = (String) (token).getTokenAttributes().get("preferred_username");
 	
-		service.list(userId);
-		model.addAttribute("keycloakList", token.getTokenAttributes());
-		model.addAttribute("myList", service.list(userId));
-		return "confirm-service-list";
-	}
-	
-
 	@GetMapping("/check")
 	public String check(Principal principal, Model model) {
 		log.info("여기 오고");
@@ -52,7 +37,19 @@ public class confirmController {
 		
 		model.addAttribute("User",service.list(cks.getMessage().getUserId()));
 		
-		return "check";
+		return "confirm-service-check";
+	}
+
+	@RolesAllowed({ "USER" })
+	@GetMapping("/list")
+	public String detail(Principal principal, Model model) {
+		JwtAuthenticationToken token = (JwtAuthenticationToken) principal;
+		String userId = (String) (token).getTokenAttributes().get("preferred_username");
+	
+		service.list(userId);
+		model.addAttribute("keycloakList", token.getTokenAttributes());
+		model.addAttribute("myList", service.list(userId));
+		return "0408confirm-service-list";
 	}
 }
 
