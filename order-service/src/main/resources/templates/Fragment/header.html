@@ -25,9 +25,10 @@
 		<div style="border-bottom: solid #005B9F 2px;">
 			<!-- 헤더 -->
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
-				<img src="img/logo.png">
+				<a href="http://localhost:8000/main/menu"> <img
+					src="img/logo.png"></a>
 				<div class="container-fluid" style="height: 60px;">
-					<a class="navbar-brand" href="#"
+					<a class="navbar-brand" href="http://localhosT:8000/main/menu"
 						style="color: black; font-size: 30px; font-weight: bold;">Dream
 						Security</a>
 					<button class="navbar-toggler" type="button"
@@ -43,7 +44,8 @@
 								class="nav-link pl-0 dropdown-toggle" href="#"
 								data-toggle="dropdown" aria-haspopup="true"
 								aria-expanded="false"> <i class="far fa-heart"></i> <span
-									class="d-none d-md-inline">시연</span></a> <span class="caret"></span>
+									class="d-none d-md-inline">시연</span>
+							</a> <span class="caret"></span>
 								<div class="dropdown-menu">
 									<a class="dropdown-item" href="http://localhost:8000/token">AccessToken</a>
 									<div class="dropdown-divider"></div>
@@ -65,7 +67,7 @@
 							</a>
 							<a sec:authorize="hasRole('USER')">
 								<li class=" nav-item" style="padding-right: 15px;"><a
-									class="nav-link" href="http://localhost:8000/confirm/check">주문
+									class="nav-link" href="http://localhost:8000/confirm/list">주문
 										확인</a></li>
 							</a>
 							<a sec:authorize="hasRole('MANAGER')">
@@ -74,12 +76,12 @@
 										목록</a></li>
 							</a>
 						</ul>
-						<!-- 주석 끝... -->
-							<p class="text-dark" style="margin-top: 1%;"
-								th:text="${list.preferred_username}+'님 환영합니다.&nbsp;'"></p>
-						<form action="/logout" method="POST">
+
+						<p class="text-dark" style="margin-top: 1%;"
+							th:text="${list.preferred_username}+'님 환영합니다.&nbsp;'"></p>
+						<form action="http://localhost:8000/logout" method="POST">
 							<button class="btn btn-outline-dark my-2 my-sm-0" type="submit"
-								style="margin-right: 1%; width: 90px">로그아웃</button>        
+								style="margin-right: 1%; width: 90px">로그아웃</button>
 						</form>
 					</div>
 				</div>

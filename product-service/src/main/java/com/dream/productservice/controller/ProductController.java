@@ -37,7 +37,6 @@ public class ProductController {
 		log.info("toString : " + token.getTokenAttributes().toString());
 		model.addAttribute("list", token.getTokenAttributes());
 		return "product-service-register";
-//		return "0406-product-service-register";
 	}
 
 	
@@ -52,7 +51,6 @@ public class ProductController {
 		log.info("toString : " + token.getTokenAttributes().toString());
 		model.addAttribute("list", token.getTokenAttributes());
 		log.info("dto.toString() : " + dto.toString());
-		/* return "regist_success"; */
 	}
 	
 	
@@ -85,7 +83,13 @@ public class ProductController {
 	
 	@RolesAllowed({ "ADMIN" })
 	@PostMapping(value = "/modify", consumes = "application/json", produces = { MediaType.TEXT_PLAIN_VALUE })
-	public String updateProduct(@RequestBody ProductDto dto) {
+	public String updateProduct(Model model, Principal principal, @RequestBody ProductDto dto) {
+		if (principal != null) {
+			JwtAuthenticationToken token = (JwtAuthenticationToken) principal;
+			log.info("toString : " + token.getTokenAttributes().toString());
+			model.addAttribute("list", token.getTokenAttributes());
+		}
+
 		log.info("---------------------- product/modify DB수정 �����Ϸ� �̵� -----------------------");
 		service.update(dto);
 		return "updateProduct"; 
@@ -94,7 +98,13 @@ public class ProductController {
 	
 	@RolesAllowed({ "ADMIN" })
 	@PostMapping("/delete")
-	public String delete(@RequestParam int proNo) {
+	public String delete(Principal principal, Model model, @RequestParam int proNo) {
+		if (principal != null) {
+			JwtAuthenticationToken token = (JwtAuthenticationToken) principal;
+			log.info("toString : " + token.getTokenAttributes().toString());
+			model.addAttribute("list", token.getTokenAttributes());
+		}
+
 		log.info("---------------------- product/delete URL �����Ϸ� �̵� -----------------------");
 		service.delete(proNo);
 		return "redirect:http://localhost:8000/product/list";
