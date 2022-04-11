@@ -6,7 +6,6 @@ spring:
   config:              # gradle에 config 추가.
    import: optional:configserver:http://localhost:8888  # config 서버 위치
 #   import: optional:configserver:http://192.168.1.49:8888  # config 도커로 할때 버전
-#   import: optional:configserver:http://192.168.1.49:8888  # config 도커로 할때 버전   
 # config 서버 위치# actuator를 이용하여 서버 재시작 없이 변경내용 반영 가능하게 함.
 management:
   endpoints:

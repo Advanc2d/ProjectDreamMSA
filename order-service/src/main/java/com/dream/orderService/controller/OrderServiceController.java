@@ -3,6 +3,8 @@ package com.dream.orderService.controller;
 
 import java.security.Principal;
 
+import javax.annotation.security.RolesAllowed;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -41,6 +43,7 @@ public class OrderServiceController {
 	private final OrderKafkaService ofs;
 	private static Message ms;
 
+	@RolesAllowed({ "USER" })
 	@GetMapping("/detail")
 	public String loanPage(Model model, Principal principal) {
 		log.info("Hi man~!");
