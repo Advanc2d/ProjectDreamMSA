@@ -12,15 +12,15 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class confirmServiceImpl implements confirmService{
-	
 	private final confirmMapper mapper;
-	
-	public confirmDto list(String userId){
-		return mapper.list(userId);
-	}
 
 	@Override
-	public confirmDto last(String userId) {
-		return mapper.last(userId);
+	public confirmDto check(String userId) {
+		return mapper.check(userId);
+	}
+	
+	@Override
+	public List<confirmDto> list(String userId){
+		return mapper.list(userId);
 	}
 }

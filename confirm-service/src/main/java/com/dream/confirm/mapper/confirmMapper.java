@@ -10,10 +10,7 @@ import com.dream.confirm.dto.confirmDto;
 @Repository
 @Mapper
 public interface confirmMapper {
+	public confirmDto check(String userId);
 
-	public confirmDto list(String userId);
-
-//	public List<confirmDto> list(String userId);
-	public confirmDto last(String userId);
-
+	public List<confirmDto> list(String userId); 
 }
