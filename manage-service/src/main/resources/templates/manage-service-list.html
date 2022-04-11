@@ -66,19 +66,19 @@
 							<tr th:each="list, i : ${manageList}">
 								<th scope="row" th:text="${list.proNo}"></th>
 								
-								<td th:text="${list.proName}">드림대출</td>
-								<td th:text="${list.userId}">김비트</td>
+								<td th:text="${list.proName}"></td>
+								<td th:text="${list.userId}"></td>
 								<!-- <td th:text="${list.orderNo}">비트교육생</td> -->
 								<td
 									th:text="${#numbers.formatInteger(list.orderPrice,3,'COMMA')}+' 만원'">원</td>
 								<!-- <td th:text="${list.}">2%</td> -->
-								<td th:text="${list.purpose}">생활비 자금</td>
-								<td th:text="${list.period} + ' 개월'" >24개월</td>
+								<td th:text="${list.purpose}"></td>
+								<td th:text="${list.period} + ' 개월'" ></td>
 								<td class="date"
 									th:text="${#dates.format(list.orderDate, 'yyyy-MM-dd')}"></td>
 								<td class="views"
 									th:text="${#dates.format(list.endDate, 'yyyy-MM-dd')}"></td>
-								<td th:text="${list.status}">주문 대기</td>
+								<td th:text="${list.status}"></td>
 
 								<td>									
 									<!-- kafka 사용 하기 위한 부분 -->
