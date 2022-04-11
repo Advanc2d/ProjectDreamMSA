@@ -36,7 +36,6 @@
 									</li>
 									<li id="personal"><strong>약관동의</strong></li>
 									<li id="payment"><strong>신청 정보 입력</strong></li>
-									<li id="confirm"><strong>대출 신청 완료</strong></li>
 								</ul>
 								<!-- fieldsets -->
 								<fieldset>
@@ -144,28 +143,7 @@
 									<input type="button" name="previous"
 										class="previous action-button-previous" value="Previous" /> <input
 										type="button" name="make_payment" class="next action-button"
-										value="Confirm" onclick="saveOrder()" />
-								</fieldset>
-								<fieldset>
-									<div class="form-card">
-										<h2 class="fs-title text-center">대출 신청 완료</h2>
-										<br> <br>
-										<div class="row justify-content-center">
-											<div class="col-3">
-												<a onclick="SendMessage();"><img
-													src="https://img.icons8.com/color/96/000000/ok--v2.png"
-													class="fit-image"></a>
-											</div>
-										</div>
-										<br> <br>
-										<div class="row justify-content-center">
-											<div class="col-7 text-center">
-												<h5>
-													대출신청을 완료하였습니다!<br>이미지를 클릭하여 신청내역으로 이동하세요!
-												</h5>
-											</div>
-										</div>
-									</div>
+										value="Confirm" onclick="javascript:saveOrder(); SendMessage();" />
 								</fieldset>
 							</form>
 						</div>
