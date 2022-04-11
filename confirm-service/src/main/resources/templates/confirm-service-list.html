@@ -38,8 +38,6 @@
 							<tr>
 								<th>#</th>
 								<th>상품명</th>
-								<!-- <th>고객이름</th> -->
-								<!-- <th>자격</th> -->
 								<th>금리</th>
 								<th>목적</th>
 								<th>주문금액</th>
@@ -53,6 +51,8 @@
 						<!--Table head-->
 						<!--Table body-->
 						<tbody>
+							<tr th:each="user : ${user}">
+								<th scope="row">1</th>
 							<tr th:each="list : ${myList}">
 								<th scope="row" th:text="${list.orderNo}"></th>
 								<td th:text="${list.proName}"></td>
@@ -77,10 +77,7 @@
 					<!--Table-->
 				</div>
 			</div>
-
 			<hr class="my-4">
-
-
 		</div>
 		<!--MDB Tables-->
 

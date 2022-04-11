@@ -1,12 +1,11 @@
 function update() {
 	var proNo = $('#proNo').val();
 	var proName = $('#proName').val();
-	var proLimit = parseFloat($('#proLimit').val());
+	var proLimit = parseFloat($('#proLimit').val().replace(/,/g,''));
 	var detail = $('#detail').val();
 	var need = $('#need').val();
 	var rate = parseFloat($('#rate').val());
 	var term = parseInt($('#term').val());
-
 
 	var arr = {
 		"proNo": proNo,
@@ -38,13 +37,11 @@ function update() {
 
 function register() {
 	var proName = $('#proName').val();
-	var proLimit = parseFloat($('#proLimit').val());
+	var proLimit = parseFloat($('#proLimit').val().replace(/,/g,''));
 	var detail = $('#detail').val();
 	var need = $('#need').val();
 	var rate = parseFloat($('#rate').val());
 	var term = parseInt($('#term').val());
-	console.log(typeof rate);
-	console.log(typeof term);
 
 	var arr = {
 		"proName": proName,

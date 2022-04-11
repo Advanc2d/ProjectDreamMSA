@@ -8,7 +8,8 @@
 <link rel="stylesheet" href="css/button.css">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
-	<script	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
 
 </head>
@@ -16,7 +17,9 @@
 <html th:replace="header::headerFragment"></html>
 <div class="wrapper rounded bg-white">
 	<div class="h3"
-		style="font-size: 35px; font-weight: 600; margin-bottom: 25px; text-align: center;">대출 상품 수정</div><hr>
+		style="font-size: 35px; font-weight: 600; margin-bottom: 25px; text-align: center;">대출
+		상품 수정</div>
+	<hr>
 	<div class="form">
 		<form method="post">
 			<input type="hidden" th:value="${proVO.proNo}" id="proNo"
@@ -28,7 +31,7 @@
 				</div>
 				<div class="col-md-6 mt-md-0 mt-3">
 					<label>대출 한도(만원)</label> <input class="form-control" type="text"
-						id="proLimit" name="proLimit"
+						id="proLimit" name="proLimit" onkeyup="inputNumberFormat(this)"
 						oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
 						th:value="${#numbers.formatInteger(proVO.proLimit,3,'COMMA')}">
 				</div>
@@ -65,8 +68,10 @@
 			<div class="row" style="padding-top: 30px;">
 				<div class="col-md-6"></div>
 				<div class="col-md-6">
-					<button class="btn-style06 md" style="margin-left: 15%;"onclick="update()">수정</button>
-					<button type="button" class="btn-style07 md" style="float: right;" onclick="back()">취소</button>
+					<button class="btn-style06 md" style="margin-left: 15%;"
+						onclick="update()">수정</button>
+					<button type="button" class="btn-style07 md" style="float: right;"
+						onclick="back()">취소</button>
 				</div>
 			</div>
 		</form>
@@ -74,8 +79,27 @@
 	</div>
 </div>
 <html th:replace="footer::footerFragment"></html>
-    <script src="js/product.js"></script>
-    <script type="text/javascript"
-      src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+	function inputNumberFormat(obj) {
+		obj.value = comma(uncomma(obj.value));
+	}
+
+	function comma(str) {
+		str = String(str);
+		return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+	}
+
+	function uncomma(str) {
+		str = String(str);
+		return str.replace(/[^\d]+/g, '');
+	}
+	function removeComma(str) {
+		n = parseInt(str.replace(/,/g, ""));
+		return n;
+	}
+</script>
+<script src="js/product.js"></script>
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 </body>
 </html>

@@ -15,10 +15,9 @@ public class confirmDto {
 	private int rate; // 생략
 	private String purpose;
 	private double amount;
+	private int term;
 	private int period;
 	private int status;
 	private Date orderDate;
 	private Date endDate;
-	private int term;
-
 }

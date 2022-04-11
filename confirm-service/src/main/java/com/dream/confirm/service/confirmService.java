@@ -8,5 +8,4 @@ public interface confirmService {
 	public confirmDto check(String userId);
 
 	public List<confirmDto> list(String userId); 
-
 }

@@ -239,7 +239,7 @@ function cal() {
     } else {
         var cal = money * (1 + (rate / 100)) / term;    //달마나 낼 금액 계산
         // 소수점 2자리 이상일때 반올림
-        cal = cal.toFixed(2);
+        cal = cal.toFixed(0);
         // 숫자 3자리마다 컴마 찍기
         var callate = cal.toString()
             .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");

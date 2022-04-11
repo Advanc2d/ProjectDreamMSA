@@ -20,7 +20,6 @@ import lombok.extern.slf4j.Slf4j;
 //kafka 연동 말고 토큰으로 불러오는거만 되어있음;
 //-------------------------------------------------------------------------------------------------
 @Controller
-@AllArgsConstructor
 @Slf4j
 public class confirmController {
 	private final ConfirmKafkaService cks;
@@ -44,7 +43,7 @@ public class confirmController {
 		return "confirm-service-check";
 	}
 
-	@RolesAllowed({ "USER" })
+	@RolesAllowed({"USER"})
 	@GetMapping("/list")
 	public String detail(Principal principal, Model model) {
 		JwtAuthenticationToken token = (JwtAuthenticationToken) principal;
@@ -53,9 +52,7 @@ public class confirmController {
 		List<confirmDto> dto = null;
 		dto = service.list(userId);
 		model.addAttribute("list", token.getTokenAttributes());
-//		model.addAttribute("User", dto);
 		model.addAttribute("myList", service.list(userId));
 		return "confirm-service-list";
-
 	}
 }
