@@ -21,7 +21,6 @@
 </head>
 
 <body>
-<a th:text="${_csrf.token}">test </a>
 	<header>
 		<div style="border-bottom: solid #005B9F 2px;">
 			<!-- 헤더 -->
@@ -76,11 +75,11 @@
 							</a>
 						</ul>
 						<!-- 주석 끝... -->
-						<form action="/logout" method="POST">
 							<p class="text-dark" style="margin-top: 1%;"
 								th:text="${list.preferred_username}+'님 환영합니다.&nbsp;'"></p>
+						<form action="/logout" method="POST">
 							<button class="btn btn-outline-dark my-2 my-sm-0" type="submit"
-								style="margin-right: 1%">로그아웃</button>        
+								style="margin-right: 1%; width: 90px">로그아웃</button>        
 						</form>
 					</div>
 				</div>
