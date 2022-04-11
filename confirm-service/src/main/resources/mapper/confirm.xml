@@ -6,4 +6,8 @@
       b.orderDate, b.endDate from products a inner join orders b on a.proNo=b.proNO
         where userId= #{userId} order by orderNo desc limit 1;
    </select>
+   
+   <select id="list" resultType="com.dream.confirm.dto.confirmDto">
+   	select * from orders;
+   </select>
 </mapper>
