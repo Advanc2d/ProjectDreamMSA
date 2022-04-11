@@ -37,7 +37,6 @@ public class ProductController {
 		log.info("toString : " + token.getTokenAttributes().toString());
 		model.addAttribute("list", token.getTokenAttributes());
 		return "product-service-register";
-//		return "0406-product-service-register";
 	}
 
 	
@@ -52,7 +51,6 @@ public class ProductController {
 		log.info("toString : " + token.getTokenAttributes().toString());
 		model.addAttribute("list", token.getTokenAttributes());
 		log.info("dto.toString() : " + dto.toString());
-		/* return "regist_success"; */
 	}
 	
 	
