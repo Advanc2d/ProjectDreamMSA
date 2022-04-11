@@ -59,10 +59,10 @@
 							<td th:text="${list.rate} + ' %'"></td>
 							<td th:text="${list.purpose}"></td>
 							<td
-								th:text="${#numbers.formatInteger(list.orderPrice,3, 'COMMA')} +' 원'"></td>
+								th:text="${#numbers.formatInteger(list.orderPrice,0, 'COMMA')} +' 만원'"></td>
 							<td th:text="${list.period} + '개월'"></td>
 							<td
-								th:text="${#numbers.formatInteger(list.amount, 3, 'COMMA')} + ' 원'"></td>
+								th:text="${#numbers.formatInteger(list.amount, 0, 'COMMA')} + ' 만원'"></td>
 							<td th:text="${#dates.format(list.orderDate, 'yyyy-MM-dd')}"></td>
 							<td th:text="${#dates.format(list.endDate, 'yyyy-MM-dd')}"></td>
 							<td>

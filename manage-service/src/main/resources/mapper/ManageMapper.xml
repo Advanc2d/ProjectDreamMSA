@@ -5,11 +5,10 @@
       select a.orderNo, a.proNo, a.userId, a.orderPrice, a.purpose, a.period,
       a.orderDate, a.endDate, a.status, b.proName
       from orders a inner join products b
-      on a.proNo = b.proNo
+      on a.proNo = b.proNo order by orderNo
    </select>
 
    <update id="getUpdate">
-      update orders set status = #{status} where orderNo =
-      #{orderNo};
+      update orders set status = #{status} where orderNo = #{orderNo};
    </update>
 </mapper>

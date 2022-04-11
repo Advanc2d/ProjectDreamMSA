@@ -70,7 +70,7 @@
 								<td th:text="${list.userId}"></td>
 								<!-- <td th:text="${list.orderNo}">비트교육생</td> -->
 								<td
-									th:text="${#numbers.formatInteger(list.orderPrice,3,'COMMA')}+' 만원'">원</td>
+									th:text="${#numbers.formatInteger(list.orderPrice,0,'COMMA')}+' 만원'">원</td>
 								<!-- <td th:text="${list.}">2%</td> -->
 								<td th:text="${list.purpose}"></td>
 								<td th:text="${list.period} + ' 개월'" ></td>
@@ -80,9 +80,9 @@
 									th:text="${#dates.format(list.endDate, 'yyyy-MM-dd')}"></td>
 								<td>
 									<div th:switch="${list.status}">
-										<span th:case="0" th:text ="승인대기"></span>
-										<span th:case="1" th:text ="승인완료"></span>
-										<span th:case="2" th:text ="승인거절"></span>
+										<span style="color:black;" th:case="0" th:text ="승인대기"></span>
+										<span style="font-weight:bolder; font-size:15px; color:blue;" th:case="1" th:text ="승인완료"></span>
+										<span style="font-weight:bolder; font-size:15px; color:red;" th:case="2" th:text ="승인거절"></span>
 									</div>
 								</td>
 

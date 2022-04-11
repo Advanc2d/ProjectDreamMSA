@@ -1,7 +1,5 @@
 package com.dream.approveservice.dto;
 
-import java.util.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,4 +16,5 @@ public class orderVO {
 	private String endDate;
 	private int status;
 	private String proName;
+	private double amount;
 }

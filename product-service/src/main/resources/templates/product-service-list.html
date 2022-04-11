@@ -47,15 +47,15 @@
 							style="background: #f4f4f4; color: #5d5b5b; font-weight: 100; font-size: 20px;">
 							<tr>
 								<th>#</th>
-								<th style="width: 130px;">상품명</th>
-								<th style="width: 130px;">자격</th>
-								<th style="width: 130px;">한도</th>
-								<th style="width: 130px;">금리</th>
-								<th style="width: 130px;">기간</th>
-								<th style="width: 385px;">상품 설명</th>
-								<th colspan="2" style="width: 200px;"><button type="button"
+								<th style="width: 150px; text-align:center;">상품명</th>
+								<th style="width: 250px; text-align:center;">자격</th>
+								<th style="width: 100px; text-align:center;">한도</th>
+								<th style="width: 80px; text-align:center;">금리</th>
+								<th style="width: 80px; text-align:center;">기간</th>
+								<th style="width: 385px; text-align:center;">상품 설명</th>
+								<th colspan="2" style="width: 160px;"><button type="button"
 										class="btn-style07 md"
-										style="margin-left: 5%; width: 168px; height: 45px;"
+										style="margin-left: 0%; width: 168px; height: 45px;"
 										onclick="move()">상품 등록</button></th>
 							</tr>
 						</thead>
@@ -68,7 +68,7 @@
 								<td th:text="${product.need}"></td>
 								<td
 									th:text="${#numbers.formatInteger(product.proLimit, 3, 'COMMA')} + '만원'"></td>
-								<td th:text="${product.rate}">%</td>
+								<td th:text="${product.rate}+'%'"></td>
 								<td th:text="${product.term} + '개월'"></td>
 								<td th:text="${product.detail}"></td>
 								 <td>
