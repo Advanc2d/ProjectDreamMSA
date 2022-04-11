@@ -2,6 +2,8 @@ package com.dream.mainservice.controller;
 
 import java.security.Principal;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -91,4 +93,17 @@ public class MainController {
 
 	      return ResponseEntity.ok(status);
 	   }   
+	   
+	   @GetMapping("/test")
+	   public String authlogin(HttpServletRequest request) {
+//	        throw new RuntimeException("failed");
+	      try {
+	         Thread.sleep(11000);
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	      }
+	      log.info("request server port : {}", request.getServerPort());
+	      return "test"; // 리턴값 변경 test
+	   }
+	   
 }

@@ -17,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 public class OrderKafkaService {
 	private static Message ms;
 	
-	@KafkaListener(topics = "${kafka.topic_name}", groupId = "${kafka.group_id}")
+	@KafkaListener(topics = "my-topic1", groupId = "${kafka.group_id}")
 	public void listner(String message) throws JsonMappingException, JsonProcessingException {
 		log.info("Order message = {}", message);
 

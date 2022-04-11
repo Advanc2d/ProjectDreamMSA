@@ -17,7 +17,7 @@ public class SecurityConfig {
 	@Bean
 	public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
 
-		http.authorizeExchange().pathMatchers("/main/", "/product/**","/*/*/*.css","/*/*/*.js","/*/*/*.jpg","/*/*/*.png").permitAll()
+		http.authorizeExchange().pathMatchers("/main/", "/main", "/main/test","/*/*/*.css","/*/*/*.js","/*/*/*.jpg","/*/*/*.png").permitAll()
 		.and().authorizeExchange().anyExchange().authenticated().and().oauth2Login().and().logout()
 				.logoutUrl("/logout")
 				.logoutSuccessHandler(logoutSuccessHandler("http://192.168.1.54:8080/auth/realms/MSA/protocol/openid-connect/logout?redirect_uri=http://localhost:8000/main/"))
