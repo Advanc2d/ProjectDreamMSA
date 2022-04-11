@@ -35,7 +35,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6 mt-md-0 mt-3"> <label>대출 금액</label>
-                    <input type="readonly" class="form-control" th:value="${#numbers.formatInteger(User.orderPrice,3,'COMMA')}+' 만원'" required readonly>
+                    <input type="readonly" class="form-control" th:value="${#numbers.formatInteger(User.orderPrice,3,'COMMA')}+' 원'" required readonly>
                 </div>
                 <div class="col-md-6 mt-md-0 mt-3"> <label>대출 용도</label>
                     <input class="form-control" th:value="${User.purpose}" required readonly>

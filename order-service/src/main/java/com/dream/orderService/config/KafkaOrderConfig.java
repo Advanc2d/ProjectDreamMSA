@@ -36,6 +36,7 @@ public class KafkaOrderConfig {
    public ConsumerFactory<String, String> consumerFactory() {
       Map<String, Object> map = new HashMap<>();
       map.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaServerEndpoint);
+      log.info("kafka consumer야 받아지니?");
       map.put(ConsumerConfig.GROUP_ID_CONFIG, kafkaGroupId);
       map.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
       map.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
