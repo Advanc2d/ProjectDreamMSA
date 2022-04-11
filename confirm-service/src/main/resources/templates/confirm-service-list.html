@@ -45,8 +45,6 @@
 							<tr>
 								<th>#</th>
 								<th>상품명</th>
-								<!-- <th>고객이름</th> -->
-								<!-- <th>자격</th> -->
 								<th>금리</th>
 								<th>목적</th>
 								<th>주문금액</th>
@@ -60,17 +58,17 @@
 						<!--Table head-->
 						<!--Table body-->
 						<tbody>
-							<tr th:each="list : ${myList}">
+							<tr th:each="user : ${user}">
 								<th scope="row">1</th>
-								<td th:text="${list.proName}"></td>
-								<td th:text="${list.rate}"></td>
-								<td th:text="${list.purpose}"></td>
-								<td th:text="${list.orderPrice}"></td>
-								<td th:text="${list.term}}"></td>
-								<td th:text="${list.period}"></td>
-								<td th:text="${list.orderDate}"></td>
-								<td th:text="${list.endDate}"></td>
-								<td th:text="${list.status}"></td>
+								<td th:text="${user.proName}"></td>
+								<td th:text="${user.rate}"></td>
+								<td th:text="${user.purpose}"></td>
+								<td th:text="${user.orderPrice}"></td>
+								<td th:text="${user.term}}"></td>
+								<td th:text="${user.amount}"></td>
+								<td th:text="${user.orderDate}"></td>
+								<td th:text="${user.endDate}"></td>
+								<td th:text="${user.status}"></td>
 							</tr>
 						</tbody>
 						<!--Table body-->

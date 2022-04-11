@@ -41,4 +41,21 @@ public class confirmController {
 
 		return "confirm-service-check";
 	}
+	
+	@RolesAllowed({"USER"})
+	@GetMapping("/list")
+	public String list(Principal principal, Model model) {
+		if (principal != null) {
+			JwtAuthenticationToken token = (JwtAuthenticationToken) principal;
+			log.info("toString : " + token.getTokenAttributes().toString());
+			model.addAttribute("list", token.getTokenAttributes());
+		}
+		
+		log.info(cks.getMessage().getUserId() + "=============");
+		service.list(cks.getMessage().getUserId());
+		
+		model.addAttribute("user", service.list(cks.getMessage().getUserId()));
+		
+		return "confirm-service-list";
+	}
 }
