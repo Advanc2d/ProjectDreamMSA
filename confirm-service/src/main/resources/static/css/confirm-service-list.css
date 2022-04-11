@@ -123,3 +123,12 @@ p {
 .btn-style07:hover, .btn-style06:focus {
     background: #666;
 }
+
+.mb-4{
+	height: 700px;
+	overflow: scroll;
+}
+
+.mb-4::-webkit-scrollbar {
+  display: none;
+}

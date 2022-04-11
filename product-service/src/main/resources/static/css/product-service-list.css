@@ -67,6 +67,15 @@
     background: #666;
 }
 
+.pageover{
+	height: 660px;
+	overflow: scroll;
+}
+
+.pageover::-webkit-scrollbar {
+  display: none;
+}
+
 /* .table-size::-webkit-scrollbar {
     display: none; 
 }

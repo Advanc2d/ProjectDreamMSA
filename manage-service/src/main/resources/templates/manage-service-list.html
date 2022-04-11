@@ -14,7 +14,7 @@
 </head>
 <script>
 	function back() {
-		location.replace("http://localhost:8000/menu/list");
+		location.replace("http://localhost:8000/main/menu");
 	}
 	function logout() {
 		location.replace("http://localhost:8000/logout");
@@ -28,7 +28,7 @@
 		<html th:replace="header::headerFragment"></html>
 		<!--MDB Tables-->
 		<div class="container mt-4">
-			<div class="card mb-4">
+			<div class="card mb-4 pageover">
 				<div class="card-body">
 					<!-- Grid row -->
 					<div class="row">
@@ -99,7 +99,6 @@
 					<!--Table-->
 				</div>
 			</div>
-			<hr class="my-4">
 		</div>
 		<!--MDB Tables-->
 		<html th:replace="footer::footerFragment"></html>
