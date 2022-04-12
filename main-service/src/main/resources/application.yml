@@ -1,0 +1,51 @@
+
+server:
+  port: 8001
+
+spring:
+  application:
+    name: main-service
+  profiles:
+   active: dev
+  config:              # gradle에 config 추가.
+   import: optional:configserver:http://localhost:8888  # config 서버 위치
+  devtools:
+     livereload:  #  html, css, js 수정 시 새로고침 없이 바로 적용가능
+       enabled: true
+     restart:   # 재시작시 완전히 꺼졌다 다시키는 것보다 훨씬 빠르게 해줌.
+      enabled: true
+
+## security 설정
+#  security:
+#    oauth2:
+#      resourceserver:
+#        jwt:
+#          jwk-set-uri: http://192.168.1.54:8080/auth/realms/MSA/protocol/openid-connect/certs
+#---  
+##keycloak 설정          
+#keycloak:
+#  realm: MSA
+#  bearer-only: true
+#  ssl-required: external
+#  resource: spring-gateway-client
+#  auth-server-url: http://192.168.1.54:8080/auth
+#  credentials:
+#    secret: WEcACPUTWPfuhPrEz3bBaHcl7OLLmYX1
+
+# actuator를 이용하여 서버 재시작 없이 변경내용 반영 가능하게 함.
+management:
+  endpoints:
+   web:
+    exposure:
+     include: refresh, health, beans #refresh:설정 정보 갱신
+      
+# ------------------------------------------------------외부------------------------------------------
+## 유레카 클라이언트 설정  
+#eureka:
+#  instance:
+#    instance-id: menu-microservice-instance # eureka에 등록되는 id 값
+#  client:
+#    register-with-eureka: true  # 유레카에 등록할지 여부.
+#    fetch-registry: true   # 유레카에서 조회할지 여부
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka # 서비스를 등록할 서버 주소를 지정

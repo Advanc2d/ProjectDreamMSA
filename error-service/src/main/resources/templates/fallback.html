@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+	rel="stylesheet">
+<style>
+.root {
+	font-family: sans-serif;
+}
+
+.root *, .root *:before, .root *:after {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.root .wrapper {
+	width: 1140px;
+	margin: 0 auto;
+	max-width: 100%;
+	padding: 0 15px;
+}
+
+.root .clearfix:after {
+	content: " ";
+	clear: both;
+	display: table;
+}
+
+.fix1 {
+	margin-top: 150px;
+	position: fixed;
+	width: 500px;
+	top: 100px;
+	left: 50%;
+	margin-left: -250px;
+	border: 1px solid #3a3a3a;
+	font-size: 0;
+	z-index: 100;
+}
+
+.fix1 .content {
+	font-size: 14px;
+	padding: 25px;
+	background: #fff;
+}
+
+.fix1 .content .words {
+	font-size: 66px;
+	font-weight: bold;
+	padding-bottom: 35px;
+}
+
+.fix1 .content .words>div:nth-child(2) {
+	color: #1259a7;
+}
+
+.fix1 .content .text {
+	font-size: 15px;
+	line-height: 25px;
+}
+
+.fix1 .actions {
+	border-top: 1px solid #aaa;
+}
+
+.fix1 .actions:after {
+	clear: both;
+	display: table;
+	content: " ";
+}
+
+.fix1 .actions>div {
+	padding: 15px;
+	cursor: pointer;
+	background: #fff;
+	float: left;
+	width: 100%;
+	font-size: 15px;
+	text-align: center;
+}
+
+.fix1 .actions>div.left {
+	border-right: 1px solid #aaa;
+}
+
+.fix1 .actions>div:hover {
+	background: #eee;
+}
+
+@media ( max-width :991px) {
+}
+</style>
+</head>
+<body>
+	<div class="root">
+		<div class="fix1">
+			<div class="content">
+				<div class="words">
+					<div>CircuitBreaker</div>
+					<div>Fail Access</div>
+					<div>Service</div>
+				</div>
+				<div class="text">
+					해당 서비스는 접속시간이 지연되어 발생되었습니다.<br> 잠시 후 다시 시도해 주시길 바랍니다.<br>
+					반복적으로 접속이 불가 할 경우 관리자에게 문의 바랍니다
+				</div>
+			</div>
+			<div class="actions">
+				<div>메인화면으로 돌아가기</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		document.querySelector(".fix1 .actions").addEventListener("click",
+				function(e) {
+					location.replace("http://localhost:8000/main/menu");
+				});
+	</script>
+</body>
+</html>

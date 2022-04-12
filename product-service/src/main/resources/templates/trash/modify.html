@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>대출 상품 수정 페이지</title>
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Parisienne&amp;display=swap"
+	rel="stylesheet">
+<link href="css/update.css" rel="stylesheet">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+	<script>
+		function back() {
+			location.replace("http://localhost:8000/product/list");
+		}
+		function logout() {
+			location.replace("http://localhost:8000/logout");
+		}
+	</script>
+	
+	<div class="container">
+			<h1 style="font-weight:bold; font-size:60px;">상품 수정 페이지</h1>
+			<h1 style="font-weight:bold; font-size:30px;"><span th:text="${list.preferred_username}+'님 환영합니다.'"></span></h1>
+			<button onClick="back()" class="button-55" role="button" style="float: left;">뒤로가기</button>
+			<button onClick="logout()" class="button-55" role="button" style="float: right;">로그아웃</button>
+		<form method="post">
+			<input type="hidden" th:value="${proVO.proNo}" id="proNo" name="proNo">
+			<div class="form-group">
+				<input type="text" id="proName" name="proName" style="margin-top: 9%;" th:value="${proVO.proName}"/> <label for="input"
+					class="control-label">금융 상품 이름</label><i class="bar"></i>
+			</div>
+			<div class="form-group">
+				<input type="text" id="proLimit" name="proLimit" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" th:value="${#numbers.formatInteger(proVO.proLimit,3,'COMMA')}"/> <label for="input"
+					class="control-label">대출한도(만원)</label><i class="bar"></i>
+			</div>
+			<div class="form-group">
+				<textarea id="description" name="description" placeholder="대출 상품 설명"
+									th:text="${proVO.description}"></textarea>
+				<label for="textarea" class="control-label">상품 설명</label><i
+					class="bar"></i>
+			</div>
+			<div class="form-group">
+				<input type="text" id="term" name="term" th:value="${proVO.term}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /> <label for="input"
+					class="control-label">만기기간(년)</label><i class="bar"></i>
+			</div>
+		</form>
+		<div class="button-container">
+			<button type="submit" class="button" onClick="update()">
+				<span>제출하기</span>
+			</button>
+		</div>
+	</div>
+
+	<script src="js/update.js"></script>
+</body>
+</html>

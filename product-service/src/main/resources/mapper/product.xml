@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper
+	namespace="com.dream.productservice.mapper.ProductMapper">
+	<insert id="register">
+		INSERT INTO products(proName, detail, need, term, proLimit, rate) values (#{proName}, #{detail}, #{need}, #{term}, #{proLimit}, #{rate} )
+	</insert>
+	<select id="getProductList"
+		resultType="com.dream.productservice.dto.ProductDto"> SELECT * FROM products; </select>
+		
+	<select id="getProduct" resultType="com.dream.productservice.dto.ProductDto">
+		select * from products where proNo=#{proNo}
+	</select>
+	
+	<update id="update">
+		update products set proName=#{proName}, detail=#{detail}, need=#{need}, term=#{term}, proLimit=#{proLimit}, rate=#{rate} where proNo=#{proNo}
+	</update>
+	
+	<delete id="delete">
+		delete from products where proNo=#{proNo}
+	</delete>
+</mapper>

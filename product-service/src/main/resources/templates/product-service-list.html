@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:fragment="product-service-listFragment">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>product-service/list</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/product-service-list.css">
+<link rel="stylesheet" href="css/button.css">
+<script	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.5.8/swiper-bundle.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+</head>
+<script>
+	function move() {
+		location.replace("http://localhost:8000/product/register");
+	}
+</script>
+<body class="hm-gradient">
+	<main>
+		<html th:replace="header::headerFragment"></html>
+		<!--MDB Tables-->
+		<div class="container mt-4">
+			<div class="card mb-4 pageover">
+				<div class="card-body">
+					<!-- Grid row -->
+					<div class="row">
+						<!-- Grid column -->
+						<div class="col-md-12">
+							<div class="h3"
+								style="font-size: 35px; font-weight: 600; margin-bottom: 25px; text-align: center; color: #212529; padding: 15px;">
+								대출 상품 목록</div>
+						</div>
+						<!-- Grid column -->
+					</div>
+					<!-- Grid row -->
+					<!--Table-->
+					<table class="table table-striped"
+						style="-bs-table-striped-bg: none;">
+						<!--Table head-->
+						<thead
+							style="background: #f4f4f4; color: #5d5b5b; font-weight: 100; font-size: 20px;">
+							<tr>
+								<th>#</th>
+								<th style="width: 150px; text-align:center;">상품명</th>
+								<th style="width: 250px; text-align:center;">자격</th>
+								<th style="width: 100px; text-align:center;">한도</th>
+								<th style="width: 80px; text-align:center;">금리</th>
+								<th style="width: 80px; text-align:center;">기간</th>
+								<th style="width: 385px; text-align:center;">상품 설명</th>
+								<th colspan="2" style="width: 160px;"><button type="button"
+										class="btn-style07 md"
+										style="margin-left: 0%; width: 168px; height: 45px;"
+										onclick="move()">상품 등록</button></th>
+							</tr>
+						</thead>
+						<!--Table head-->
+						<!--Table body-->
+						<tbody>
+							<tr th:each="product : ${dream}">
+								<th scope="row" th:text="${product.proNo}"></th>
+								<td th:text="${product.proName}">Mark</td>
+								<td th:text="${product.need}"></td>
+								<td
+									th:text="${#numbers.formatInteger(product.proLimit, 3, 'COMMA')} + '만원'"></td>
+								<td th:text="${product.rate}+'%'"></td>
+								<td th:text="${product.term} + '개월'"></td>
+								<td th:text="${product.detail}"></td>
+								 <td>
+                                    <form method="get" action="/product/modify"> 
+									 <input type="hidden" th:value="${product.proNo}" name="proNo">
+                                    <button class="btn-style06 md">수정</button>
+                                    </form>
+                                    </td>
+                                    <td>
+                                    <form method="post" action="/product/delete"> 
+								 	<input type="hidden" th:value="${product.proNo}" name="proNo">
+                                    <button class="btn-style06 md">삭제</button></td>
+                                    </form>
+                                    </td>
+								
+								<!-- <td><button type="button" class="btn-style06 md">수정</button>
+								</td>
+								<td><button type="button" class="btn-style06 md">삭제</button></td> -->
+							</tr>
+						</tbody>
+						<!--Table body-->
+					</table>
+					<!--Table-->
+				</div>
+			</div>
+		</div>
+		<!--Table-->
+
+		<!--MDB Tables-->
+		<html th:replace="footer::footerFragment"></html>
+	</main>
+<script src="js/product.js"></script>
+</body>
+
+
+</html>

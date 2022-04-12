@@ -1,0 +1,6 @@
+<configuration>
+  <mappers>
+    <mapper resource="ApproveMapper.xml"/>
+
+  </mappers>
+</configuration>

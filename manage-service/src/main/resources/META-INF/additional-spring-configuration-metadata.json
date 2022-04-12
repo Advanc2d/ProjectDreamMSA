@@ -1,0 +1,182 @@
+{"properties": [
+  {
+    "name": "application",
+    "type": "java.lang.String",
+    "description": "A description for 'application'"
+  },
+  {
+    "name": "enabled",
+    "type": "java.lang.String",
+    "description": "A description for 'enabled'"
+  },
+  {
+    "name": "name",
+    "type": "java.lang.String",
+    "description": "A description for 'name'"
+  },
+  {
+    "name": "server",
+    "type": "java.lang.String",
+    "description": "A description for 'server'"
+  },
+  {
+    "name": "port",
+    "type": "java.lang.String",
+    "description": "A description for 'port'"
+  },
+  {
+    "name": "spring",
+    "type": "java.lang.String",
+    "description": "A description for 'spring'"
+  },
+  {
+    "name": "devtools",
+    "type": "java.lang.String",
+    "description": "A description for 'devtools'"
+  },
+  {
+    "name": "livereload",
+    "type": "java.lang.String",
+    "description": "A description for 'livereload'"
+  },
+  {
+    "name": "driver-class-name",
+    "type": "java.lang.String",
+    "description": "A description for 'driver-class-name'"
+  },
+  {
+    "name": "datasource",
+    "type": "java.lang.String",
+    "description": "A description for 'datasource'"
+  },
+  {
+    "name": "restart",
+    "type": "java.lang.String",
+    "description": "A description for 'restart'"
+  },
+  {
+    "name": "url",
+    "type": "java.lang.String",
+    "description": "A description for 'url'"
+  },
+  {
+    "name": "username",
+    "type": "java.lang.String",
+    "description": "A description for 'username'"
+  },
+  {
+    "name": "password",
+    "type": "java.lang.String",
+    "description": "A description for 'password'"
+  },
+  {
+    "name": "mapper-locations",
+    "type": "java.lang.String",
+    "description": "A description for 'mapper-locations'"
+  },
+  {
+    "name": "instance",
+    "type": "java.lang.String",
+    "description": "A description for 'instance'"
+  },
+  {
+    "name": "eureka",
+    "type": "java.lang.String",
+    "description": "A description for 'eureka'"
+  },
+  {
+    "name": "mybatis",
+    "type": "java.lang.String",
+    "description": "A description for 'mybatis'"
+  },
+  {
+    "name": "instance-id",
+    "type": "java.lang.String",
+    "description": "A description for 'instance-id'"
+  },
+  {
+    "name": "client",
+    "type": "java.lang.String",
+    "description": "A description for 'client'"
+  },
+  {
+    "name": "register-with-eureka",
+    "type": "java.lang.String",
+    "description": "A description for 'register-with-eureka'"
+  },
+  {
+    "name": "service-url",
+    "type": "java.lang.String",
+    "description": "A description for 'service-url'"
+  },
+  {
+    "name": "fetch-registry",
+    "type": "java.lang.String",
+    "description": "A description for 'fetch-registry'"
+  },
+  {
+    "name": "defaultZone",
+    "type": "java.lang.String",
+    "description": "A description for 'defaultZone'"
+  },
+  {
+    "name": "defaultZone",
+    "type": "java.lang.String",
+    "description": "A description for 'defaultZone'"
+  },
+  {
+    "name": "defaultZone",
+    "type": "java.lang.String",
+    "description": "A description for 'defaultZone'"
+  },
+  {
+    "name": "defaultZone",
+    "type": "java.lang.String",
+    "description": "A description for 'defaultZone'"
+  },
+  {
+    "name": "defaultZone",
+    "type": "java.lang.String",
+    "description": "A description for 'defaultZone'"
+  },
+  {
+    "name": "defaultZone",
+    "type": "java.lang.String",
+    "description": "A description for 'defaultZone'"
+  },
+  {
+    "name": "defaultZone",
+    "type": "java.lang.String",
+    "description": "A description for 'defaultZone'"
+  },
+  {
+    "name": "defaultZone",
+    "type": "java.lang.String",
+    "description": "A description for 'defaultZone'"
+  },
+  {
+    "name": "defaultZone",
+    "type": "java.lang.String",
+    "description": "A description for 'defaultZone'"
+  },
+  {
+    "name": "defaultZone",
+    "type": "java.lang.String",
+    "description": "A description for 'defaultZone'"
+  },
+  {
+    "name": "defaultZone",
+    "type": "java.lang.String",
+    "description": "A description for 'defaultZone'"
+  },
+  {
+    "name": "defaultZone",
+    "type": "java.lang.String",
+    "description": "A description for 'defaultZone'"
+  },
+  {
+    "name": "defaultZone",
+    "type": "java.lang.String",
+    "description": "A description for 'defaultZone'"
+  }
+]}

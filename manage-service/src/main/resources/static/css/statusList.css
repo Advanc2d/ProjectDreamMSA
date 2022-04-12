@@ -1,0 +1,414 @@
+body {
+	font-family: sans-serif;
+}
+
+body *, body *:before, body *:after {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+body .wrapper {
+	width: 1140px;
+	margin: 0 auto;
+	max-width: 100%;
+	padding: 0 15px;
+}
+
+body .clearfix:after {
+	content: " ";
+	clear: both;
+	display: table;
+}
+
+.board {
+	margin-bottom: 30px;
+	margin-top: 2%;
+}
+
+.board .header {
+	margin-bottom: 30px;
+	text-align: center;
+}
+
+.board .header .title {
+	font-size: 25px;
+	cursor: pointer;
+	text-decoration: none;
+	font-weight: bold;
+	color: #1259a7;
+}
+
+.board .header .desc {
+	margin-top: 10px;
+}
+
+.board .article table {
+	width: 100%;
+	max-width: 100%;
+	border-collapse: collapse;
+	border: 1px solid #ddd;
+}
+
+.board .article table th, .board .article table td {
+	background: #fff;
+	border: 1px solid #ddd;
+	padding: 10px;
+	text-align: center;
+	font-size: 14px;
+	overflow: hidden;
+}
+
+.board .article table th {
+	background: #f7f7f7;
+}
+
+.board .article table td.title {
+	text-align: left;
+}
+
+.board .article table td a {
+	cursor: pointer;
+}
+
+.board .article table td.title span {
+	display: inline-block;
+	padding: 3px 5px;
+	color: #fff;
+	font-size: 10px;
+	margin-left: 3px;
+}
+
+.board .article table td.title span.new {
+	background: #f71d1d;
+}
+
+.board .article table td.title span.update {
+	background: #1259a7;
+}
+
+.board .article table td a:hover {
+	text-decoration: underline;
+}
+
+.board .article .search {
+	margin-top: 20px;
+	font-size: 14px;
+	text-align: right;
+}
+
+.board .article .search .count {
+	float: left;
+	border: 1px solid #ddd;
+	padding: 12px;
+}
+
+.board .article .search .bundle {
+	width: 370px;
+	margin-left: auto;
+}
+
+.board .article .search .bundle select {
+	height: 42px;
+	border: 1px solid #ddd;
+	vertical-align: middle;
+	border-radius: 0;
+	padding: 0 5px;
+	float: left;
+	width: 35%;
+}
+
+.board .article .search .bundle input {
+	vertical-align: middle;
+	border: 1px solid #ddd;
+	border-left: 0;
+	border-radius: 0;
+	height: 42px;
+	padding: 0 10px;
+	float: left;
+	width: 53.5%;
+}
+
+.board .article .search button {
+	border: 1px solid #1259a7;
+	background: #1259a7;
+	vertical-align: middle;
+	color: #fff;
+	height: 42px;
+	cursor: pointer;
+	padding: 0 13px;
+	float: left;
+	width: 11.5%;
+}
+
+.board .article .pages {
+	margin-top: 20px;
+	text-align: center;
+}
+
+.board .article .pages ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.board .article .pages ul>li {
+	display: inline-block;
+}
+
+.board .article .pages ul>li>a {
+	cursor: pointer;
+	display: inline-block;
+	padding: 8px 13px;
+	font-size: 14px;
+	border: 1px solid #ddd;
+}
+
+.board .article .pages ul>li>a:hover {
+	background: #eee;
+}
+
+.board .article .pages ul>li.active>a {
+	background: #1259a7;
+	border-color: #1259a7;
+	color: #fff
+}
+
+@media ( max-width :767px) {
+	.board .article table .check, .board .article table .num, .board .article table .date,
+		.board .article table .views {
+		display: none;
+	}
+	.board .article .search .count {
+		display: none;
+	}
+	.board .article .search .bundle {
+		width: 100%;
+	}
+}
+
+/* �듅�씤 踰꾪듉 */
+/* .l-radio {
+	padding: 6px;
+	border-radius: 50px;
+	display: inline-flex;
+	cursor: pointer;
+	transition: background .2s ease;
+	margin: 8px 0;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.l-radio:hover, .l-radio:focus-within {
+	background: rgba(159, 159, 159, 0.1);
+}
+
+.l-radio input {
+	vertical-align: middle;
+	width: 20px;
+	height: 20px;
+	border-radius: 10px;
+	background: none;
+	border: 0;
+	box-shadow: inset 0 0 0 1px #9F9F9F;
+	box-shadow: inset 0 0 0 1.5px #9F9F9F;
+	appearance: none;
+	padding: 0;
+	margin: 0;
+	transition: box-shadow 150ms cubic-bezier(0.95, 0.15, 0.5, 1.25);
+	pointer-events: none;
+}
+
+.l-radio input:focus {
+	outline: none;
+}
+
+.l-radio input:checked {
+	box-shadow: inset 0 0 0 6px #6743ee;
+}
+
+.l-radio span {
+	vertical-align: middle;
+	display: inline-block;
+	line-height: 20px;
+	padding: 0 8px;
+} 
+
+@keyframes click-wave {
+  0% {
+    height: 40px;
+    width: 40px;
+    opacity: 0.35;
+    position: relative;
+  }
+  100% {
+    height: 200px;
+    width: 200px;
+    margin-left: -80px;
+    margin-top: -80px;
+    opacity: 0;
+  }
+}
+label {
+  margin: 2%;
+}
+input {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+	-o-appearance: none;
+	appearance: none;
+	position: relative;
+	top: 5.33333px;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: 20px;
+	width: 20px;
+	transition: all 0.15s ease-out 0s;
+	background: #cbd1d8;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	display: inline-block;
+	margin-right: 0.5rem;
+	outline: none;
+	position: relative;
+	z-index: 1000;
+}
+
+input:hover {
+  background: #9faab7;
+}
+input:checked {
+  background: #40e0d0;
+}
+input:checked::before {
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  content: '';
+  display: inline-block;
+  font-size: 26.66667px;
+  text-align: center;
+  line-height: 40px;
+}
+input:checked::after {
+  -webkit-animation: click-wave 0.65s;
+  -moz-animation: click-wave 0.65s;
+  animation: click-wave 0.65s;
+  background: #40e0d0;
+  content: '';
+  display: block;
+  position: relative;
+  z-index: 100;
+}
+input {
+  border-radius: 50%;
+}
+input::after {
+  border-radius: 50%;
+}
+/* end radio button */
+
+item a, item em, item p {
+  margin: 6%;
+}
+.css-shapes-preview {
+  position: relative;
+  height: 100px;
+  width: 100px;
+  padding: 0px;
+  background-color: #428BCA;
+  background-color: white;
+  top: 0px;
+  transform: rotate(45deg) skew(0deg);
+  -webkit-transform: rotate(45deg) skew(0deg);
+  border-top: solid #FF38F8;
+  border-left: solid #45FFFF;
+  border-right: solid #FF8652;
+  border-bottom: solid #45FF4B;
+  display: flex; /* center img vertically */
+  align-items: center; /* center img vertically */
+  margin: 6%;
+  float: left;
+}
+
+img {
+  transform: rotate(-45deg) skew(0deg);
+  border-radius: 50%;
+  width: 80%;
+  display: block; /* to center the image */
+  margin: auto; /* to center the image */
+}
+
+/* technique for clearing floats 
+https://css-tricks.com/almanac/properties/f/float/
+*/
+.clearfix:after {
+  content: "";
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both;
+}
+
+/* 
+   streamer block
+   css masonry (vertical stacking) :
+   http://w3bits.com/css-masonry/
+   note: arrange blocks vertically first
+*/
+#display {
+  -moz-column-count: 3;
+  -webkit-column-count: 3;
+  column-count: 3; /*css masonry */
+  column-gap: 1em; /*css masonry */
+}
+.item {
+  background-color: #3AB199;
+  border-radius: 5px;
+  display: inline-block;
+  margin: 0 0 1em; /*css masonry */
+  width: 100%; /*css masonry */
+  break-inside: avoid; /*css masonry */
+}
+
+@media only screen and (max-width: 500px) {
+  h1 {
+    font-size: 2em;
+  }
+  .css-shapes-preview {
+    height: 50px;
+    width: 50px;
+  }
+  #display {
+    -moz-column-count: 1;
+    -webkit-column-count: 1;
+    column-count: 1;
+  }
+  /* for radio button */
+  form {
+    font-size: 1em;
+    margin-bottom: 3%;
+  }
+}
+
+@media only screen and (min-width: 500px) and (max-width: 800px) {
+  .css-shapes-preview {
+    height: 70px;
+    width: 70px;
+  }
+  #display {
+    -moz-column-count: 2;
+    -webkit-column-count: 2;
+    column-count: 2;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  #display {
+    -moz-column-count: 3;
+    -webkit-column-count: 3;
+    column-count: 3;
+  }
+}

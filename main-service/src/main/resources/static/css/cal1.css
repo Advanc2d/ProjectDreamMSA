@@ -1,0 +1,100 @@
+@charset "utf-8";
+
+/* reset.css */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, section, summary,
+time, mark, audio, video, select {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    color: black;
+    font-family: "나눔바른고딕", 'NanumBarun', "맑은 고딕", sans-serif;
+    letter-spacing: -0.2px;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+strong {
+    font-weight: 600;
+}
+
+a, button, input, textarea, select {
+    font-family: "나눔바른고딕", 'NanumBarun', "맑은 고딕", sans-serif;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+caption {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    line-height: 0;
+    overflow: hidden;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* a:hover, */
+/* a:focus {color:#00397c;text-decoration:underline;} */
+
+button,
+input[type='button'],
+input[type='submit'] {
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    overflow: visible;
+}
+
+button[type='submit'],
+input[type='submit'] {
+    filter: chroma(color=#000000);
+}
+
+button:-moz-focus-inner {
+    padding: 0;
+    border: none;
+}
+
+[readonly],
+[disabled] {
+    cursor: default;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+

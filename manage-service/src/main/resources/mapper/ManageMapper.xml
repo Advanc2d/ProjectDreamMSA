@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dream.manageservice.mapper.ManageMapper">
+   <select id="getStatusList"
+      resultType="com.dream.manageservice.dto.StatusDto">
+      select a.orderNo, a.proNo, a.userId, a.orderPrice, a.purpose, a.period,
+      a.orderDate, a.endDate, a.status, b.proName
+      from orders a inner join products b
+      on a.proNo = b.proNo order by orderNo
+   </select>
+</mapper>

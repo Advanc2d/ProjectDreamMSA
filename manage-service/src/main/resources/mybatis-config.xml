@@ -1,0 +1,6 @@
+<configuration>
+  <mappers>
+    <mapper resource="ManageMapper.xml"/>
+
+  </mappers>
+</configuration>
