@@ -36,17 +36,15 @@ public class ApproveController {
 	@PostMapping("/change")
 	@ResponseBody
 	public void update(@RequestBody orderVO vo) {
-		log.info("---------------------- approve/change/ URL  DB������Ʈ �̵� -----------------------");
-		log.info(vo.getOrderNo()+"하이요" + vo.getStatus());
-		int orderNo = vo.getOrderNo();
-		int status = vo.getStatus();
+		log.info("---------------------- approve/change/ URL  DB UPDATE -----------------------");		
 		service.update(vo);
+		log.info("---------------------- approve/change/ URL  DB UPDATE COMPLETE-----------------------");	
 	}
 	
 	@RolesAllowed({ "MANAGER" })
 	@GetMapping("/detail")
 	public String sendMsg(Model model, JwtAuthenticationToken principal) throws JsonMappingException, JsonProcessingException, ParseException {
-		log.info("---------------------- approve/detail/ URL  URL로 이동 -----------------------");
+		log.info("---------------------- approve/detail/ URL  URL MOVE -----------------------");
 		JwtAuthenticationToken token =  principal;
 		String userId = (String) (token).getTokenAttributes().get("preferred_username");
 		log.info(userId);
@@ -70,7 +68,8 @@ public class ApproveController {
 		vo.setEndDate(endDate);
 		
 		model.addAttribute("orderVO", vo);
-//		return "detail";
+		
+		log.info("---------------------- approve/detail/Controller COMPLETE -----------------------");
 		return "approve-service-detail";
 	}
 	

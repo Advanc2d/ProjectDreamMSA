@@ -4,7 +4,7 @@ plugins {
 	id 'java'
 }
 
-group = 'com.dream.service'
+group = 'com.dream'
 version = '1.0'
 sourceCompatibility = '11'
 

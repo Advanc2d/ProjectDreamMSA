@@ -8,14 +8,19 @@ import com.dream.mainservice.dto.MainDto;
 import com.dream.mainservice.mapper.MainMapper;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class MainServiceImpl implements MainService {
 	private final MainMapper productMapper;
 
 	@Override
 	public List<MainDto> getProductList() throws Exception {
-		return productMapper.getProductList();
+		log.info("---------------main productlist Mapper.xml -----------------");
+		List<MainDto> mlistDto = productMapper.getProductList();
+		log.info("---------------main productlist Mapper Complete -----------------");
+		return mlistDto;
 	}
 }

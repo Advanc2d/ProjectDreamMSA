@@ -15,19 +15,13 @@ import lombok.extern.slf4j.Slf4j;
 public class ApproveKafkaService {
 
 	private static StatusMessage orderNo;
-	
-//	@KafkaListener(topics="my-topic", groupId="consumer-1")	
+		
 	@KafkaListener(topics = "${kafka.topic_name}", groupId = "${kafka.group_id}")
 	public void listner(String smsg) throws JsonMappingException, JsonProcessingException {
-		log.info("Received message = {}", smsg);
-
+		log.info("Approve-Service Kafka Received message = {}", smsg);
 		ObjectMapper mapper = new ObjectMapper();
-//		loanListVO vo = new loanListVO();
 		orderNo = mapper.readValue(smsg, StatusMessage.class);
-
-//		vo.setProNo(Integer.parseInt(orderNo.getOrderNo()));
-
-		log.info(orderNo+ "???");
+		log.info("Kafka Message Complete orderNo : " + orderNo);
 	}
 
 	public StatusMessage getMessage() {

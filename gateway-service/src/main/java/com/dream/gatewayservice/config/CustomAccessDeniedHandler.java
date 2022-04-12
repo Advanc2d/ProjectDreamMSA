@@ -18,10 +18,10 @@ public class CustomAccessDeniedHandler implements ServerAccessDeniedHandler {
 	@Override
 	public Mono<Void> handle(ServerWebExchange exchange, AccessDeniedException denied) {
 		ServerHttpResponse response = exchange.getResponse();
-		System.out.println("넘어오니");
+		System.out.println("-----------------Handler------------------------");
 		response.setStatusCode(HttpStatus.FORBIDDEN);
 		response.getHeaders().add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
-		String responseBody = "{\"error\": \"" + denied.getLocalizedMessage() + "입니다\"}";
+		String responseBody = "{\"error\": \"" + denied.getLocalizedMessage() + "\"}";
 		byte[] bytes = responseBody.getBytes(StandardCharsets.UTF_8);
 		DataBuffer buffer = response.bufferFactory().wrap(bytes);
 		return response.writeWith(Mono.just(buffer));

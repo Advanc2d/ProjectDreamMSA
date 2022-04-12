@@ -19,34 +19,32 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public void register(ProductDto dto) {
-		// TODO Auto-generated method stub
-		log.info("서비스 전");
+		log.info("---------------------- product-service register.xml  -----------------------");
 		mapper.register(dto);
-		log.info("서비스 후");
 	}
 	
 	@Override
 	public List<ProductDto> getProductList() throws Exception {
-		log.info("---------------------- product-service getProductList.xml �̵� -----------------------");
+		log.info("---------------------- product-service getProductList.xml  -----------------------");
 		return mapper.getProductList();
 	}
 	
 	@Override
 	public ProductDto getProduct(int proNo) {
-		log.info("---------------------- product-service getProduct.xml �̵� -----------------------");
+		log.info("---------------------- product-service getProduct.xml  -----------------------");
 		
 		return mapper.getProduct(proNo);
 	}
 	
 	@Override
 	public void update(ProductDto dto) {
-		log.info("---------------------- product-service update.xml �̵� -----------------------");
+		log.info("---------------------- product-service update.xml -----------------------");
 		mapper.update(dto);
 	}
 	
 	@Override
 	public void delete(int proNo) {
-		log.info("---------------------- manage-service delete.xml �̵� -----------------------");
+		log.info("---------------------- manage-service delete.xml -----------------------");
 		
 		mapper.delete(proNo);
 	}

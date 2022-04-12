@@ -32,10 +32,11 @@ public class ProductController {
 	@RolesAllowed({ "ADMIN" })
 	@GetMapping("/register")
 	public String register(Principal principal, Model model) {
-		log.info("---------------------- product/register URL �̵� -----------------------");
+		log.info("---------------------- product/register URL Move -----------------------");
 		JwtAuthenticationToken token = (JwtAuthenticationToken) principal;
-		log.info("toString : " + token.getTokenAttributes().toString());
 		model.addAttribute("list", token.getTokenAttributes());
+		
+		log.info("---------------------- product/register URL Move Finish-----------------------");
 		return "product-service-register";
 	}
 
@@ -44,39 +45,36 @@ public class ProductController {
 	@PostMapping(value = "/register", consumes = "application/json", produces = { MediaType.TEXT_PLAIN_VALUE })
 	@ResponseBody
 	public void register(@RequestBody ProductDto dto, Principal principal, Model model) {
-		log.info("---------------------- product/register DB저장하러 왔다. -----------------------");
-		log.info(dto.toString());
+		log.info("---------------------- product/register DB SAVE -----------------------");
 		service.register(dto);
 		JwtAuthenticationToken token = (JwtAuthenticationToken) principal;
-		log.info("toString : " + token.getTokenAttributes().toString());
-		model.addAttribute("list", token.getTokenAttributes());
-		log.info("dto.toString() : " + dto.toString());
+		model.addAttribute("list", token.getTokenAttributes());	
+		log.info("---------------------- product/register DB SAVE Success -----------------------");
 	}
 	
 	
 	@RolesAllowed({ "ADMIN" })
 	@GetMapping("/list")
 	public String dream(Principal principal, Model model) throws Exception {
-		log.info("---------------------- product/list URL �̵� -----------------------");
+		log.info("---------------------- product/list URL Print -----------------------");
 		JwtAuthenticationToken token = (JwtAuthenticationToken) principal;
-		log.info("toString : " + token.getTokenAttributes().toString());
 		model.addAttribute("list", token.getTokenAttributes());
 		List<ProductDto> product = service.getProductList();
 		model.addAttribute("dream", product);
+		log.info("---------------------- product/list URL Print Finish -----------------------");
 		return "product-service-list";
-//		return "0406-product-service-list";
 	}
 	
 	
 	@RolesAllowed({ "ADMIN" })
 	@GetMapping("/modify")
 	public String modify(@RequestParam int proNo, Principal principal, Model model) {
-		log.info("---------------------- product/modify URL  �̵� -----------------------");
+		log.info("---------------------- product/modify view URL MOVE -----------------------");
 		JwtAuthenticationToken token = (JwtAuthenticationToken) principal;
-		log.info("toString : " + token.getTokenAttributes().toString());
 		model.addAttribute("list", token.getTokenAttributes());
 		model.addAttribute("proVO", service.getProduct(proNo));
 		
+		log.info("---------------------- product/modify view URL Finish -----------------------");
 		return "product-service-modify";
 	}
 	
@@ -84,14 +82,13 @@ public class ProductController {
 	@RolesAllowed({ "ADMIN" })
 	@PostMapping(value = "/modify", consumes = "application/json", produces = { MediaType.TEXT_PLAIN_VALUE })
 	public String updateProduct(Model model, Principal principal, @RequestBody ProductDto dto) {
+		log.info("---------------------- product/modify DB modify -----------------------");
 		if (principal != null) {
 			JwtAuthenticationToken token = (JwtAuthenticationToken) principal;
-			log.info("toString : " + token.getTokenAttributes().toString());
 			model.addAttribute("list", token.getTokenAttributes());
 		}
-
-		log.info("---------------------- product/modify DB수정 �����Ϸ� �̵� -----------------------");
-		service.update(dto);
+		service.update(dto);		
+		log.info("---------------------- product/modify DB modify Success -----------------------");
 		return "updateProduct"; 
 	}
 	
@@ -99,26 +96,14 @@ public class ProductController {
 	@RolesAllowed({ "ADMIN" })
 	@PostMapping("/delete")
 	public String delete(Principal principal, Model model, @RequestParam int proNo) {
+		log.info("---------------------- product/delete  -----------------------");
 		if (principal != null) {
 			JwtAuthenticationToken token = (JwtAuthenticationToken) principal;
-			log.info("toString : " + token.getTokenAttributes().toString());
 			model.addAttribute("list", token.getTokenAttributes());
-		}
-
-		log.info("---------------------- product/delete URL �����Ϸ� �̵� -----------------------");
-		service.delete(proNo);
+		}	
+		service.delete(proNo);		
+		log.info("---------------------- product/delete Success -----------------------");
 		return "redirect:http://localhost:8000/product/list";
 	}
 	
-	@GetMapping("/test")
-	   public String authlogin(HttpServletRequest request) {
-//	        throw new RuntimeException("failed");
-	      try {
-	         Thread.sleep(11000);
-	      } catch (Exception e) {
-	         e.printStackTrace();
-	      }
-	      log.info("request server port : {}", request.getServerPort());
-	      return "test"; // 리턴값 변경 test
-	   }
 }

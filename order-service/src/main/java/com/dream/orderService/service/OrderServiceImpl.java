@@ -19,21 +19,25 @@ public class OrderServiceImpl implements OrderService {
 	
 	@Override
 	public OrderProductVO bringLoan(int proNo) {
-		log.info("----------------------order-service mapper.xml 작동-----------------------");
-		return mapper.bringLoan(proNo);
+		log.info("----------------------order-service bringLoan mapper.xml 작동-----------------------");
+		OrderProductVO vo = mapper.bringLoan(proNo);
+		log.info("----------------------order-service bringLoan Success -----------------------");
+		return vo;
 	}
 
 
 	@Override
 	public List<OrderProductVO> getProductList() throws Exception {
-		log.info("----------------------product-service mapper.xml 작동-----------------------");
-		return mapper.getProductList();
+		log.info("----------------------order-service ProductList mapper.xml 작동-----------------------");
+		List<OrderProductVO> olistVO = mapper.getProductList();
+		log.info("----------------------order-service ProductList Finish -----------------------");
+		return olistVO;
 	}
 	
 	@Override
 	public void saveOrder(OrderOrderVO vo) {
-		log.info("----------------------order-service mapper.xml 작동-----------------------");
+		log.info("----------------------order-service  Save mapper.xml-----------------------");
 		mapper.saveOrder(vo);
-		log.info("서비스 출력");
+		log.info("----------------------order-service  Save Success -----------------------");
 	}
 }

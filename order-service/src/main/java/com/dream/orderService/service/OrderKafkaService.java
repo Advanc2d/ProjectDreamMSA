@@ -19,7 +19,7 @@ public class OrderKafkaService {
 	
 	@KafkaListener(topics = "my-topic1", groupId = "${kafka.group_id}")
 	public void listner(String message) throws JsonMappingException, JsonProcessingException {
-		log.info("Order message = {}", message);
+		log.info("Order Kafka Listener message = {}", message);
 
 		ObjectMapper mapper = new ObjectMapper();
 		OrderProductVO vo = new OrderProductVO();
@@ -27,7 +27,7 @@ public class OrderKafkaService {
 		log.info(ms+"-------------");
 		vo.setProNo(Integer.parseInt(ms.getProNo()));
 
-		log.info("되나?");
+		log.info("Order Kafka Listener Finish");
 	}
 	
 	public Message getMessage() {

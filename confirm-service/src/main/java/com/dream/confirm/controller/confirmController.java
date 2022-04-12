@@ -20,8 +20,8 @@ import lombok.extern.slf4j.Slf4j;
 //kafka 연동 말고 토큰으로 불러오는거만 되어있음;
 //-------------------------------------------------------------------------------------------------
 @Controller
-@RequiredArgsConstructor
 @Slf4j
+@RequiredArgsConstructor
 public class confirmController {
 	private final ConfirmKafkaService cks;
 	private final confirmService service;
@@ -29,7 +29,7 @@ public class confirmController {
 	@RolesAllowed({ "USER" })
 	@GetMapping("/check")
 	public String check(Principal principal, Model model) {
-		log.info("여기 오고");
+		log.info("------------------ confirm/check URL ---------------------");
 		if (principal != null) {
 			JwtAuthenticationToken token = (JwtAuthenticationToken) principal;
 			log.info("toString : " + token.getTokenAttributes().toString());
@@ -40,13 +40,14 @@ public class confirmController {
 		
 		model.addAttribute("User", service.check(cks.getMessage().getUserId()));
 		
-		
+		log.info("------------------ confirm/check Controller Complete ---------------------");
 		return "confirm-service-check";
 	}
 
 	@RolesAllowed({"USER"})
 	@GetMapping("/list")
 	public String detail(Principal principal, Model model) {
+		log.info("------------------ confirm/list URL ---------------------");
 		JwtAuthenticationToken token = (JwtAuthenticationToken) principal;
 		String userId = (String) (token).getTokenAttributes().get("preferred_username");
 	
@@ -54,6 +55,8 @@ public class confirmController {
 		dto = service.list(userId);
 		model.addAttribute("list", token.getTokenAttributes());
 		model.addAttribute("myList", service.list(userId));
+		
+		log.info("------------------ confirm/list Controller Complete ---------------------");
 		return "confirm-service-list";
 	}
 }

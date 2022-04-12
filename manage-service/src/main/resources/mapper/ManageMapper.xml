@@ -7,8 +7,4 @@
       from orders a inner join products b
       on a.proNo = b.proNo order by orderNo
    </select>
-
-   <update id="getUpdate">
-      update orders set status = #{status} where orderNo = #{orderNo};
-   </update>
 </mapper>

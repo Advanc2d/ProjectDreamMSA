@@ -46,9 +46,9 @@ public class OrderServiceController {
 	@RolesAllowed({ "USER" })
 	@GetMapping("/detail")
 	public String loanPage(Model model, Principal principal) {
-		log.info("Hi man~!");
+		log.info("------------------------- order/detail URL Move! -----------------------");
 		log.info(ofs.getMessage().getProNo());
-		System.out.println("권한 : " + principal);
+		System.out.println("Authorized : " + principal);
 		if (principal != null) {
 			JwtAuthenticationToken token = (JwtAuthenticationToken) principal;
 			log.info("toString : " + token.getTokenAttributes().toString());
@@ -58,15 +58,17 @@ public class OrderServiceController {
 		service.bringLoan(Integer.parseInt(ofs.getMessage().getProNo()));
 
 		model.addAttribute("productList", service.bringLoan(Integer.parseInt(ofs.getMessage().getProNo())));
-
+		log.info("------------------------- order/detail Controller Finish -----------------------");
+		
 		return "order";
 	}
 
 	@PostMapping("/save")
 	@ResponseBody
 	public void saveProduct(@RequestBody OrderOrderVO vo) {
-		log.info("여기옴");
+		log.info("------------------------- order/save DB SAVE! -----------------------");
 		service.saveOrder(vo);
+		log.info("------------------------- order/save DB SAVE Finish -----------------------");
 	}
 
 	// kafka producer
@@ -83,8 +85,8 @@ public class OrderServiceController {
 
 	@RequestMapping(value = "/kafka", method = RequestMethod.POST)
 	public ResponseEntity<String> sendMessage(@RequestBody SendMessage message) {
-		log.info("----------------------main/kafka/ URL 작동-----------------------");
-		log.info("메세지 전동 된다. {}", message);
+		log.info("----------------------order/kafka/ URL 작동-----------------------");
+		log.info("Order Kafka Producer Message : {}", message);
 
 		ListenableFuture<SendResult<String, SendMessage>> future = this.kafkaTemplate.send(kafkaTopicName, message);
 
@@ -93,7 +95,7 @@ public class OrderServiceController {
 			@Override
 			public void onSuccess(SendResult<String, SendMessage> result) {
 				status = "Message send successfully, 메시지가 성공적으로 전송 됨.";
-				log.info("메시지가 성공적으로 전송됨. successfully sent message = {}, with offset = {}", message,
+				log.info("successfully sent message = {}, with offset = {}", message,
 						result.getRecordMetadata().offset());
 			}
 

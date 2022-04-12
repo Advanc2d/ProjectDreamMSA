@@ -13,18 +13,7 @@ public class GatewayController {
 
 	@GetMapping("/token")
 	public String index(@RegisteredOAuth2AuthorizedClient OAuth2AuthorizedClient authorizedClient) {
+		log.info("------------------------ get token ------------------------------");
 		return authorizedClient.getAccessToken().getTokenValue();
 	}
-
-//	@RequestMapping("/fallback/Faliure")
-//	public String testFallback(ServerHttpRequest request, ServerHttpResponse response) {
-//		log.info("fallback ..............."+response.toString());
-//		return "해당 서비스에 문제가 발생하여 현재 이용이 어렵습니다. 잠시 후 다시 이용해주시길 바랍니다.";
-//	}
-
-	@GetMapping("/test")
-	public String test() {
-		return "test";
-	}
-
 }

@@ -19,15 +19,14 @@ public class ConfirmKafkaService {
 
 	@KafkaListener(topics = "my-topic2", groupId = "${kafka.group_id}")
 	public void listner(String message) throws JsonMappingException, JsonProcessingException {
-		log.info("여기 오냐잉 = {}", message);
+		log.info("Confirm-Service Kafka Received message = {}", message);
 
 		ObjectMapper mapper = new ObjectMapper();
-		confirmDto vo = new confirmDto();
+
 		ms = mapper.readValue(message, SendMessage.class);
 
-		vo.setUserId(ms.getUserId());
 
-		log.info("되나?");
+		log.info("Confirm-Service Kafka Listener Complete userId : " + ms);
 	}
 
 	public SendMessage getMessage() {

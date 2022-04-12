@@ -28,13 +28,13 @@ public class KafkaOrderService {
 	   private String kafkaServerEndpoint;
 	   
 	   @Value("${kafka.topic_name}")
-	   private String kafkTopicName;
+	   private String kafkaTopicName;
 	   
 	   @Bean
 	   public ProducerFactory<String, SendMessage> producerFactory(){ //접속하고자 하는 정보 topic
 	      Map<String, Object> configProps = new HashMap<>();
 	      configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaServerEndpoint);
-	      log.info("------------------토픽네임" + kafkTopicName);      
+	      log.info("Order kafka Producer TopicName : " + kafkaTopicName);   
 	      configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
 	      configProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
 	         

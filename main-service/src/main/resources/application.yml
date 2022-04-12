@@ -15,22 +15,22 @@ spring:
      restart:   # 재시작시 완전히 꺼졌다 다시키는 것보다 훨씬 빠르게 해줌.
       enabled: true
 
-# security 설정
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          jwk-set-uri: http://192.168.1.54:8080/auth/realms/MSA/protocol/openid-connect/certs
----  
-#keycloak 설정          
-keycloak:
-  realm: MSA
-  bearer-only: true
-  ssl-required: external
-  resource: spring-gateway-client
-  auth-server-url: http://192.168.1.54:8080/auth
-  credentials:
-    secret: WEcACPUTWPfuhPrEz3bBaHcl7OLLmYX1
+## security 설정
+#  security:
+#    oauth2:
+#      resourceserver:
+#        jwt:
+#          jwk-set-uri: http://192.168.1.54:8080/auth/realms/MSA/protocol/openid-connect/certs
+#---  
+##keycloak 설정          
+#keycloak:
+#  realm: MSA
+#  bearer-only: true
+#  ssl-required: external
+#  resource: spring-gateway-client
+#  auth-server-url: http://192.168.1.54:8080/auth
+#  credentials:
+#    secret: WEcACPUTWPfuhPrEz3bBaHcl7OLLmYX1
 
 # actuator를 이용하여 서버 재시작 없이 변경내용 반영 가능하게 함.
 management:

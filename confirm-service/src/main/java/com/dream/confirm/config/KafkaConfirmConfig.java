@@ -13,18 +13,25 @@ import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 
+import lombok.extern.slf4j.Slf4j;
+
 @EnableKafka
 @Configuration
+@Slf4j
 public class KafkaConfirmConfig {
 	@Value("${kafka.server_endpoint}")
 	private String kafkaServerEndpoint;
+	
+	@Value("${kafka.topic_name}")
+	private String kafkaTopicName;
 
 	@Value(value = "${kafka.group_id}")
 	private String kafkaGroupId;
 
 	@Bean
 	public ConsumerFactory<String, String> consumerFactory() {
-		System.out.println("-------------------" + kafkaServerEndpoint);
+		log.info("kafkaServerEndpoint : " + kafkaServerEndpoint);
+		log.info("KafkaTopicName : " + kafkaTopicName);
 		Map<String, Object> map = new HashMap<>();
 		map.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaServerEndpoint);
 		map.put(ConsumerConfig.GROUP_ID_CONFIG, kafkaGroupId);

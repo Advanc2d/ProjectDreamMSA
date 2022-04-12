@@ -23,7 +23,7 @@ public class KafkaApproveConfig {
 	   private String kafkaServerEndpoint;
 
 	   @Value("${kafka.topic_name}")
-	   private String kafkTopicName;
+	   private String kafkaTopicName;
 	   
 	   @Value(value = "${kafka.group_id}")
 	   private String kafkaGroupId;
@@ -33,9 +33,9 @@ public class KafkaApproveConfig {
 	      
 	      Map<String, Object> map = new HashMap<>();
 	      map.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaServerEndpoint);
-	      log.info("앤드포인트" + kafkaServerEndpoint);
-	      log.info("------------------토픽네임" + kafkTopicName);
-	      log.info("------------------그룹아이디" + kafkaGroupId);
+	      log.info("KafkaServerEndPoint : " + kafkaServerEndpoint);
+	      log.info("KafkaTopicName : " + kafkaTopicName);
+	      log.info("KafkaGroupId : " + kafkaGroupId);
 	      map.put(ConsumerConfig.GROUP_ID_CONFIG, kafkaGroupId);
 	      map.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
 	      map.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);

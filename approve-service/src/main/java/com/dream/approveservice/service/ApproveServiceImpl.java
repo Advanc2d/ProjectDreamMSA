@@ -17,18 +17,22 @@ public class ApproveServiceImpl implements ApproveService{
 	
 	@Override
 	public orderVO bringOrder(int orderNo) {
-		log.info("---------------status detail bringOrder Mapper.xml -----------------");
-		return mapper.bringOrder(orderNo);
+		log.info("---------------approve bringOrder Mapper.xml -----------------");
+		orderVO vo = new orderVO();
+		vo = mapper.bringOrder(orderNo);
+		log.info("---------------approve bringOrder Mapper Compelete -----------------");
+
+		return vo;
 	}
 	
 	@Override
 	public void update(orderVO vo) {
-		log.info("---------------status detail change Mapper.xml -----------------");
+		log.info("---------------approve change Mapper.xml -----------------");
 		
 		log.info("status : "+vo.getStatus());
 
 		mapper.update(vo);
 		
-		log.info("여기전에 오류인가요?");
+		log.info("---------------approve change Mapper Complete -----------------");
 	}
 }

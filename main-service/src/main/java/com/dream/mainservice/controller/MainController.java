@@ -34,16 +34,17 @@ public class MainController {
 	// 로그인 하지 않았을 시 return
 	@GetMapping("/")
 	public String main(Model model) throws Exception {
-		log.info("come on man~");
+		log.info("--------------------- No Login Main menu URL ------------------------------");
 		System.out.println(service.getProductList());
 		model.addAttribute("product", service.getProductList());
+		log.info("--------------------- No Login Main menu finish------------------------------");
 		return "main2";
 	}
 
 	// 로그인 되어있을 시 return
 	@GetMapping("/menu")
 	public String menu(Principal principal, Model model) throws Exception {
-		log.info("Hi man~!");
+		log.info("--------------------- Login Main menu URL ------------------------------");
 		System.out.println(service.getProductList());
 		System.out.println("권한 : " + principal);
 		if (principal != null) {
@@ -52,6 +53,8 @@ public class MainController {
 			model.addAttribute("list", token.getTokenAttributes());
 			model.addAttribute("product", service.getProductList());
 		}
+		
+		log.info("--------------------- Login Main menu finish------------------------------");
 		return "main";
 	}
 	
@@ -71,16 +74,15 @@ public class MainController {
 	   @RequestMapping(value = "/kafka", method = RequestMethod.POST)
 	   public ResponseEntity<String> sendMessage(@RequestBody Message message) {
 	      log.info("----------------------main/kafka/ URL 작동-----------------------");
-	      log.info("메세지 전동 된다. {}", message);
+	      log.info("Main Kafka Producer : {}", message);
 
 	      ListenableFuture<SendResult<String, Message>> future = this.kafkaTemplate.send(kafkaTopicName, message);
-	      log.info("여기는 넘어오냐?");
 	      future.addCallback(new ListenableFutureCallback<SendResult<String, Message>>() {
 
 	         @Override
 	         public void onSuccess(SendResult<String, Message> result) {
 	            status = "Message send successfully, 메시지가 성공적으로 전송 됨.";
-	            log.info("메시지가 성공적으로 전송됨. successfully sent message = {}, with offset = {}", message,
+	            log.info("successfully sent message = {}, with offset = {}", message,
 	                  result.getRecordMetadata().offset());
 	         }
 
@@ -97,6 +99,7 @@ public class MainController {
 	   @GetMapping("/test")
 	   public String authlogin(HttpServletRequest request) {
 //	        throw new RuntimeException("failed");
+		  log.info("--------------------- main/test URL CircuitBreaker Error Page Move ------------------------------");
 	      try {
 	         Thread.sleep(11000);
 	      } catch (Exception e) {
