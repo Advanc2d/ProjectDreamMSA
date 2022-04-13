@@ -97,7 +97,7 @@ public class MainController {
 	   }   
 	   
 	   @GetMapping("/test")
-	   public String authlogin(HttpServletRequest request) {
+	   public String authlogin(HttpServletRequest request, Principal principal, Model model) throws Exception {
 //	        throw new RuntimeException("failed");
 		  log.info("--------------------- main/test URL CircuitBreaker Error Page Move ------------------------------");
 	      try {
@@ -105,7 +105,17 @@ public class MainController {
 	      } catch (Exception e) {
 	         e.printStackTrace();
 	      }
-	      log.info("request server port : {}", request.getServerPort());
+	      log.info("--------------------- Login Main menu URL ------------------------------");
+			System.out.println(service.getProductList());
+			System.out.println("권한 : " + principal);
+			if (principal != null) {
+				JwtAuthenticationToken token = (JwtAuthenticationToken) principal;
+				log.info("toString : " + token.getTokenAttributes().toString());
+				model.addAttribute("list", token.getTokenAttributes());
+				model.addAttribute("product", service.getProductList());
+			}
+			
+			log.info("--------------------- Login Main menu finish------------------------------");
 	      return "test"; // 리턴값 변경 test
 	   }
 	   

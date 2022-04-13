@@ -1,24 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-	th:fragment="contentFragment">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="contentFragment">
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Content</title>
-<link
-	href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
-	rel="stylesheet">
-<link
-	href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.5.8/swiper-bundle.min.css"
-	rel="stylesheet">
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.5.8/swiper-bundle.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.5.8/swiper-bundle.min.css" rel="stylesheet">
+<scrip src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.5.8/swiper-bundle.min.js"></script>
 <link href="css/productList.css" rel="stylesheet">
 </head>
 <body>
 <body>
-	<div class="slider">
+	<div sec:authorize="hasRole('USER')" class="slider">
 		<div class="header">
 			<div class="title">상품 목록</div>
 		</div>
@@ -48,7 +42,9 @@
 			<div class="swiper-button-next swiper-button-white"></div>
 			<div class="swiper-button-prev swiper-button-white"></div>
 		</div>
+		<hr style="margin-top:55px;" class="cal-form">
 	</div>
+	
 	<script src="js/productList.js"></script>
 	<script>
 		function kafkaSendMsg(e) {
@@ -62,12 +58,12 @@
 			$.ajax({
 				anyne : true,
 				type : 'POST',
-				url : 'http://localhost:8000/main/kafka',
+				url : '/main/kafka',
 				data : JSON.stringify(arr),
 				dataType : "text",
 				contentType : 'application/json',
 				success : function(data) {
-					location.href = "http://localhost:8000/order/detail"
+					location.href = "/order/detail"
 					return true;
 				},
 				error : function(xhr, status, error) {

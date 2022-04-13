@@ -4,13 +4,13 @@ import java.security.Principal;
 import java.util.List;
 
 import javax.annotation.security.RolesAllowed;
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.http.MediaType;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -79,9 +79,23 @@ public class ProductController {
 	}
 	
 	
+//	@RolesAllowed({ "ADMIN" })
+//	@PostMapping("/modify")
+//	@ResponseBody
+//	public void update(@RequestBody ProductDto dto, Model model, Principal principal) {
+//		log.info("---------------------- Controller Change product/modify DB modify -----------------------");
+//		if (principal != null) {
+//			JwtAuthenticationToken token = (JwtAuthenticationToken) principal;
+//			model.addAttribute("list", token.getTokenAttributes());
+//		}
+//		service.update(dto);		
+//		log.info("---------------------- Controller Change product/modify DB modify Success -----------------------");
+//	}
+	
 	@RolesAllowed({ "ADMIN" })
 	@PostMapping(value = "/modify", consumes = "application/json", produces = { MediaType.TEXT_PLAIN_VALUE })
-	public String updateProduct(Model model, Principal principal, @RequestBody ProductDto dto) {
+	@ResponseBody
+	public void updateProduct(@RequestBody ProductDto dto, Model model, Principal principal) {
 		log.info("---------------------- product/modify DB modify -----------------------");
 		if (principal != null) {
 			JwtAuthenticationToken token = (JwtAuthenticationToken) principal;
@@ -89,8 +103,8 @@ public class ProductController {
 		}
 		service.update(dto);		
 		log.info("---------------------- product/modify DB modify Success -----------------------");
-		return "updateProduct"; 
 	}
+	
 	
 	
 	@RolesAllowed({ "ADMIN" })

@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'com.dream'
-version = '1.0T'
+version = '1.0'
 sourceCompatibility = '11'
 
 configurations {

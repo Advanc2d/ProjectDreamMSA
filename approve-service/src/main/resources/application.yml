@@ -9,7 +9,7 @@ spring:
    active: dev
   config:              # gradle에 config 추가.
    import: optional:configserver:http://localhost:8888  # config 서버 위치
-#   import: optional:configserver:http://192.168.1.49:8888  # config 도커로 할때 버전
+#   import: optional:configserver:http://192.168.1.54:8888  # config 도커로 할때 버전
   devtools:
      livereload:  #﻿ html, css, js 수정 시 새로고침 없이 바로 적용가능
        enabled: true

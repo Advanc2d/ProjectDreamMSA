@@ -67,21 +67,18 @@
 			</div>
 		</div>
 		<div class="row" style="padding-top: 30px;"th:switch="${orderVO.status}">
-			<div class="col-md-6"></div>
+			<div class="col-md-6">
+				<button type="button" class="btn-style07 md" style="float: left;" onclick="back()">뒤로가기</button>
+			</div>
 			<div class="col-md-6" th:case="0">
 				<form method="POST" >
 					<input type="hidden" id="orderNo" name="orderNo"
 						th:value="${orderVO.orderNo}" >
-						
 					<button type="button" class="btn-style06 md"
-						style="margin-left: 15%;" onclick="approval()" >승인</button>
-					<button type="button" class="btn-style07 md" style="float: right;"
+					style="margin-left: 15%;" onclick="approval()" >승인</button>
+					<button type="button" class="btn-style08 md" style="float: right;"
 						onclick="reject()" >반려</button>
-				</form>
-				
-			</div>
-			<div class="col-md-6" th:case="*">
-				<button type="button" class="btn-style07 md" style="float: right;" onclick="back()">뒤로가기</button>
+				</form>		
 			</div>
 		</div>
 	</div>
@@ -90,7 +87,7 @@
 <script th:inline="javascript">
 
 	function back() {
-		location.replace("http://localhost:8000/manage/list");
+		location.href = "/manage/list";
 	}
 	
 	function approval() {

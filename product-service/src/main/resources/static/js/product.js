@@ -20,11 +20,12 @@ function update() {
 	console.log(arr);
 
 	$.ajax({
+		anyne : true,
 		type: 'POST',
 		url: '/product/modify',
-		contentType: "application/json; charset=utf-8;",
 		data: JSON.stringify(arr),
-		dataType: "text",
+		contentType: 'application/json; charset=utf-8;',
+		dataType: "text",		
 		success: function(data) {
 			alert("상품이 수정되었습니다.");
 			location.href = "/product/list";
@@ -56,8 +57,8 @@ function register() {
 	$.ajax({
 		type: 'POST',
 		url: '/product/register',
-		contentType: 'application/json; charset=utf-8;',
 		data: JSON.stringify(arr),
+		contentType: 'application/json; charset=utf-8;',
 		dataType: 'text',
 		success: function(data) {
 			alert("상품이 등록되었습니다. 메인화면으로 돌아갑니다.");
@@ -71,5 +72,5 @@ function register() {
 }
 
 function back() {
-	location.replace("http://localhost:8000/product/list");
+	location.href="/product/list";
 }

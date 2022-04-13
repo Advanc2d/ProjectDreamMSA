@@ -234,8 +234,8 @@ function cal() {
     var t3 = $('#calc03').val();
     var rate = t3.replace(/[^0-9]/g, '');   //숫자만 추출    
 
-    if (money == "0원" || term == "0개월" || rate == "0%") {
-        alert("입력 안한 값이 있습니다. 확인해주세요.");
+    if (money == 0 || term == 0 || rate == 0) {
+        alert("입력하지 않은 값이 있습니다. 확인해주세요.");
     } else {
         var cal = money * (1 + (rate / 100)) / term;    //달마나 낼 금액 계산
         // 소수점 2자리 이상일때 반올림

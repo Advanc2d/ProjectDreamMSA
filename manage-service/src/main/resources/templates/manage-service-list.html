@@ -14,10 +14,10 @@
 </head>
 <script>
 	function back() {
-		location.replace("http://localhost:8000/main/menu");
+		location.herf="/main/menu";
 	}
 	function logout() {
-		location.replace("http://localhost:8000/logout");
+		location.href="/logout";
 	}
 </script>
 </head>
@@ -42,9 +42,9 @@
 					</div>
 					<!-- Grid row -->
 					<!--Table-->
-					<table class="table table-striped" style="--bs-table-striped-bg: none;">
+					<table class="table table-striped table-bordered" style="--bs-table-striped-bg: none;" id="table_id">
 						<!--Table head-->
-						<thead style="background: #f4f4f4;color: #5d5b5b; font-weight: 100;font-size: 20px;">
+						<thead >
 							<tr>
 								<th style="width: 35px">#</th>
 								<th style="width: 80px">상품명</th>
@@ -80,7 +80,7 @@
 									th:text="${#dates.format(list.endDate, 'yyyy-MM-dd')}"></td>
 								<td>
 									<div th:switch="${list.status}">
-										<span style="color:black;" th:case="0" th:text ="승인대기"></span>
+										<span style="color:black; font-weight:bolder; font-size:15px;" th:case="0" th:text ="승인대기"></span>
 										<span style="font-weight:bolder; font-size:15px; color:blue;" th:case="1" th:text ="승인완료"></span>
 										<span style="font-weight:bolder; font-size:15px; color:red;" th:case="2" th:text ="승인거절"></span>
 									</div>
@@ -111,6 +111,11 @@
 		<!--MDB Tables-->
 		<html th:replace="footer::footerFragment"></html>
 	</main>
+	<script>
+	$(document).ready(function() {
+		$('#table_id').DataTable();
+	});
+</script>
 	<script>
 		function statusChange(e) {
 			//1번   proNo=1로 고정...임....
@@ -158,5 +163,6 @@
 		}
 	</script>
 	<script	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 </body>
 </html>

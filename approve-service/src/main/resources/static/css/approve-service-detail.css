@@ -18,7 +18,7 @@ body::-webkit-scrollbar {
 
 .wrapper {
     max-width: 800px;
-    margin: 80px auto;
+    margin: 50px auto;
     padding: 30px 45px;
     box-shadow: 5px 25px 35px #3535356b
 }
@@ -132,7 +132,8 @@ body::-webkit-scrollbar {
 .btn-style06:hover, .btn-style06:focus {
     background: #01244d;
 }
-/* 거절버튼 */
+
+/* 뒤로가기버튼 */
 .btn-style07 {
     display: inline-block;
     min-width: 40%;
@@ -145,6 +146,25 @@ body::-webkit-scrollbar {
     font-weight: 700;
     text-align: center;
 }
-.btn-style07:hover, .btn-style06:focus {
+
+.btn-style07:hover, .btn-style07:focus {
     background: #3e3e3e;
+}
+
+/* 거절버튼 */
+.btn-style08 {
+    display: inline-block;
+    min-width: 40%;
+    height: 50px;
+    padding: 0 18px;
+    border-radius: 5px;
+    background: rgb(142 4 4);
+    color: white;
+    font-size: 17px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.btn-style08:hover, .btn-style08:focus {
+    background: rgb(111 1 1);
 }

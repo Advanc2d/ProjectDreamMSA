@@ -1550,6 +1550,8 @@ input[type="radio"].disable+label:after {
     margin-top: 20px;
     display: flex;
     justify-content: center;
+    height: 450px;
+    overflow: hidden;
 }
 
 .write-form .required-entry {
@@ -1579,7 +1581,6 @@ input[type="radio"].disable+label:after {
     display: table;
     table-layout: fixed;
     width: 100%;
-    border-top: 1px solid #b7c8de;
 }
 
 .write-form .form-box .tr-v {

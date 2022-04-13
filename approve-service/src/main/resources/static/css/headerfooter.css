@@ -11,6 +11,7 @@ body *{
 header{
     width: 100%;
     position: relative;
+    font-weight:bold;
 }
 /* 푸터 */
 footer {
@@ -18,6 +19,15 @@ footer {
     left: 0;
     bottom: 0;
     width: 100%;
-    padding: 15px 0;
+    padding: 10px 0;
     text-align: center;
+}
+
+.header-link{
+	text-decoration: none;
+	color: black;
+}
+
+.header-link:hover{	
+	color: #005B9F;
 }

@@ -62,11 +62,11 @@ body {
     color: #76838f
 }
 
-p {
+/* p {
     font-size: 0.875rem;
     margin-bottom: .5rem;
     line-height: 1.5rem
-}
+} */
 
 .table-responsive {
     display: block;

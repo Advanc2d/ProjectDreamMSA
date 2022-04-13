@@ -12,7 +12,7 @@ public class confirmDto {
 	private int orderNo;
 	private String proName;
 	private double orderPrice;
-	private int rate; // 생략
+	private double rate; // 생략
 	private String purpose;
 	private double amount;
 	private int term;

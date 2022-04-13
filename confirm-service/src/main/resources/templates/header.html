@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
 <link rel="stylesheet" href="css/boot_min.css" />
+<link rel="stylesheet" href="css/headerfooter.css" />
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 	crossorigin="anonymous"></script>
@@ -25,10 +26,10 @@
 		<div style="border-bottom: solid #005B9F 2px;">
 			<!-- 헤더 -->
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
-				<a href="http://localhost:8000/main/menu"> <img
+				<a href="/main/menu"> <img
 					src="img/logo.png"></a>
 				<div class="container-fluid" style="height: 60px;">
-					<a class="navbar-brand" href="http://localhosT:8000/main/menu"
+					<a class="navbar-brand" href="/main/menu"
 						style="color: black; font-size: 30px; font-weight: bold;">Dream
 						Security</a>
 					<button class="navbar-toggler" type="button"
@@ -47,10 +48,10 @@
 									class="d-none d-md-inline">시연</span>
 							</a> <span class="caret"></span>
 								<div class="dropdown-menu">
-									<a class="dropdown-item" href="http://localhost:8000/token">AccessToken</a>
+									<a class="dropdown-item" href="/token">AccessToken</a>
 									<div class="dropdown-divider"></div>
 									<a class="dropdown-item"
-										href="http://localhost:8000/actuator/health/circuitBreakers">CircuitBreaker</a>
+										href="/actuator/health/circuitBreakers">CircuitBreaker</a>
 									<div class="dropdown-divider"></div>
 									<a class="dropdown-item" href="http://localhost:8761/">Eureka</a>
 								</div></li>
@@ -59,27 +60,27 @@
 						<ul class="navbar-nav me-auto" style="margin-left: -10%;">
 							<a sec:authorize="hasRole('ADMIN')">
 								<li class=" nav-item" style="padding-right: 15px;"><a
-									class="nav-link" href="http://localhost:8000/product/list">상품
+									class="header-link" href="/product/list">상품
 										목록</a></li>
 								<li class=" nav-item" style="padding-right: 15px;"><a
-									class="nav-link" href="http://localhost:8000/product/register">상품
+									class="header-link" href="/product/register">상품
 										등록</a></li>
 							</a>
 							<a sec:authorize="hasRole('USER')">
 								<li class=" nav-item" style="padding-right: 15px;"><a
-									class="nav-link" href="http://localhost:8000/confirm/list">주문
+									class="header-link" href="/confirm/list">주문
 										내역</a></li>
 							</a>
 							<a sec:authorize="hasRole('MANAGER')">
 								<li class=" nav-item" style="padding-right: 15px;"><a
-									class="nav-link" href="http://localhost:8000/manage/list">주문
+									class="header-link" href="/manage/list">주문
 										목록</a></li>
 							</a>
 						</ul>
 
 						<p class="text-dark" style="margin-top: 1%;"
 							th:text="${list.preferred_username}+'님 환영합니다.&nbsp;'"></p>
-						<form action="http://localhost:8000/logout" method="POST">
+						<form action="/logout" method="POST">
 							<button class="btn btn-outline-dark my-2 my-sm-0" type="submit"
 								style="margin-right: 1%; width: 90px">로그아웃</button>
 						</form>

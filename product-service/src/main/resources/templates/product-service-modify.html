@@ -48,7 +48,6 @@
 						id="term" name="term" th:value="${proVO.term}"
 						oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
 				</div>
-
 			</div>
 			<div class="row">
 				<div class="col-md-6 mt-md-0 mt-3">
@@ -68,7 +67,7 @@
 			<div class="row" style="padding-top: 30px;">
 				<div class="col-md-6"></div>
 				<div class="col-md-6">
-					<button class="btn-style06 md" style="margin-left: 15%;"
+					<button type="button" class="btn-style06 md" style="margin-left: 15%;"
 						onclick="update()">수정</button>
 					<button type="button" class="btn-style07 md" style="float: right;"
 						onclick="back()">취소</button>
@@ -99,7 +98,6 @@
 	}
 </script>
 <script src="js/product.js"></script>
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 </body>
 </html>

@@ -20,9 +20,9 @@ body .clearfix:after {
 }
 
 .slider {
-	padding: 150px 0;
+	/* padding: 150px 0; */
 	position: relative;
-	margin-top:-6%;
+	margin-top: 2%;
 }
 
 .slider .background {
@@ -61,10 +61,11 @@ body .clearfix:after {
 	font-size: 25px;
     background: #ededed;
     display: block;
-    padding: 30px;
+    padding: 15px;
     width: 327px;
     height: 270px;
     border-radius: 20px;
+    margin: 13px;
 }
 
 .slider .swiper-container .swiper-wrapper .swiper-slide .tag>span {

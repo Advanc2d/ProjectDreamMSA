@@ -79,7 +79,7 @@ a.btn-style06 {padding:10px;box-sizing:border-box;}
 .btn-style01.print:after {content:'';display:inline-block;vertical-align:middle;width:18px;height:18px;margin-top:-1px;margin-left:10px;background:url('../img/content/icon_print.png') no-repeat center center;}
 
 /*btnbox  버튼 컬러 확인*/
-.btn-box {margin-top:38px;}
+.btn-box {margin-top:0px;}
 .btn-box .btn-style01 + .btn-style01 {margin-left:6px;}
 .btn-box .md {width:170px;font-weight:400;}
 .btn-box span {position:relative;display:inline-block;}
