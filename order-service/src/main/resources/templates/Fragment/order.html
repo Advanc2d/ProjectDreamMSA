@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-	th:fragment="order-service-detailFragment">
+   th:fragment="order-service-detailFragment">
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,271 +9,304 @@
 
 <link href="css/order-service-detail.css" rel="stylesheet">
 <link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+   href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
 <script type="text/javascript"
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript" src="js/order-service-detail.js"></script>
+   src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 
 </head>
 <body>
-	<!-- MultiStep Form -->
-	<div class="container-fluid" id="grad1">
-		<div class="row justify-content-center mt-0">
-			<div
-				class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">
-				<div class="card px-0 pt-4 pb-0 mt-3 mb-3">
-					<h2
-						style="font-size: 35px; font-weight: 600; margin-bottom: 25px; text-align: center; color: #212529; padding: 15px;">대출
-						상품 신청</h2>
-					<p style="color: #212529">당신의 꿈을 순서대로 채워주세요</p>
-					<div class="row">
-						<div class="col-md-12 mx-0">
-							<form id="msform">
-								<!-- progressbar -->
-								<ul id="progressbar">
-									<li class="active" id="account"><strong>대출 상품 설명</strong>
-									</li>
-									<li id="personal"><strong>약관동의</strong></li>
-									<li id="payment"><strong>신청 정보 입력</strong></li>
-								</ul>
-								<!-- fieldsets -->
-								<fieldset>
-									<div class="form-card">
-										<h2 class="fs-title">상품명</h2>
-										<p th:text="${productList.proName}"></p>
-										<hr>
-										<h2 class="fs-title">대출 상품 설명</h2>
-										<p th:text="${productList.detail}"></p>
-										<hr>
-										<h2 class="fs-title">신청자격</h2>
-										<p th:text="${productList.need}"></p>
-										<hr>
-									</div>
-									<input type="button" name="next" class="next action-button"
-										value="Next Step" />
-								</fieldset>
-								<fieldset>
-									<div class="form-card">
-										<h2 class="fs-title">약관설명</h2>
-										<p>대출약관에 대한 내용을 작성해야되는데 어떤 내용을 적어야 할지 모르기 때문에 일단 이렇게 구구절절
-											글씨로 대체하겠습니다. 어쩔 수 없어요ㅠㅠ 대출약관에 대한 내용을 작성해야되는데 어떤 내용을 적어야 할지
-											모르기 때문에 일단 이렇게 구구절절 글씨로 대체하겠습니다. 어쩔 수 없어요ㅠㅠ대출약관에 대한 내용을
-											작성해야되는데 어떤 내용을 적어야 할지 모르기 때문에 일단 이렇게 구구절절 글씨로 대체하겠습니다. 어쩔 수
-											없어요ㅠㅠㅠ대출약관에 대한 내용을 작성해야되는데 어떤 내용을 적어야 할지 모르기 때문에 일단 이렇게 구구절절
-											글씨로 대체하겠습니다. 어쩔 수 없어요ㅠㅠ대출약관에 대한 내용을 작성해야되는데 어떤 내용을 적어야 할지 모르기
-											때문에 일단 이렇게 구구절절 글씨로 대체하겠습니다. 어쩔 수 없어요ㅠㅠ대출약관에 대한 내용을 작성해야되는데
-											어떤 내용을 적어야 할지 모르기 때문에 일단 이렇게 구구절절 글씨로 대체하겠습니다. 어쩔 수
-											없어요ㅠㅠ대출약관에 대한 내용을 작성해야되는데 어떤 내용을 적어야 할지 모르기 때문에 일단 이렇게 구구절절
-											글씨로 대체하겠습니다. 어쩔 수 없어요ㅠㅠㅠ</p>
-									</div>
-									<input type="button" name="previous"
-										class="previous action-button-previous" value="Previous" /> <input
-										type="button" name="next" class="next action-button"
-										value="Next Step" />
-								</fieldset>
-								<fieldset>
-									<div class="form-card">
-										<h2 class="fs-title">신청정보 입력</h2>
-										<hr>
-										<div class="row">
-											<div class="col-4">
-												<label class="pay">대출용도</label>
-											</div>
-											<div class="col-6">
-												<select class="list-dt" id="month" name="expmonth">
-													<option selected>대출용도</option>
-													<option value="가계자금">가계자금</option>
-													<option value="사업자금">사업자금</option>
-													<option value="주택자금">주택자금</option>
-													<option value="경조자금">경조자금</option>
-													<option value="생활자금">생활자금</option>
-												</select>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-4">
-												<label class="pay">이자율</label> <input type="text"
-													class="rate" name="holdername"
-													th:value="${productList.rate} + '%'" readonly />
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-4">
-												<label class="proLimit">대출한도</label> <input type="text"
-													name="proLimit" class="proLimit"
-													th:value="${#numbers.formatInteger(productList.proLimit,0,'COMMA')} + '만원'"
-													readonly />
-												<p></p>
-											</div>
+   <!-- MultiStep Form -->
+   <div class="container-fluid" id="grad1">
+      <div class="row justify-content-center mt-0">
+         <div
+            class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">
+            <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+               <h2
+                  style="font-size: 35px; font-weight: 600; margin-bottom: 25px; text-align: center; color: #212529; padding: 15px;">대출
+                  상품 신청</h2>
+               <p style="color: #212529">당신의 꿈을 순서대로 채워주세요</p>
+               <div class="row">
+                  <div class="col-md-12 mx-0">
+                     <form id="msform">
+                        <!-- progressbar -->
+                        <ul id="progressbar">
+                           <li class="active" id="account"><strong>대출 상품 설명</strong>
+                           </li>
+                           <li id="personal"><strong>약관동의</strong></li>
+                           <li id="payment"><strong>신청 정보 입력</strong></li>
+                        </ul>
+                        <!-- fieldsets -->
+                        <fieldset>
+                           <div class="form-card">
+                              <h2 class="fs-title">상품명</h2>
+                              <p th:text="${productList.proName}"></p>
+                              <hr>
+                              <h2 class="fs-title">대출 상품 설명</h2>
+                              <p th:text="${productList.detail}"></p>
+                              <hr>
+                              <h2 class="fs-title">신청자격</h2>
+                              <p th:text="${productList.need}"></p>
+                              <hr>
+                           </div>
+                           <input type="button" name="next" class="next action-button"
+                              value="Next Step" />
+                        </fieldset>
+                        <fieldset>
+                           <div class="form-card">
+                              <h2 class="fs-title">약관설명</h2>
+                              <p>대출약관에 대한 내용을 작성해야되는데 어떤 내용을 적어야 할지 모르기 때문에 일단 이렇게 구구절절
+                                 글씨로 대체하겠습니다. 어쩔 수 없어요ㅠㅠ 대출약관에 대한 내용을 작성해야되는데 어떤 내용을 적어야 할지
+                                 모르기 때문에 일단 이렇게 구구절절 글씨로 대체하겠습니다. 어쩔 수 없어요ㅠㅠ대출약관에 대한 내용을
+                                 작성해야되는데 어떤 내용을 적어야 할지 모르기 때문에 일단 이렇게 구구절절 글씨로 대체하겠습니다. 어쩔 수
+                                 없어요ㅠㅠㅠ대출약관에 대한 내용을 작성해야되는데 어떤 내용을 적어야 할지 모르기 때문에 일단 이렇게 구구절절
+                                 글씨로 대체하겠습니다. 어쩔 수 없어요ㅠㅠ대출약관에 대한 내용을 작성해야되는데 어떤 내용을 적어야 할지 모르기
+                                 때문에 일단 이렇게 구구절절 글씨로 대체하겠습니다. 어쩔 수 없어요ㅠㅠ대출약관에 대한 내용을 작성해야되는데
+                                 어떤 내용을 적어야 할지 모르기 때문에 일단 이렇게 구구절절 글씨로 대체하겠습니다. 어쩔 수
+                                 없어요ㅠㅠ대출약관에 대한 내용을 작성해야되는데 어떤 내용을 적어야 할지 모르기 때문에 일단 이렇게 구구절절
+                                 글씨로 대체하겠습니다. 어쩔 수 없어요ㅠㅠㅠ</p>
+                           </div>
+                           <input type="button" name="previous"
+                              class="previous action-button-previous" value="Previous" /> <input
+                              type="button" name="next" class="next action-button"
+                              value="Next Step" />
+                        </fieldset>
+                        <fieldset>
+                           <div class="form-card">
+                              <h2 class="fs-title">신청정보 입력</h2>
+                              <hr>
+                              <div class="row">
+                                 <div class="col-4">
+                                    <label class="pay">대출용도</label>
+                                 </div>
+                                 <div class="col-6">
+                                    <select class="list-dt" id="month" name="expmonth">
+                                       <option value="" selected disabled>대출용도</option>
+                                       <option value="가계자금">가계자금</option>
+                                       <option value="사업자금">사업자금</option>
+                                       <option value="주택자금">주택자금</option>
+                                       <option value="경조자금">경조자금</option>
+                                       <option value="생활자금">생활자금</option>
+                                    </select>
+                                 </div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-4">
+                                    <label class="pay">이자율</label> <input type="text"
+                                       class="rate" name="holdername"
+                                       th:value="${productList.rate} + '%'" readonly />
+                                 </div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-4">
+                                    <label class="proLimit">대출한도</label> <input type="text"
+                                       name="proLimit" class="proLimit"
+                                       th:value="${#numbers.formatInteger(productList.proLimit,0,'COMMA')} + '만원'"
+                                       readonly />
+                                    <p></p>
+                                 </div>
 
-											<div class="col-6">
-												<label class="orderPrice">희망금액</label> <input type="text"
-													id="orderPrice" onkeyup="inputNumberFormat(this)"
-													oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-													name="orderPrice" placeholder="희망금액을 입력하세요" />
-											</div>
-											<div class="col-1">
-												<label></label>
-												<p style="margin-left: -128%; margin-top: 20%;">만원</p>
-											</div>
-											<div class="col-4">
-												<label class="term">대출 최대 기간</label> <input type="text"
-													name="term" th:value="${productList.term} +'개월'" readonly />
-											</div>
+                                 <div class="col-6">
+                                    <label class="orderPrice">희망금액</label> <input type="text"
+                                       id="orderPrice" onkeyup="inputNumberFormat(this)"
+                                       oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                       name="orderPrice" placeholder="희망금액을 입력하세요" />
+                                 </div>
+                                 <div class="col-1">
+                                    <label></label>
+                                    <p style="margin-left: -128%; margin-top: 20%;">만원</p>
+                                 </div>
+                                 <div class="col-4">
+                                    <label class="term">대출 최대 기간</label> <input type="text"
+                                       name="term" th:value="${productList.term} +'개월'" readonly />
+                                 </div>
 
-											<div class="col-6">
-												<label class="period">희망기간</label> <input type="text"
-													id="period" class="period"
-													onkeyup="inputNumberFormat(this)"
-													oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-													name="period" placeholder="희망 기간을 입력하세요" />
-											</div>
-											<div class="col-1">
-												<label></label>
-												<p style="margin-left: -128%; margin-top: 20%;">개월</p>
-											</div>
-											<input type="hidden" id="proNo"
-												th:value="${productList.proNo}"> <input
-												type="hidden" id="userId" name="userId"
-												th:value="${list.preferred_username}">
-										</div>
+                                 <div class="col-6">
+                                    <label class="period">희망기간</label> <input type="text"
+                                       id="period" class="period"
+                                       onkeyup="inputNumberFormat(this)"
+                                       oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                       name="period" placeholder="희망 기간을 입력하세요" />
+                                 </div>
+                                 <div class="col-1">
+                                    <label></label>
+                                    <p style="margin-left: -128%; margin-top: 20%;">개월</p>
+                                 </div>
+                                 <input type="hidden" id="proNo"
+                                    th:value="${productList.proNo}"> <input
+                                    type="hidden" id="userId" name="userId"
+                                    th:value="${list.preferred_username}">
+                              </div>
 
-									</div>
-									<input type="button" name="previous"
-										class="previous action-button-previous" value="Previous" /> <input
-										type="button" name="make_payment" class="action-button"
-										value="Confirm"
-										onclick="javascript:saveOrder(); SendMessage();" />
-								</fieldset>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<script type="text/javascript">
-		function inputNumberFormat(obj) {
-		     obj.value = comma(uncomma(obj.value));
-		 }
-	
-		 function comma(str) {
-		     str = String(str);
-		     return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
-		 }
-	
-		 function uncomma(str) {
-		     str = String(str);
-		     return str.replace(/[^\d]+/g, '');
-		 }
-		 function removeComma(str)
-			{
-				n = parseInt(str.replace(/,/g,""));
-				return n;
-			}
-		
-		//대출금액 초과 신청시.
-		$('#orderPrice').focusout(function() {
-			var orderPrice = parseInt($('input[name=orderPrice]').val().replace(/,/g,''));
-			var proLimit = parseInt($('input[name=proLimit]').val().replace(/,/g,''));
+                           </div>
+                           <input type="button" name="previous"
+                              class="previous action-button-previous" value="Previous" /> <input
+                              type="button" name="make_payment" class="action-button"
+                              value="Confirm"
+                              onclick="javascript:saveOrder();" />
+                        </fieldset>
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <script type="text/javascript">
+      function inputNumberFormat(obj) {
+           obj.value = comma(uncomma(obj.value));
+       }
+   
+       function comma(str) {
+           str = String(str);
+           return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+       }
+   
+       function uncomma(str) {
+           str = String(str);
+           return str.replace(/[^\d]+/g, '');
+       }
+       function removeComma(str)
+         {
+            n = parseInt(str.replace(/,/g,""));
+            return n;
+         }
+      
+      //대출금액 초과 신청시.
+      $('#orderPrice').focusout(function() {
+         var orderPrice = parseInt($('input[name=orderPrice]').val().replace(/,/g,''));
+         var proLimit = parseInt($('input[name=proLimit]').val().replace(/,/g,''));
 
-			if (proLimit < orderPrice) {
-				alert("제한 금액보다 큽니다. 다시 입력해 주세요.");
-			}
-		})
+         if (proLimit < orderPrice) {
+            alert("제한 금액보다 큽니다. 다시 입력해 주세요.");
+         }
+      })
 
-		//대출기간 초과
-		$('#period').focusout(function() {
-			var period = Number($('input[name=period]').val());
-			var term = parseInt($('input[name=term]').val());
+      //대출기간 초과
+      $('#period').focusout(function() {
+         var period = Number($('input[name=period]').val());
+         var term = parseInt($('input[name=term]').val());
 
-			if (term < period) {
-				alert("대출기간을 초과했습니다. 다시 입력해 주세요.");
-			}
-		})
+         if (term < period) {
+            alert("대출기간을 초과했습니다. 다시 입력해 주세요.");
+         }
+      })
 
-		function saveOrder() {
-			var rate = parseFloat($('.rate').val()).toFixed(1);	//이자율 구하기
-			console.log(typeof(parseFloat(rate)));
-			var purpose = document.getElementById("month");
-			purpose = purpose.options[purpose.selectedIndex].value;  //대출 용도 값 구하기
-			var orderPrice = parseInt($('#orderPrice').val().replace(/,/g,''));	//희망 금액 구하기
-			var period = 	parseInt($('#period').val()); //희망 기간 값 구하기
-			var proNo = $('#proNo').val();	//상품 번호 구하기
-			var orderDate = new Date();
-			var userId = $('#userId').val(); //userId 구하기
-			
-			var cal = period/12;
-			var ss = period%12;
-			
-			var amount = orderPrice * (1+(rate/100)) / period;
-			
-			var year = orderDate.getFullYear() + Math.floor(cal);
-			var month = orderDate.getMonth() + 1 + ss;
-			if(month > 12){
-				month= month%12;
-				year = year+1;
-			}
-			var date = orderDate.getDate();
-			var endDate = new Date(year, month - 1, date);
-			
-			var t1 = document.getElementById('period');
-			var t2 = document.getElementById('orderPrice');
-			if(t1.value == '' || t2.value==''){
-				return false;
-			}
-			
-			var arr = {
-					"proNo" : proNo,
-					"userId" : userId,
-					"orderPrice" : orderPrice,
-					"purpose":purpose,
-					"period": period,
-					"amount" : amount,
-					"endDate" : endDate
-			}
-			console.log(arr);
-			
-			$.ajax({
-				anyne : true,
-				type : 'POST',
-				url : '/order/save',
-				data : JSON.stringify(arr),
-				dataType : "text",
-				contentType : 'application/json',
-				success : function(data) {
-					
-				},
-				error : function(xhr, status, error) {
-					alert(error);
-				}
-			});
-		}
-		
-		function SendMessage(){
-			var userId = $('#userId').val(); //userId 구하기
-			
-			var arr = {
-				"userId" : userId
-			};
-			
-			$.ajax({
-				anyne : true,
-				type : 'POST',
-				url : '/order/kafka',
-				data : JSON.stringify(arr),
-				dataType : "text",
-				contentType : 'application/json',
-				success : function(data) {
-					location.href = "/confirm/check"
-				},
-				error : function(xhr, status, error) {
-					alert(error);
-				}
-			})
-		}
-	</script>
+      function saveOrder() {
+         var rate = parseFloat($('.rate').val()).toFixed(1);   //이자율 구하기
+         console.log(typeof(parseFloat(rate)));
+         var purpose = document.getElementById("month");
+         purpose = purpose.options[purpose.selectedIndex].value;  //대출 용도 값 구하기
+         var orderPrice = isNaN(parseInt($('#orderPrice').val().replace(/,/g,'')))? "": parseInt($('#orderPrice').val().replace(/,/g,''));   //희망 금액 구하기
+         var period =    isNaN(parseInt($('#period').val()))? "" : parseInt($('#period').val()); //희망 기간 값 구하기
+         var proNo = $('#proNo').val();   //상품 번호 구하기
+         var orderDate = new Date();
+         var userId = $('#userId').val(); //userId 구하기
+         
+         if(purpose == ""){
+            alert("대출용도를 선택해주세요.");
+            return false;
+         }else if(orderPrice == ""){
+            alert("희망금액을 입력해주세요");
+            return false;
+         }else if(period == ""){
+            alert("희망기간을 입력해주세요");
+            return false;
+         }
+         
+         var cal = period/12;
+         var ss = period%12;
+         
+         var amount = orderPrice * (1+(rate/100)) / period;
+         
+         var year = orderDate.getFullYear() + Math.floor(cal);
+         var month = orderDate.getMonth() + 1 + ss;
+         if(month > 12){
+            month= month%12;
+            year = year+1;
+         }
+         var date = orderDate.getDate();
+         var endDate = new Date(year, month - 1, date);
+         
+         var t1 = document.getElementById('period');
+         var t2 = document.getElementById('orderPrice');
+         if(t1.value == '' || t2.value==''){
+            return false;
+         }
+         
+         var arr = {
+               "proNo" : proNo,
+               "userId" : userId,
+               "orderPrice" : orderPrice,
+               "purpose":purpose,
+               "period": period,
+               "amount" : amount,
+               "endDate" : endDate
+         }
+         console.log(arr);
+         
+         $.ajax({
+            anyne : true,
+            type : 'POST',
+            url : '/order/save',
+            data : JSON.stringify(arr),
+            dataType : "text",
+            contentType : 'application/json',
+            success : function(data) {
+               
+            },
+            error : function(xhr, status, error) {
+               alert(error);
+            }
+         });
+         
+         var userId = $('#userId').val(); //userId 구하기
+         
+         var arr = {
+            "userId" : userId
+         };
+         
+         $.ajax({
+            anyne : true,
+            type : 'POST',
+            url : '/order/kafka',
+            data : JSON.stringify(arr),
+            dataType : "text",
+            contentType : 'application/json',
+            success : function(data) {
+               location.href = "/confirm/check"
+            },
+            error : function(xhr, status, error) {
+               alert(error);
+            }
+         })
+      }
+      
+      function SendMessage(){
+         var userId = $('#userId').val(); //userId 구하기
+         
+         var arr = {
+            "userId" : userId
+         };
+         
+         $.ajax({
+            anyne : true,
+            type : 'POST',
+            url : '/order/kafka',
+            data : JSON.stringify(arr),
+            dataType : "text",
+            contentType : 'application/json',
+            success : function(data) {
+               location.href = "/confirm/check"
+            },
+            error : function(xhr, status, error) {
+               alert(error);
+            }
+         })
+      }
+   </script>
+   <script type="text/javascript" src="js/order-service-detail.js"></script>
 </body>
 
 </html>

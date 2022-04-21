@@ -14,7 +14,4 @@
 	<update id="update">
 		update orders set status = #{status} where orderNo=#{orderNo}
 	</update>
-	<!-- <update id="update">
-		update orders set status =100 where orderNo=1
-	</update> -->
 </mapper>

@@ -7,6 +7,7 @@ import javax.annotation.security.RolesAllowed;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.ResponseEntity;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
@@ -30,6 +31,7 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @RequiredArgsConstructor
 @Slf4j
+@RefreshScope
 public class ManageController {
    private final ManageService statusService;
 
@@ -85,4 +87,7 @@ public class ManageController {
 
       return ResponseEntity.ok(status);
    }
+   
+   
+   
 }

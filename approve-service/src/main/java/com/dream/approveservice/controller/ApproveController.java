@@ -54,8 +54,7 @@ public class ApproveController {
 		
 		orderVO vo = new orderVO();
 		vo = service.bringOrder(Integer.parseInt(serv.getMessage().getOrderNo()));
-		
-		
+				
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		
 		Date order = formatter.parse(vo.getOrderDate());

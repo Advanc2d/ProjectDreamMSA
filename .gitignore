@@ -2,3 +2,4 @@
 product-service/src/main/resources/static/css/0406-product-service-list.css
 product-service/src/main/resources/templates/0406-product-service-list.html
 order-service/src/main/resources/static/css/order-service-detail.css
+kafka_dream/.settings/org.eclipse.buildship.core.prefs

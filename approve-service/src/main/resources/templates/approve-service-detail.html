@@ -57,10 +57,7 @@
 				<label>만기날짜</label> <input class="form-control"
 					th:value="${orderVO.endDate}" required readonly>
 			</div>
-			<!-- <div class="col-md-6 mt-md-0 mt-3">
-				<label>월 납부액</label> <input class="form-control"
-					th:value="${orderVO.amount}" required readonly>
-			</div> -->
+			
 			<div class="col-md-6 mt-md-0 mt-3">
 				<label>월 납부액</label> <input class="form-control" th:value="${#numbers.formatInteger(orderVO.amount,0,'COMMA')}+'만원'"
 					required readonly>

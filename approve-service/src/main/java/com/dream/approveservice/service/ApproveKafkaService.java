@@ -18,13 +18,19 @@ public class ApproveKafkaService {
 		
 	@KafkaListener(topics = "${kafka.topic_name}", groupId = "${kafka.group_id}")
 	public void listner(String smsg) throws JsonMappingException, JsonProcessingException {
+		
 		log.info("Approve-Service Kafka Received message = {}", smsg);
+		
 		ObjectMapper mapper = new ObjectMapper();
+		
+		
 		orderNo = mapper.readValue(smsg, StatusMessage.class);
+		
 		log.info("Kafka Message Complete orderNo : " + orderNo);
 	}
 
 	public StatusMessage getMessage() {
+		
 		return orderNo;
 	}
 }

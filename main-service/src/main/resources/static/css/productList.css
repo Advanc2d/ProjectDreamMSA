@@ -65,7 +65,6 @@ body .clearfix:after {
     width: 327px;
     height: 270px;
     border-radius: 20px;
-    margin: 13px;
 }
 
 .slider .swiper-container .swiper-wrapper .swiper-slide .tag>span {

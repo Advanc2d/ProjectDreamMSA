@@ -1,6 +1,4 @@
 #statusdetail-service  -> approve-service 로 변경
-server:
-  port: 8005
 
 spring:       
   application:
@@ -21,4 +19,3 @@ management:
    web:
     exposure:
      include: refresh, health, beans #refresh:설정 정보 갱신
-

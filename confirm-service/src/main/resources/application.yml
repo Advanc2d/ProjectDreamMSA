@@ -1,7 +1,4 @@
-
 #manage-service에서 product-service로 변경
-server:
-  port: 8003
 
 spring:
   application:

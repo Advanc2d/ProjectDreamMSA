@@ -27,13 +27,13 @@
 			<div class="row">
 				<div class="col-md-6 mt-md-0 mt-3">
 					<label>상품명</label> <input class="form-control" type="text"
-						id="proName" name="proName" th:value="${proVO.proName}">
+						id="proName" name="proName" th:value="${proVO.proName}" required="required">
 				</div>
 				<div class="col-md-6 mt-md-0 mt-3">
 					<label>대출 한도(만원)</label> <input class="form-control" type="text"
 						id="proLimit" name="proLimit" onkeyup="inputNumberFormat(this)"
 						oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-						th:value="${#numbers.formatInteger(proVO.proLimit,3,'COMMA')}">
+						th:value="${#numbers.formatInteger(proVO.proLimit,3,'COMMA')}" required="required">
 				</div>
 
 			</div>
@@ -41,25 +41,25 @@
 			<div class="row">
 				<div class="col-md-6 mt-md-0 mt-3">
 					<label>이자율(%)</label> <input class="form-control"
-						th:value="${proVO.rate}" id="rate" name="rate">
+						th:value="${proVO.rate}" id="rate" name="rate" required="required">
 				</div>
 				<div class="col-md-6 mt-md-0 mt-3">
 					<label>대출 최대기간(개월)</label> <input class="form-control" type="text"
 						id="term" name="term" th:value="${proVO.term}"
-						oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+						oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required="required">
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-6 mt-md-0 mt-3">
 					<label>신청자격</label>
 					<textarea class="form-control" id="need" name="need" cols="15"
-						rows="3" style="resize: none;" th:text="${proVO.need}"></textarea>
+						rows="3" style="resize: none;" th:text="${proVO.need}" required="required"></textarea>
 					<!-- <input class="form-control" required style="height: 200%;"> -->
 				</div>
 				<div class="col-md-6 mt-md-0 mt-3">
 					<label>상품설명</label>
 					<textarea class="form-control" id="detail" name="detail" cols="15"
-						rows="3" style="resize: none;" th:text="${proVO.detail}"></textarea>
+						rows="3" style="resize: none;" th:text="${proVO.detail}" required="required"></textarea>
 					<!-- <input class="form-control" style="height: 200%;" required > -->
 				</div>
 			</div>

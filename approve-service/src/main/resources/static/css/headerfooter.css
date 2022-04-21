@@ -31,3 +31,14 @@ footer {
 .header-link:hover{	
 	color: #005B9F;
 }
+
+.dropdown-item:hover, .dropdown-item:focus {
+  color: #fff;
+  background-color: #005B9F !important;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+  color: #fff;
+  text-decoration: none;
+  background-color: #497da5 !important;
+}
