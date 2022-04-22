@@ -47,6 +47,7 @@ public class ManageController {
 	public String list(Model model, Principal principal) throws Exception {
 		log.info("---------------------- manage/list URL로 이동  -----------------------");
 		List<StatusDto> list = statusService.getStatusList();
+		
 		JwtAuthenticationToken token = (JwtAuthenticationToken) principal;
 		model.addAttribute("list", token.getTokenAttributes());
 		model.addAttribute("manageList", list);

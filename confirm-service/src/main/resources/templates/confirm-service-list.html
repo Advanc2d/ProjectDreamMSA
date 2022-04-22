@@ -15,6 +15,7 @@
 </head>
 
 <body class="hm-gradient">
+<html th:replace="header::headerFragment"></html>
 	<main>
 		<!--MDB Tables-->
 		<div class="container mt-4">
@@ -24,16 +25,8 @@
 					<div class="row">
 						<!-- Grid column -->
 						<div class="col-md-12">
-							<h2
-								class="pt-3 pb-4 text-center font-bold font-up deep-purple-text">내
-								주문내역</h2>
-							<!-- <div class="input-group md-form form-sm form-2 pl-0">
-                                    <input class="form-control my-0 py-1 pl-3 purple-border" type="text"
-                                        placeholder="Search something here..." aria-label="Search">
-                                    <span class="input-group-addon waves-effect purple lighten-2"
-                                        id="basic-addon1"><a><i class="fa fa-search white-text"
-                                                aria-hidden="true"></i></a></span>
-                                </div> -->
+							<h2 class="pt-3 pb-4 text-center font-bold font-up deep-purple-text" style="font-weight: 800;color: #3a3a3a;">내
+								주문내역</h2><hr>
 						</div>
 						<!-- Grid column -->
 					</div>
@@ -61,16 +54,22 @@
 						<!--Table body-->
 						<tbody>
 							<tr th:each="list : ${myList}">
-								<th scope="row">1</th>
+								<th scope="row" th:text="${list.orderNo}"></th>
 								<td th:text="${list.proName}"></td>
-								<td th:text="${list.rate}"></td>
+								<td th:text="${list.rate} + ' %'"></td>
 								<td th:text="${list.purpose}"></td>
-								<td th:text="${list.orderPrice}"></td>
-								<td th:text="${list.term}}"></td>
-								<td th:text="${list.period}"></td>
-								<td th:text="${list.orderDate}"></td>
-								<td th:text="${list.endDate}"></td>
-								<td th:text="${list.status}"></td>
+								<td th:text="${#numbers.formatInteger(list.orderPrice,3, 'COMMA')} +' 원'"></td>
+								<td th:text="${list.period} + '개월'"></td>
+								<td th:text="${#numbers.formatInteger(list.amount, 3, 'COMMA')} + ' 원'"></td>
+								<td th:text="${#dates.format(list.orderDate, 'yyyy-MM-dd')}" ></td>
+								<td th:text="${#dates.format(list.endDate, 'yyyy-MM-dd')}"></td>								
+								<td>
+									<div th:switch="${list.status}">
+										<span th:case="0" th:text ="승인대기"></span>
+										<span th:case="1" th:text ="승인완료"></span>
+										<span th:case="2" th:text ="승인거절"></span>
+									</div>
+								</td>
 							</tr>
 						</tbody>
 						<!--Table body-->
@@ -89,7 +88,7 @@
 	<!-- 푸터 -->
 	<footer id="sticky-footer"
 		class="footer flex-shrink-0 py-4 text-white-50"
-		style="background-color: #005B9F; margin-top: -8%;">
+		style="background-color: #005B9F;">
 		<div class="container text-center">
 			<p class="text-light" style="margin-top: 1%; font-size: 25px;">@2022
 				드림시큐리티 & 비트교육센터 Final Project!</p>

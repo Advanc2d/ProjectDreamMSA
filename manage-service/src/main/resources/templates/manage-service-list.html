@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="css/manage-service-list.css">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	
 </head>
 <script>
 	function back() {
@@ -42,9 +43,9 @@
 					</div>
 					<!-- Grid row -->
 					<!--Table-->
-					<table class="table table-striped" style="--bs-table-striped-bg: none;">
+					<table class="table table-striped table-bordered" style="--bs-table-striped-bg: none; width: 100%;" id="table_id" >
 						<!--Table head-->
-						<thead style="background: #f4f4f4;color: #5d5b5b; font-weight: 100;font-size: 20px;">
+						<thead style="background: #f4f4f4;color: #5d5b5b; font-weight: 100; font-size: 20px;">
 							<tr>
 								<th style="width: 35px">#</th>
 								<th style="width: 80px">상품명</th>
@@ -64,21 +65,27 @@
 						<!--Table body-->
 						<tbody>
 							<tr th:each="list, i : ${manageList}">
-								<th scope="row" th:text="${list.proNo}"></th>
+								<th scope="row" th:text="${list.orderNo}"></th>
 								
-								<td th:text="${list.proName}">드림대출</td>
-								<td th:text="${list.userId}">김비트</td>
+								<td th:text="${list.proName}"></td>
+								<td th:text="${list.userId}"></td>
 								<!-- <td th:text="${list.orderNo}">비트교육생</td> -->
 								<td
 									th:text="${#numbers.formatInteger(list.orderPrice,3,'COMMA')}+' 만원'">원</td>
 								<!-- <td th:text="${list.}">2%</td> -->
-								<td th:text="${list.purpose}">생활비 자금</td>
-								<td th:text="${list.period} + ' 개월'" >24개월</td>
+								<td th:text="${list.purpose}"></td>
+								<td th:text="${list.period} + ' 개월'" ></td>
 								<td class="date"
 									th:text="${#dates.format(list.orderDate, 'yyyy-MM-dd')}"></td>
 								<td class="views"
 									th:text="${#dates.format(list.endDate, 'yyyy-MM-dd')}"></td>
-								<td th:text="${list.status}">주문 대기</td>
+								<td>
+									<div th:switch="${list.status}">
+										<span th:case="0" th:text ="승인대기"></span>
+										<span th:case="1" th:text ="승인완료"></span>
+										<span th:case="2" th:text ="승인거절"></span>
+									</div>
+								</td>
 
 								<td>									
 									<!-- kafka 사용 하기 위한 부분 -->
@@ -86,6 +93,8 @@
 										<div class="action">
 											<input type="hidden" th:value="${list.orderNo}"
 												th:attr="name='orderNo'+${i.index}" class="orderNo" />
+												<input type="hidden" th:value="${list.status}"
+												th:attr="name='status'+${i.index}" class="status" />
 											<button onclick="statusChange(this)" class="btn-style07" type="button">상세
 												보기</button>
 										</div>
@@ -108,27 +117,45 @@
 			//1번   proNo=1로 고정...임....
 			var orderNo = $(e).parent().find('.orderNo').val();
 			//var proNo = $('.proNo').val();
-
+			var status = $(e).parent().find('.status').val();
 			var arr = {
 				"orderNo" : orderNo
 			};
-			console.log(arr);
+			if(status == 0){
+				$.ajax({
+					anyne : true,
+					type : 'POST',
+					url : '/manage/kafka',
+					data : JSON.stringify(arr),
+					dataType : "text",
+					contentType : 'application/json',
+					success : function(data) {
+						alert("대출 번호 " + orderNo + "번의 대출 심사를 진행하겠습니다.");
+						location.href = "/approve/detail"
+					},
+					error : function(xhr, status, error) {
+						alert(error);
+					}
+				});
+			}else{
+				$.ajax({
+					anyne : true,
+					type : 'POST',
+					url : '/manage/kafka',
+					data : JSON.stringify(arr),
+					dataType : "text",
+					contentType : 'application/json',
+					success : function(data) {
+						alert("대출 번호 " + orderNo + "번의 대출 상세정보를 확인하겠습니다.");
+						location.href = "/approve/detail"
+					},
+					error : function(xhr, status, error) {
+						alert(error);
+					}
+				});
+			}
 
-			$.ajax({
-				anyne : true,
-				type : 'POST',
-				url : '/manage/kafka',
-				data : JSON.stringify(arr),
-				dataType : "text",
-				contentType : 'application/json',
-				success : function(data) {
-					alert("대출 번호 " + orderNo + "번의 대출 심사를 진행하겠습니다.");
-					location.href = "/approve/detail"
-				},
-				error : function(xhr, status, error) {
-					alert(error);
-				}
-			});
+			
 		}
 	</script>
 	<script>
@@ -181,9 +208,15 @@
 							});
 				});
 	</script>
+	<script>
+    $(document).ready(function() {
+        $('#table_id').DataTable();
+    } );
+</script>
 	<script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
 </body>
 </html>

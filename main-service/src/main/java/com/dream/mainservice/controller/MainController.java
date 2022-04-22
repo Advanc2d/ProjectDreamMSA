@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dream.mainservice.dto.Message;
 import com.dream.mainservice.service.MainService;
@@ -52,43 +53,54 @@ public class MainController {
 		}
 		return "main";
 	}
-	
-	   // kafka producer
-	   @Autowired
-	   private final KafkaTemplate<String, Message> kafkaTemplate;
 
-	   @Value(value = "${kafka.topic_name}")
-	   private String kafkaTopicName;
-	   
-	   @Value(value = "${kafka.server_endpoint}")
-	   private String kafkendPoinst;
-	   
-	   String status = "";
+	// kafka producer
+	@Autowired
+	private final KafkaTemplate<String, Message> kafkaTemplate;
 
+	@Value(value = "${kafka.topic_name}")
+	private String kafkaTopicName;
 
-	   @RequestMapping(value = "/kafka", method = RequestMethod.POST)
-	   public ResponseEntity<String> sendMessage(@RequestBody Message message) {
-	      log.info("----------------------main/kafka/ URL 작동-----------------------");
-	      log.info("메세지 전동 된다. {}", message);
+	@Value(value = "${kafka.server_endpoint}")
+	private String kafkendPoinst;
 
-	      ListenableFuture<SendResult<String, Message>> future = this.kafkaTemplate.send(kafkaTopicName, message);
-	      log.info("여기는 넘어오냐?");
-	      future.addCallback(new ListenableFutureCallback<SendResult<String, Message>>() {
+	String status = "";
 
-	         @Override
-	         public void onSuccess(SendResult<String, Message> result) {
-	            status = "Message send successfully, 메시지가 성공적으로 전송 됨.";
-	            log.info("메시지가 성공적으로 전송됨. successfully sent message = {}, with offset = {}", message,
-	                  result.getRecordMetadata().offset());
-	         }
+	@RequestMapping(value = "/kafka", method = RequestMethod.POST)
+	public ResponseEntity<String> sendMessage(@RequestBody Message message) {
+		log.info("----------------------main/kafka/ URL 작동-----------------------");
+		log.info("메세지 전동 된다. {}", message);
 
-	         @Override
-	         public void onFailure(Throwable ex) {
-	            log.info("Failed to send message = {}, error = {}", message, ex.getMessage());
-	            status = "Message sending failed = 메시지 전송 실패...";
-	         }
-	      });
+		ListenableFuture<SendResult<String, Message>> future = this.kafkaTemplate.send(kafkaTopicName, message);
+		log.info("여기는 넘어오냐?");
+		future.addCallback(new ListenableFutureCallback<SendResult<String, Message>>() {
 
-	      return ResponseEntity.ok(status);
-	   }   
+			@Override
+			public void onSuccess(SendResult<String, Message> result) {
+				status = "Message send successfully, 메시지가 성공적으로 전송 됨.";
+				log.info("메시지가 성공적으로 전송됨. successfully sent message = {}, with offset = {}", message,
+						result.getRecordMetadata().offset());
+			}
+
+			@Override
+			public void onFailure(Throwable ex) {
+				log.info("Failed to send message = {}, error = {}", message, ex.getMessage());
+				status = "Message sending failed = 메시지 전송 실패...";
+			}
+		});
+
+		return ResponseEntity.ok(status);
+	}
+
+	@GetMapping("/test")
+	public String test(Model model, @RequestParam(value = "delay", defaultValue="0") int delay) throws Exception {
+		model.addAttribute("product", service.getProductList());
+		System.out.println("Start...");
+		// delay 5 seconds
+		if (delay>0) {
+			Thread.sleep(delay);
+		}
+		System.out.println("End...");
+		return "main2";
+	}
 }

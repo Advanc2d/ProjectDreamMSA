@@ -1,11 +1,10 @@
 package com.dream.gatewayservice.controller;
 
-import org.springframework.http.server.reactive.ServerHttpRequest;
-import org.springframework.http.server.reactive.ServerHttpResponse;
+import java.security.Principal;
+
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
 import org.springframework.security.oauth2.client.annotation.RegisteredOAuth2AuthorizedClient;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +14,10 @@ import lombok.extern.slf4j.Slf4j;
 public class GatewayController {
 
 	@GetMapping("/token")
-	public String index(@RegisteredOAuth2AuthorizedClient OAuth2AuthorizedClient authorizedClient) {
+	public String index(@RegisteredOAuth2AuthorizedClient OAuth2AuthorizedClient authorizedClient, Principal principal) {
+		log.info("scope"+authorizedClient.getAccessToken().getScopes().toString());
+		log.info("type"+authorizedClient.getAccessToken().getTokenType().getValue());
+		log.info("toString"+authorizedClient.getAccessToken().toString());
 		return authorizedClient.getAccessToken().getTokenValue();
 	}
 
