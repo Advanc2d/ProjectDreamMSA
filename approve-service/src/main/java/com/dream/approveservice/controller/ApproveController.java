@@ -6,6 +6,7 @@ import java.util.Date;
 
 import javax.annotation.security.RolesAllowed;
 
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,6 +28,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RequiredArgsConstructor
 @Controller
+@RefreshScope
 public class ApproveController {
 	
 	private final ApproveKafkaService serv;

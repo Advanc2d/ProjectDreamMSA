@@ -12,5 +12,14 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ConfigTestController {
 	
-	  
+	   @Value("${manage.test}")
+	   private String str;
+	   
+	   @GetMapping("/test")
+	   public String test() {
+		   log.info("-------------------- Config Test ---------------------");
+		   log.info("--------"+ str +"--------");
+		   log.info("-------------------- Config Test Finish---------------------");
+		   return str;
+	   }
 }

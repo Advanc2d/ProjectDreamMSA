@@ -48,7 +48,7 @@
 					th:value="${orderVO.orderDate}" required readonly>
 			</div>
 			<div class="col-md-6 mt-md-0 mt-3">
-				<label>이자</label> <input class="form-control" value="2.0%" required
+				<label>이자</label> <input class="form-control" th:value="${orderVO.rate} +'%'" required
 					readonly>
 			</div>
 		</div>

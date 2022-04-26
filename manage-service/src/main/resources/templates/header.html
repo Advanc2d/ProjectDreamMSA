@@ -41,15 +41,15 @@
 					<div class="collapse navbar-collapse" id="navbarColor01"
 						style="font-size: 20px; margin-top: 0.5%">
 						<ul class="navbar-nav me-auto">
-							<li class="nav-item dropdown"><a
+							<li class="nav-item dropdown" sec:authorize="hasRole('ADMIN')"><a
 								class="header-link pl-0 dropdown-toggle" href="#"
 								data-toggle="dropdown" aria-haspopup="true"
 								aria-expanded="false"> <i class="far fa-heart"></i> <span
 									class="d-none d-md-inline">시연</span>
 							</a> <span class="caret"></span>
 								<div class="dropdown-menu">
-									<a class="dropdown-item" href="/token">AccessToken</a>
-									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="/token" >AccessToken</a>
+                          			<div class="dropdown-divider"></div>
 									<a class="dropdown-item"
 										href="/actuator/health/circuitBreakers">CircuitBreaker</a>
 									<div class="dropdown-divider"></div>
@@ -59,30 +59,40 @@
 						<!-- 가운데 test 글짜.. 위치만 지정해두고 주석해버리기... -->
 						<ul class="navbar-nav me-auto" style="margin-left: -10%;">
 							<a sec:authorize="hasRole('ADMIN')">
-								<li class=" nav-item" style="padding-right: 15px;"><a
+								<li class=" nav-item" style="margin-left: 258px; padding-right: 15px;"><a
 									class="header-link" href="/product/list">상품
 										목록</a></li>
-								<li class=" nav-item" style="padding-right: 15px;"><a
+								<li class=" nav-item" style="padding-right: 15px; margin-left:40px;"><a
 									class="header-link" href="/product/register">상품
 										등록</a></li>
 							</a>
 							<a sec:authorize="hasRole('USER')">
-								<li class=" nav-item" style="padding-right: 15px;"><a
+								<li class=" nav-item" style="margin-left: 258px; padding-right: 15px;"><a
 									class="header-link" href="/confirm/list">주문
 										내역</a></li>
 							</a>
 							<a sec:authorize="hasRole('MANAGER')">
-								<li class=" nav-item" style="padding-right: 15px;"><a
+								<li class=" nav-item" style="margin-left: 258px; padding-right: 15px;"><a
 									class="header-link" href="/manage/list">주문
 										목록</a></li>
 							</a>
 						</ul>
 
-						<p class="text-dark" style="margin-top: 1%;"
-							th:text="${list.preferred_username}+'님 환영합니다.&nbsp;'"></p>
+						<a sec:authorize="hasRole('ADMIN')">
+		                  <p class="text-dark" style="margin-top: 1%;"
+		                     th:text="'[권한 : '+${list.realm_access.roles[0]}+']&nbsp;'+${list.preferred_username}+'님 환영합니다.&nbsp;'"></p>
+		                     </a>
+		                     <a sec:authorize="hasRole('MANAGER')">
+		                  <p class="text-dark" style="margin-top: 1%;"
+		                     th:text="'[권한 : '+${list.realm_access.roles[0]}+']&nbsp;'+${list.preferred_username}+'님 환영합니다.&nbsp;'"></p>
+		                     </a>
+		                  <a sec:authorize="hasRole('USER')">
+			              <p class="text-dark" style="margin-top: 1%;"
+	                     th:text="'[권한 : '+${list.realm_access.roles[1]}+']&nbsp;'+${list.preferred_username}+'님 환영합니다.&nbsp;'"></p>
+	                     </a>
 						<form action="/logout" method="POST">
 							<button class="btn btn-outline-dark my-2 my-sm-0" type="submit"
-								style="margin-right: 1%; width: 90px">로그아웃</button>
+							style="margin-right: 1%; width: 90px">로그아웃</button>
 						</form>
 					</div>
 				</div>

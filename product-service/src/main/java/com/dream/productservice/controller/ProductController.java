@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.annotation.security.RolesAllowed;
 
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.MediaType;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.stereotype.Controller;
@@ -26,6 +27,7 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @AllArgsConstructor
 @Slf4j
+@RefreshScope
 public class ProductController {
 	private final ProductService service;
 

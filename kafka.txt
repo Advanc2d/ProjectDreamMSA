@@ -1,0 +1,12 @@
+cd C:\programs\kafka_2.13-3.1.0
+창에서 cmd
+
+bin\windows\zookeeper-server-start.bat config\zookeeper.properties
+
+주키퍼 먼저 키기
+
+bin\windows\kafka-server-start.bat config\server.properties
+
+그 다음 카프카 키기
+
+실행이 안될 때 kafka -> config -> server.properties 안에 log.dirs=/var3/kafka-logs 부분 var3 바꿔서 사용
